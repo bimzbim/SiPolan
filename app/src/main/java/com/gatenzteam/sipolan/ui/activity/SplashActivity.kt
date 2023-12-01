@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,15 +33,13 @@ class SplashActivity : ComponentActivity() {
     @Composable
     private fun SplashScreen() {
         Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            modifier = Modifier
+                .fillMaxSize()
+                .paint(
+                    painterResource(id = R.drawable.bg_splash),
+                    contentScale = ContentScale.FillBounds
+                )
         ){
-            Image(
-                painter = painterResource(id = R.drawable.bg_splash),
-                contentScale = ContentScale.FillBounds,
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize()
-            )
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
