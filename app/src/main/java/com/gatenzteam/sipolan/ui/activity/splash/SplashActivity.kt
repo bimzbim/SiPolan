@@ -38,6 +38,7 @@ class SplashActivity : ComponentActivity() {
         LaunchedEffect(key1 = true){
             delay(2000)
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
         }
         Box(
             modifier = Modifier
