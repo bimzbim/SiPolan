@@ -18,6 +18,6 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxSize()
     ){
-        Text(text = "Home 2")
+        Text(text = "Home")
     }
 }
