@@ -7,12 +7,8 @@
     <string name="navitem_third">Deteksi</string>
 
     <!-- Onboarding Screen -->
-    <string name="onboarding_title1">Welcome to Si Polan</string>
-    <string name="onboarding_title2">Apa itu Si Polan></string>
-    <string name="onboarding_title3">Bijak Berlalu Lintas</string>
-
-    <string name="onboarding_subtitle1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-    <string name="onboarding_subtitle2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-    <string name="onboarding_subtitle3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="onboarding_title">Welcome to Si Polan</string>
+    <string name="onboarding_subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="onboarding_button">Get Started</string>
 
 </resources>
