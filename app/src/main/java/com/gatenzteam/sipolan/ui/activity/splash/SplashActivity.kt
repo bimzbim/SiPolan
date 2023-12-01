@@ -1,8 +1,8 @@
-package com.gatenzteam.sipolan.ui.activity
+package com.gatenzteam.sipolan.ui.activity.splash
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -19,7 +20,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
+import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : ComponentActivity() {
@@ -32,6 +35,10 @@ class SplashActivity : ComponentActivity() {
 
     @Composable
     private fun SplashScreen() {
+        LaunchedEffect(key1 = true){
+            delay(2000)
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
