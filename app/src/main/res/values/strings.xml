@@ -10,5 +10,6 @@
     <string name="onboarding_title">Welcome to Si Polan</string>
     <string name="onboarding_subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="onboarding_button">Get Started</string>
+    <string name="title_activity_onboarding">OnboardingActivity</string>
 
 </resources>

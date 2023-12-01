@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.activity.onboarding.OnboardingActivity
 import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
@@ -37,7 +38,7 @@ class SplashActivity : ComponentActivity() {
     private fun SplashScreen() {
         LaunchedEffect(key1 = true){
             delay(2000)
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
             finish()
         }
         Box(
