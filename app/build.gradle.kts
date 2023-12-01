@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.gatenzteam.sipolan"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.gatenzteam.sipolan"
