@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SiPolan</string>
+
+    <!-- Navigation Bottom -->
+    <string name="navitem_first">Home</string>
+    <string name="navitem_second">Profile</string>
+    <string name="navitem_third">Deteksi</string>
 </resources>
