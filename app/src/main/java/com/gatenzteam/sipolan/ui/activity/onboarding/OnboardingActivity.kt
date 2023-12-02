@@ -38,20 +38,22 @@ class OnboardingActivity : ComponentActivity() {
     }
 
     @Composable
-    fun OnboardingScreen() {
+    fun OnboardingScreen(
+        modifier: Modifier = Modifier
+    ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
         ) {
             Image(
                 painter = painterResource(id = R.drawable.onboarding_bg),
                 contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
+                modifier = modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
 
             Column(
-                modifier = Modifier
+                modifier = modifier
                     .padding(25 .dp)
                     .align(Alignment.BottomCenter)
 
@@ -61,14 +63,14 @@ class OnboardingActivity : ComponentActivity() {
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     fontSize = 24.sp,
-                    modifier = Modifier.padding(bottom = 5.dp)
+                    modifier = modifier.padding(bottom = 5.dp)
                 )
                 Text(
                     text = stringResource(id = R.string.onboarding_subtitle),
                     fontWeight = FontWeight.Medium,
                     color = Color.White,
                     fontSize = 14.83.sp,
-                    modifier = Modifier.padding(bottom = 25.dp)
+                    modifier = modifier.padding(bottom = 25.dp)
                 )
                 Button(
                     onClick = {
@@ -76,7 +78,7 @@ class OnboardingActivity : ComponentActivity() {
                         finish()
                     },
                     colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
-                    modifier = Modifier
+                    modifier = modifier
                         .height(50.dp)
                         .align(Alignment.End)
                 ) {
@@ -90,7 +92,7 @@ class OnboardingActivity : ComponentActivity() {
 
     @Preview(showBackground = true)
     @Composable
-    fun OnboardingScreenPreview() {
+    private fun OnboardingScreenPreview() {
         SiPolanTheme {
             OnboardingScreen()
         }
