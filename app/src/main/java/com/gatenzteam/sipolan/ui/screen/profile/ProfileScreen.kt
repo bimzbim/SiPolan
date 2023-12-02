@@ -49,9 +49,6 @@ fun ProfileScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(25.dp))
         SettingsSection {
             navController.navigate(it){
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
                 restoreState = true
                 launchSingleTop = true
             }
