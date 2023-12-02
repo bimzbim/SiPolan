@@ -52,7 +52,7 @@ class OnboardingActivity : ComponentActivity() {
 
             Column(
                 modifier = Modifier
-                    .padding(20.dp)
+                    .padding(25 .dp)
                     .align(Alignment.BottomCenter)
 
             ) {
@@ -68,7 +68,7 @@ class OnboardingActivity : ComponentActivity() {
                     fontWeight = FontWeight.Medium,
                     color = Color.White,
                     fontSize = 14.83.sp,
-                    modifier = Modifier.padding(bottom = 20.dp)
+                    modifier = Modifier.padding(bottom = 25.dp)
                 )
                 Button(
                     onClick = {
