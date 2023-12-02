@@ -2,6 +2,7 @@ package com.gatenzteam.sipolan.ui.screen.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +34,6 @@ import com.gatenzteam.sipolan.ui.font.Poppins
 
 @Composable
 fun ProfileScreen() {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,6 +65,10 @@ fun ProfileScreen() {
                     modifier = Modifier
                         .clip(CircleShape)
                         .align(Alignment.Center)
+                        .clickable{
+
+                        },
+                    tint = colorResource(id = R.color.color_palette1)
                 )
             }
         }
@@ -100,9 +104,10 @@ fun SettingItem(text: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable{}
             .padding(vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = text,

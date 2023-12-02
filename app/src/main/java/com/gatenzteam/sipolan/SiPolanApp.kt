@@ -101,7 +101,13 @@ fun TopAppBar(navController: NavHostController) {
         },
         actions = {
             IconButton(onClick = {
-                navController.navigate(Screen.Profile.route)
+                navController.navigate(Screen.Profile.route){
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true
+                    }
+                    restoreState = true
+                    launchSingleTop = true
+                }
             }) {
                 Box(
                     modifier = Modifier
