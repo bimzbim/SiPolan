@@ -38,8 +38,12 @@ import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
+import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
 import com.gatenzteam.sipolan.ui.screen.home.HomeScreen
+import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaeScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
+import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
+import com.gatenzteam.sipolan.ui.screen.riwayat_bayar.RiwayatBayarScreen
 
 @Composable
 fun SiPolanApp(
@@ -64,10 +68,22 @@ fun SiPolanApp(
                 HomeScreen()
             }
             composable(Screen.Profile.route) {
-                ProfileScreen()
+                ProfileScreen(navController)
             }
             composable(Screen.Deteksi.route) {
                 DeteksiScreen()
+            }
+            composable(Screen.EditAkun.route){
+                EditAkunScreen()
+            }
+            composable(Screen.RiwayatPembayaran.route){
+                RiwayatBayarScreen()
+            }
+            composable(Screen.PelanggaranSaya.route){
+                PelanggaranSayaeScreen()
+            }
+            composable(Screen.PusatBantuan.route){
+                PusatBantuanScreen()
             }
         }
     }

@@ -15,4 +15,10 @@
     <string name="onboarding_button">Get Started</string>
     <string name="title_activity_onboarding">OnboardingActivity</string>
 
+    <!-- Profile Screen -->
+    <string name="setting1">Edit Akun</string>
+    <string name="setting2">Riwayat Pembayaran</string>
+    <string name="setting3">Pelanggaran Saya</string>
+    <string name="setting4">Pusat Bantuan</string>
+
 </resources>
