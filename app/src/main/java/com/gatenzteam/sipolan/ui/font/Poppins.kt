@@ -12,6 +12,7 @@ object Poppins{
         Font(R.font.poppins_regular, FontWeight.Normal),
         Font(R.font.poppins_italic, FontWeight.Normal, FontStyle.Italic),
         Font(R.font.poppins_medium, FontWeight.Medium),
-        Font(R.font.poppins_bold, FontWeight.Bold)
+        Font(R.font.poppins_bold, FontWeight.Bold) ,
+        Font(R.font.poppins_semibold, FontWeight.SemiBold)
     )
 }

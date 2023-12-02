@@ -1,12 +1,16 @@
 package com.gatenzteam.sipolan
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Warning
@@ -22,6 +26,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -71,6 +76,10 @@ fun SiPolanApp(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBar(navController: NavHostController) {
+    val profileImageModifier = Modifier
+        .size(40.dp)
+        .clip(CircleShape)
+
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -92,11 +101,27 @@ fun TopAppBar(navController: NavHostController) {
         },
         actions = {
             IconButton(onClick = {
-                navController.navigate(Screen.Profile.route)
+                navController.navigate(Screen.Profile.route){
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true
+                    }
+                    restoreState = true
+                    launchSingleTop = true
+                }
             }) {
-                Icon(Icons.Default.Person, contentDescription = "Profile")
+                Box(
+                    modifier = Modifier
+                        .background(MaterialTheme.colorScheme.primary)
+                        .then(profileImageModifier)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.photo_profile),
+                        contentDescription = "Profile",
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
-        },
+        }
     )
 }
 
