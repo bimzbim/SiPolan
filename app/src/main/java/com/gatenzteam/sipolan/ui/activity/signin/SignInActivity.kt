@@ -3,26 +3,34 @@ package com.gatenzteam.sipolan.ui.activity.signin
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -37,6 +45,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -68,11 +78,13 @@ class SignInActivity : ComponentActivity() {
         var passwordVisible by rememberSaveable { mutableStateOf(false) }
         var rememberMe by rememberSaveable { mutableStateOf(false) }
         Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
             modifier = modifier
                 .background(color = colorResource(R.color.color_palette1))
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .fillMaxSize()
+                .padding(horizontal = 25.dp, vertical = 25.dp)
+                .verticalScroll(rememberScrollState())
         ){
             Text(
                 text = "Sign In",
@@ -134,7 +146,18 @@ class SignInActivity : ComponentActivity() {
                 },
                 modifier = modifier
             )
-            Checkbox(checked = rememberMe, onCheckedChange = {})
+            Text(
+                text = "Lupa Password?",
+                style = TextStyle(
+                    fontSize = 14.83.sp,
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight(700),
+                    color = colorResource(R.color.color_palette3),
+                ),
+                modifier = modifier
+                    .padding(top = 15.dp, bottom = 30.dp)
+            )
+
             Button(
                 onClick = {
                     startActivity(Intent(this@SignInActivity, MainActivity::class.java))
@@ -143,7 +166,6 @@ class SignInActivity : ComponentActivity() {
                 colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
                 shape = RoundedCornerShape(15.dp),
                 modifier = Modifier
-                    .padding(bottom = 15.dp, start = 25.dp, end = 25.dp)
                     .fillMaxWidth()
                     .height(50.dp)
             ) {
@@ -155,9 +177,96 @@ class SignInActivity : ComponentActivity() {
                         .padding(end = 10.dp)
                 )
                 Text(text = "Sign In",
-                    fontSize = 15.sp,
+                    fontSize = 14.83.sp,
                     fontFamily = Poppins.poppinsFamily,
                     color = colorResource(id = R.color.color_palette1)
+                )
+            }
+
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = modifier
+                    .padding(vertical = 30.dp)
+            ){
+                Divider(
+                    color = colorResource(id = R.color.color_palette4),
+                )
+                Text(
+                    style = TextStyle(
+                        background = colorResource(id = R.color.color_palette1),
+                        color = colorResource(id = R.color.color_palette4),
+                        fontFamily = Poppins.poppinsFamily,
+                        textAlign = TextAlign.Center,
+                        fontSize = 12.sp
+                    ),
+                    text = "\u0020Atau Lanjut Dengan\u0020",
+                    modifier = modifier
+                        .width(150.dp)
+                )
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                val context = LocalContext.current
+                Button(
+                    onClick = {
+                        Toast.makeText( context, "Login Facebook", Toast.LENGTH_SHORT).show()
+                    },
+                    colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
+                    shape = RoundedCornerShape(15.dp),
+                    modifier = Modifier
+                        .height(50.dp)
+                        .padding(horizontal = 5.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Face,
+                        contentDescription = null,
+                        tint = colorResource(R.color.color_palette1)
+                    )
+                }
+
+                Button(
+                    onClick = {
+                        Toast.makeText( context, "Login Google", Toast.LENGTH_SHORT).show()
+                    },
+                    colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
+                    shape = RoundedCornerShape(15.dp),
+                    modifier = Modifier
+                        .height(50.dp)
+                        .padding(horizontal = 5.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.ShoppingCart,
+                        contentDescription = null,
+                        tint = colorResource(R.color.color_palette1)
+                    )
+                }
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = modifier
+                    .padding(vertical = 15.dp)
+            ){
+                Text(
+                    style = TextStyle(
+                        background = colorResource(id = R.color.color_palette1),
+                        color = colorResource(id = R.color.color_palette4),
+                        fontFamily = Poppins.poppinsFamily,
+                        fontSize = 12.sp
+                    ),
+                    text = "Belum memiliki akun?"
+                )
+                Text(
+                    style = TextStyle(
+                        background = colorResource(id = R.color.color_palette1),
+                        color = colorResource(id = R.color.color_palette3),
+                        fontFamily = Poppins.poppinsFamily,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight(700)
+                    ),
+                    text = "\u0020Daftar Disini"
                 )
             }
         }
