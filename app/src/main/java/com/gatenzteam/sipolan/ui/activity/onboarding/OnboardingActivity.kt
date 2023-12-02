@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
 
 class OnboardingActivity : ComponentActivity() {
@@ -38,39 +39,39 @@ class OnboardingActivity : ComponentActivity() {
     }
 
     @Composable
-    fun OnboardingScreen(
-        modifier: Modifier = Modifier
-    ) {
+    fun OnboardingScreen() {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
         ) {
             Image(
                 painter = painterResource(id = R.drawable.onboarding_bg),
                 contentDescription = null,
-                modifier = modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
 
             Column(
-                modifier = modifier
+                modifier = Modifier
                     .padding(25 .dp)
                     .align(Alignment.BottomCenter)
 
             ) {
                 Text(
                     text = stringResource(id = R.string.onboarding_title),
-                    fontWeight = FontWeight.Bold,
                     color = Color.White,
                     fontSize = 24.sp,
-                    modifier = modifier.padding(bottom = 5.dp)
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 5.dp)
                 )
                 Text(
                     text = stringResource(id = R.string.onboarding_subtitle),
-                    fontWeight = FontWeight.Medium,
                     color = Color.White,
                     fontSize = 14.83.sp,
-                    modifier = modifier.padding(bottom = 25.dp)
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(bottom = 25.dp)
                 )
                 Button(
                     onClick = {
@@ -78,13 +79,15 @@ class OnboardingActivity : ComponentActivity() {
                         finish()
                     },
                     colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
-                    modifier = modifier
+                    modifier = Modifier
                         .height(50.dp)
                         .align(Alignment.End)
                 ) {
-                    Text(text = stringResource(id = R.string.onboarding_button), fontSize = 15.sp, color = colorResource(
-                        id = R.color.color_palette1
-                    ))
+                    Text(text = stringResource(id = R.string.onboarding_button),
+                        fontSize = 15.sp,
+                        fontFamily = Poppins.poppinsFamily,
+                        color = colorResource(id = R.color.color_palette1)
+                    )
                 }
             }
         }
@@ -92,7 +95,7 @@ class OnboardingActivity : ComponentActivity() {
 
     @Preview(showBackground = true)
     @Composable
-    private fun OnboardingScreenPreview() {
+    fun OnboardingScreenPreview() {
         SiPolanTheme {
             OnboardingScreen()
         }
