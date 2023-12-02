@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.activity.signin.SignInActivity
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
 
@@ -75,7 +76,7 @@ class OnboardingActivity : ComponentActivity() {
                 )
                 Button(
                     onClick = {
-                        startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
+                        startActivity(Intent(this@OnboardingActivity, SignInActivity::class.java))
                         finish()
                     },
                     colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
