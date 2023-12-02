@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_palette1">#222831</color>
+    <color name="color_palette2">#303844</color>
     <color name="color_palette3">#FFD60A</color>
+    <color name="color_palette4">#FFFFFF</color>
 </resources>

@@ -21,8 +21,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -63,7 +61,7 @@ class OnboardingActivity : ComponentActivity() {
                     text = stringResource(id = R.string.onboarding_title),
                     color = Color.White,
                     fontSize = 24.sp,
-                    fontFamily= Poppins.poppinsFamily,
+                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
@@ -71,7 +69,7 @@ class OnboardingActivity : ComponentActivity() {
                     text = stringResource(id = R.string.onboarding_subtitle),
                     color = Color.White,
                     fontSize = 14.83.sp,
-                    fontFamily= Poppins.poppinsFamily,
+                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(bottom = 25.dp)
                 )
@@ -88,7 +86,6 @@ class OnboardingActivity : ComponentActivity() {
                     Text(text = stringResource(id = R.string.onboarding_button),
                         fontSize = 15.sp,
                         fontFamily = Poppins.poppinsFamily,
-                        fontWeight = FontWeight.Medium,
                         color = colorResource(id = R.color.color_palette1)
                     )
                 }

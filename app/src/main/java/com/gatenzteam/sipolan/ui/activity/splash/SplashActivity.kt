@@ -36,14 +36,16 @@ class SplashActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun SplashScreen() {
+    private fun SplashScreen(
+        modifier: Modifier = Modifier
+    ) {
         LaunchedEffect(key1 = true){
             delay(2000)
             startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
             finish()
         }
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
                 .paint(
                     painterResource(id = R.drawable.bg_splash),
@@ -51,13 +53,13 @@ class SplashActivity : ComponentActivity() {
                 )
         ){
             Column(
-                modifier = Modifier.fillMaxSize(),
+                modifier = modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ){
                 Image(
                     painter = painterResource(id = R.drawable.logo_polan),
-                    modifier = Modifier.size(width = 150.dp, height = 200.dp),
+                    modifier = modifier.size(width = 150.dp, height = 200.dp),
                     contentDescription = stringResource(id = R.string.splashscreen_contentdesc))
             }
         }
