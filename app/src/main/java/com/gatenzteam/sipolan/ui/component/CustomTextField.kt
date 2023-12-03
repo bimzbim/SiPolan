@@ -21,7 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.R
@@ -34,15 +36,26 @@ fun CustomTextField(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     readOnly: Boolean = false,
-    label: @Composable (() -> Unit)? = null,
-    placeholder: @Composable (() -> Unit)? = null,
+    label: String,
+    placeholder: String,
     leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     singleLine: Boolean = false,
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        label = label,
+        label = {
+            Text(
+                text = label,
+                style = TextStyle(
+                    fontFamily = Poppins.poppinsFamily,
+                    color = colorResource(R.color.color_palette4)
+                ),
+            )
+        },
         singleLine = singleLine,
         readOnly = readOnly,
         enabled = enabled,
@@ -51,8 +64,19 @@ fun CustomTextField(
             fontSize = 14.83.sp,
             color = colorResource(id = R.color.color_palette3),
         ),
-        placeholder = placeholder,
+        placeholder = {
+            Text(
+                text = placeholder,
+                style = TextStyle(
+                    fontFamily = Poppins.poppinsFamily,
+                    color = colorResource(R.color.color_palette4)
+                ),
+            )
+        },
         leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        visualTransformation = visualTransformation,
+        keyboardOptions = keyboardOptions,
         colors = OutlinedTextFieldDefaults.colors(
             cursorColor = colorResource(id = R.color.color_palette3),
             focusedLabelColor = colorResource(id = R.color.color_palette4),
