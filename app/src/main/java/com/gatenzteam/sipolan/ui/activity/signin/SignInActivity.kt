@@ -70,6 +70,7 @@ import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.ui.activity.forgot.ForgotActivity
 import com.gatenzteam.sipolan.ui.activity.signup.SignUpActivity
+import com.gatenzteam.sipolan.ui.component.CustomIconButtom
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
@@ -181,30 +182,15 @@ class SignInActivity : ComponentActivity() {
                     }
             )
 
-            Button(
+            CustomIconButtom(
                 onClick = {
                     startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                     finish()
                 },
-                colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
-                shape = RoundedCornerShape(15.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Login,
-                    contentDescription = null,
-                    tint = colorResource(R.color.color_palette1),
-                    modifier = modifier
-                        .padding(end = 10.dp)
-                )
-                Text(text = "Sign In",
-                    fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
-                    color = colorResource(id = R.color.color_palette1)
-                )
-            }
+                icon = Icons.Filled.Login,
+                text = "Sign In"
+            )
+
 
             Box(
                 contentAlignment = Alignment.Center,
