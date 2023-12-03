@@ -1,4 +1,4 @@
-package com.gatenzteam.sipolan.ui.screen.pusat_bantuan
+package com.gatenzteam.sipolan.ui.screen.ganti_password
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +12,7 @@ import com.gatenzteam.sipolan.ui.theme.colorpalette1
 import com.gatenzteam.sipolan.ui.theme.colorpalette4
 
 @Composable
-fun PusatBantuanScreen(
+fun GantiPasswordScreen(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -22,6 +22,6 @@ fun PusatBantuanScreen(
             .fillMaxSize()
             .background(colorpalette1)
     ){
-        Text(text = "Pusat Bantuan", color = colorpalette4)
+        Text(text = "Ganti Password", color = colorpalette4)
     }
 }

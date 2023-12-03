@@ -39,6 +39,7 @@ import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
+import com.gatenzteam.sipolan.ui.screen.ganti_password.GantiPasswordScreen
 import com.gatenzteam.sipolan.ui.screen.home.HomeScreen
 import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
@@ -77,7 +78,7 @@ fun SiPolanApp(
                 DeteksiScreen()
             }
             composable(Screen.EditAkun.route){
-                EditAkunScreen()
+                EditAkunScreen(navController)
             }
             composable(Screen.RiwayatPembayaran.route){
                 RiwayatBayarScreen()
@@ -87,6 +88,9 @@ fun SiPolanApp(
             }
             composable(Screen.PusatBantuan.route){
                 PusatBantuanScreen()
+            }
+            composable(Screen.GantiPassword.route){
+                GantiPasswordScreen()
             }
         }
     }
@@ -153,8 +157,7 @@ fun BottomBar(
 ) {
     NavigationBar(
         modifier = modifier,
-        containerColor = colorpalette1,
-        contentColor = colorpalette3,
+        containerColor = colorpalette1
 
     ){
         val navigationItem = listOf(
