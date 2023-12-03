@@ -31,7 +31,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.font.Poppins
@@ -147,7 +146,8 @@ fun SettingItem(text: String, onClick: () -> Unit) {
         )
         Icon(
             imageVector = Icons.Default.KeyboardArrowRight,
-            contentDescription = "Icon Setting"
+            contentDescription = "Icon Setting",
+            tint = colorResource(id = R.color.color_palette3)
         )
     }
 }
