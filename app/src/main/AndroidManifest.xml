@@ -34,6 +34,9 @@
         <activity
             android:name=".ui.activity.signin.SignInActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.activity.signup.SignUpActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

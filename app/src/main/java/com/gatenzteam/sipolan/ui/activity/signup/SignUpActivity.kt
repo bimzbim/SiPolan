@@ -1,7 +1,6 @@
-package com.gatenzteam.sipolan.ui.activity.signin
+package com.gatenzteam.sipolan.ui.activity.signup
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -23,27 +22,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Facebook
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Login
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,38 +40,34 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
-import com.gatenzteam.sipolan.R
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
-import com.gatenzteam.sipolan.ui.activity.signup.SignUpActivity
+import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
 
-class SignInActivity : ComponentActivity() {
+class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SignInScreen()
+            SignUpScreen()
         }
     }
 
     @Composable
-    private fun SignInScreen(
+    private fun SignUpScreen(
         modifier: Modifier = Modifier
     ) {
         var email by rememberSaveable { mutableStateOf("") }
@@ -105,7 +90,7 @@ class SignInActivity : ComponentActivity() {
                     fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(700),
                     color = colorResource(R.color.color_palette3),
-                    )
+                )
             )
             Text(
                 text = "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et\ndolore magna aliqua.",
@@ -153,7 +138,8 @@ class SignInActivity : ComponentActivity() {
                 trailingIcon = {
                     val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                     val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
-                    val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
+                    val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(
+                        R.color.color_palette4)
 
                     IconButton(onClick = {visibilityPassword = !visibilityPassword}){
                         Icon(
@@ -179,7 +165,7 @@ class SignInActivity : ComponentActivity() {
 
             Button(
                 onClick = {
-                    startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                    startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
                     finish()
                 },
                 colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
@@ -292,7 +278,7 @@ class SignInActivity : ComponentActivity() {
                     text = "\u0020Daftar Disini",
                     modifier = modifier
                         .clickable {
-                            startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
+                            startActivity(Intent(this@SignUpActivity, SignUpActivity::class.java))
                         }
                 )
             }
@@ -301,9 +287,9 @@ class SignInActivity : ComponentActivity() {
 
     @Preview
     @Composable
-    fun SignInScreenPreview() {
+    fun SignUpScreenPreview() {
         SiPolanTheme {
-            SignInScreen()
+            SignUpScreen()
         }
     }
 }
