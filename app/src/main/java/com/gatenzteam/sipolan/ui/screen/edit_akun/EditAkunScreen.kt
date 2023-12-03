@@ -107,9 +107,9 @@ fun EditSection(
     CustomTextField(
         value = name,
         onValueChange = { name = it },
-        label = "Name",
+        label = "Nama",
         singleLine = true,
-        placeholder = "Name",
+        placeholder = "Masukkan Nama Baru",
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.AccountBox,
@@ -125,7 +125,7 @@ fun EditSection(
         onValueChange = { email = it },
         label = "Email",
         singleLine = true,
-        placeholder = "Email",
+        placeholder = "Masukkan Email Baru",
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Email,
