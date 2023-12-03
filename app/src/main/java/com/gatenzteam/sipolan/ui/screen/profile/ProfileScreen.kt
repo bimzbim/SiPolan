@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -18,11 +19,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.rememberNavController
@@ -60,33 +64,30 @@ fun ProfileScreen(navController: NavController) {
 fun ProfileSection() {
     Box(
         modifier = Modifier
-            .size(130.dp)
-            .clip(CircleShape)
+            .height(180.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.photo_profile),
             contentDescription = "Profile",
             modifier = Modifier
-                .fillMaxSize()
+                .size(170.dp)
+                .clip(CircleShape)
         )
 
-        Box(
+        IconButton(
+            onClick = {},
             modifier = Modifier
+                .align(Alignment.BottomCenter)
                 .size(30.dp)
                 .clip(CircleShape)
                 .background(colorResource(id = R.color.color_palette3))
-                .align(Alignment.BottomCenter)
-        ) {
+        ){
             Icon(
                 imageVector = Icons.Default.Lock,
                 contentDescription = "Icon",
+                tint = colorResource(id = R.color.color_palette1),
                 modifier = Modifier
-                    .clip(CircleShape)
                     .align(Alignment.Center)
-                    .clickable {
-
-                    },
-                tint = colorResource(id = R.color.color_palette1)
             )
         }
     }
