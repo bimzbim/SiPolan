@@ -133,8 +133,7 @@ class SignInActivity : ComponentActivity() {
                         contentDescription = null,
                         tint = colorResource(R.color.color_palette3)
                     )
-                },
-                modifier = modifier
+                }
             )
 
             CustomTextField(
@@ -164,8 +163,7 @@ class SignInActivity : ComponentActivity() {
                             tint = tintIcon
                         )
                     }
-                },
-                modifier = modifier
+                }
             )
             Text(
                 text = "Lupa Password?",

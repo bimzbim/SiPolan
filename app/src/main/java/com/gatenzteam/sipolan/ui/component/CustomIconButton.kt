@@ -28,7 +28,7 @@ fun CustomIconButtom(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
         shape = RoundedCornerShape(15.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(50.dp)
     ) {
