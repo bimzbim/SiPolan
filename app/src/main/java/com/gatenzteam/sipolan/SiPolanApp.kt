@@ -40,10 +40,13 @@ import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
 import com.gatenzteam.sipolan.ui.screen.home.HomeScreen
-import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaeScreen
+import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
 import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
 import com.gatenzteam.sipolan.ui.screen.riwayat_bayar.RiwayatBayarScreen
+import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.colorpalette3
+import com.gatenzteam.sipolan.ui.theme.colorpalette4
 
 @Composable
 fun SiPolanApp(
@@ -80,7 +83,7 @@ fun SiPolanApp(
                 RiwayatBayarScreen()
             }
             composable(Screen.PelanggaranSaya.route){
-                PelanggaranSayaeScreen()
+                PelanggaranSayaScreen()
             }
             composable(Screen.PusatBantuan.route){
                 PusatBantuanScreen()
@@ -98,10 +101,10 @@ fun TopAppBar(navController: NavHostController) {
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
+            containerColor = colorpalette1,
+            titleContentColor = colorpalette4,
         ),
-            title = {
+        title = {
             Image(
                 painter = painterResource(id = R.drawable.logo_polan),
                 contentDescription = null,
@@ -112,7 +115,9 @@ fun TopAppBar(navController: NavHostController) {
         },
         navigationIcon = {
             IconButton(onClick = { navController.navigateUp() }) {
-                Icon(Icons.Default.KeyboardArrowLeft, contentDescription = "Back")
+                Icon(Icons.Default.KeyboardArrowLeft,
+                    contentDescription = "Back",
+                    tint = colorpalette3)
             }
         },
         actions = {
@@ -147,13 +152,16 @@ fun BottomBar(
     navController: NavHostController
 ) {
     NavigationBar(
-        modifier = modifier
+        modifier = modifier,
+        containerColor = colorpalette1,
+        contentColor = colorpalette3,
+
     ){
         val navigationItem = listOf(
             NavigationItem(
                 title = stringResource(id = R.string.navitem_first),
                 icon = Icons.Outlined.Home,
-                screen = Screen.Home
+                screen = Screen.Home,
             ),
             NavigationItem(
                 title = stringResource(id = R.string.navitem_second),
@@ -181,10 +189,17 @@ fun BottomBar(
                 icon = {
                     Icon(
                        imageVector = item.icon,
-                        contentDescription = item.title
+                        contentDescription = item.title,
+                        tint = colorpalette4
                     )
                 },
-                label = { Text(item.title) }
+                label =
+                {
+                    Text(
+                        text = item.title,
+                        color = colorpalette4
+                    )
+                }
             )
         }
     }
