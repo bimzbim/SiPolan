@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -29,12 +30,15 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Login
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -57,6 +61,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.R
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
@@ -78,7 +85,7 @@ class SignInActivity : ComponentActivity() {
     ) {
         var email by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
-        var passwordVisible by rememberSaveable { mutableStateOf(false) }
+        var visibilityPassword by rememberSaveable { mutableStateOf(false) }
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -113,13 +120,9 @@ class SignInActivity : ComponentActivity() {
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = {
-                    Text("Email / Phone Number")
-                },
+                label = "Email / Phone Number",
                 singleLine = true,
-                placeholder = {
-                    Text("Email / Phone Number")
-                },
+                placeholder = "Email / Phone Number",
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Email,
@@ -133,19 +136,30 @@ class SignInActivity : ComponentActivity() {
             CustomTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = {
-                    Text("Password")
-                },
+                label = "Password",
                 singleLine = true,
-                placeholder = {
-                    Text("Masukan Password")
-                },
+                placeholder = "Masukan Password",
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Lock,
                         contentDescription = null,
                         tint = colorResource(R.color.color_palette3)
                     )
+                },
+                visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                    val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
+                    val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
+
+                    IconButton(onClick = {visibilityPassword = !visibilityPassword}){
+                        Icon(
+                            imageVector  = icon,
+                            contentDescription = contentDescription,
+                            tint = tintIcon
+                        )
+                    }
                 },
                 modifier = modifier
             )
