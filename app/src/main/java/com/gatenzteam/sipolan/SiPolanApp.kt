@@ -90,7 +90,7 @@ fun SiPolanApp(
                 PusatBantuanScreen()
             }
             composable(Screen.GantiPassword.route){
-                GantiPasswordScreen()
+                GantiPasswordScreen(navController)
             }
         }
     }
