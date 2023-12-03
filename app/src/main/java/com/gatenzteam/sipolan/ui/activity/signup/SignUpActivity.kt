@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Login
@@ -70,8 +71,11 @@ class SignUpActivity : ComponentActivity() {
     private fun SignUpScreen(
         modifier: Modifier = Modifier
     ) {
+        var fullName by rememberSaveable { mutableStateOf("") }
         var email by rememberSaveable { mutableStateOf("") }
+        var vehicleNumber by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
+        var confirmPassword by rememberSaveable { mutableStateOf("") }
         var visibilityPassword by rememberSaveable { mutableStateOf(false) }
 
         Column(
@@ -80,11 +84,11 @@ class SignUpActivity : ComponentActivity() {
             modifier = modifier
                 .background(color = colorResource(R.color.color_palette1))
                 .fillMaxSize()
-                .padding(horizontal = 25.dp, vertical = 25.dp)
                 .verticalScroll(rememberScrollState())
+                .padding(horizontal = 25.dp, vertical = 30.dp)
         ){
             Text(
-                text = "Sign In",
+                text = "Sign Up",
                 style = TextStyle(
                     fontSize = 24.sp,
                     fontFamily = Poppins.poppinsFamily,
@@ -93,7 +97,7 @@ class SignUpActivity : ComponentActivity() {
                 )
             )
             Text(
-                text = "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et\ndolore magna aliqua.",
+                text = "ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et dolore\n magna aliqua.",
                 style = TextStyle(
                     fontSize = 14.83.sp,
                     fontFamily = Poppins.poppinsFamily,
@@ -107,12 +111,12 @@ class SignUpActivity : ComponentActivity() {
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = "Email / Phone Number",
+                label = "Nama Lengkap",
                 singleLine = true,
-                placeholder = "Email / Phone Number",
+                placeholder = "Nama Lengkap Anda",
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Filled.Email,
+                        imageVector = Icons.Filled.AccountBox,
                         contentDescription = null,
                         tint = colorResource(R.color.color_palette3)
                     )
@@ -151,6 +155,7 @@ class SignUpActivity : ComponentActivity() {
                 },
                 modifier = modifier
             )
+
             Text(
                 text = "Lupa Password?",
                 style = TextStyle(

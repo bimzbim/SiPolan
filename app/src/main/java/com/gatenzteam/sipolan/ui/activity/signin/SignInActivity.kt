@@ -95,8 +95,8 @@ class SignInActivity : ComponentActivity() {
             modifier = modifier
                 .background(color = colorResource(R.color.color_palette1))
                 .fillMaxSize()
-                .padding(horizontal = 25.dp, vertical = 25.dp)
                 .verticalScroll(rememberScrollState())
+                .padding(horizontal = 25.dp, vertical = 30.dp)
         ){
             Text(
                 text = "Sign In",
@@ -122,9 +122,9 @@ class SignInActivity : ComponentActivity() {
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = "Email / Phone Number",
+                label = "Email",
                 singleLine = true,
-                placeholder = "Email / Phone Number",
+                placeholder = "Masukan Email",
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Email,
