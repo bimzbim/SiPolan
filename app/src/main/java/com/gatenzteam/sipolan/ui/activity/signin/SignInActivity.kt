@@ -24,8 +24,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Facebook
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Login
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -48,6 +50,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -76,7 +79,7 @@ class SignInActivity : ComponentActivity() {
         var email by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
         var passwordVisible by rememberSaveable { mutableStateOf(false) }
-        var rememberMe by rememberSaveable { mutableStateOf(false) }
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -170,7 +173,7 @@ class SignInActivity : ComponentActivity() {
                     .height(50.dp)
             ) {
                 Icon(
-                    imageVector = Icons.Filled.AccountCircle,
+                    imageVector = Icons.Filled.Login,
                     contentDescription = null,
                     tint = colorResource(R.color.color_palette1),
                     modifier = modifier
@@ -220,9 +223,11 @@ class SignInActivity : ComponentActivity() {
                         .padding(horizontal = 5.dp)
                 ) {
                     Icon(
-                        imageVector = Icons.Filled.Face,
+                        painter = painterResource(id = R.drawable.ic_facebook),
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette1)
+                        tint = colorResource(R.color.color_palette1),
+                        modifier = modifier
+                            .size(25.dp)
                     )
                 }
 
@@ -237,9 +242,11 @@ class SignInActivity : ComponentActivity() {
                         .padding(horizontal = 5.dp)
                 ) {
                     Icon(
-                        imageVector = Icons.Filled.ShoppingCart,
+                        painter = painterResource(id = R.drawable.ic_google),
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette1)
+                        tint = colorResource(R.color.color_palette1),
+                        modifier = modifier
+                            .size(22.dp)
                     )
                 }
             }
