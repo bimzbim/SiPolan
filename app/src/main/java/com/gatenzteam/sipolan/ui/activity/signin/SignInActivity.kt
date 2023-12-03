@@ -68,6 +68,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
+import com.gatenzteam.sipolan.ui.activity.forgot.ForgotActivity
 import com.gatenzteam.sipolan.ui.activity.signup.SignUpActivity
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
@@ -175,6 +176,9 @@ class SignInActivity : ComponentActivity() {
                 ),
                 modifier = modifier
                     .padding(top = 15.dp, bottom = 30.dp)
+                    .clickable {
+                        startActivity(Intent(this@SignInActivity, ForgotActivity::class.java))
+                    }
             )
 
             Button(
