@@ -33,7 +33,6 @@ import com.gatenzteam.sipolan.ui.font.Poppins
 fun CustomTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     label: String,
@@ -43,6 +42,7 @@ fun CustomTextField(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     singleLine: Boolean = false,
+    modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         value = value,

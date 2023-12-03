@@ -24,12 +24,17 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Garage
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Login
+import androidx.compose.material.icons.filled.Mail
+import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,6 +60,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.component.CustomCheckbox
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
@@ -75,8 +81,8 @@ class SignUpActivity : ComponentActivity() {
         var email by rememberSaveable { mutableStateOf("") }
         var vehicleNumber by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
-        var confirmPassword by rememberSaveable { mutableStateOf("") }
         var visibilityPassword by rememberSaveable { mutableStateOf(false) }
+        var tncAgreement by rememberSaveable { mutableStateOf(false) }
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -96,6 +102,7 @@ class SignUpActivity : ComponentActivity() {
                     color = colorResource(R.color.color_palette3),
                 )
             )
+
             Text(
                 text = "ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et dolore\n magna aliqua.",
                 style = TextStyle(
@@ -108,15 +115,48 @@ class SignUpActivity : ComponentActivity() {
                 modifier = modifier
                     .padding(bottom = 50.dp)
             )
+
             CustomTextField(
-                value = email,
-                onValueChange = { email = it },
+                value = fullName,
+                onValueChange = { fullName = it },
                 label = "Nama Lengkap",
                 singleLine = true,
                 placeholder = "Nama Lengkap Anda",
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.AccountBox,
+                        contentDescription = null,
+                        tint = colorResource(R.color.color_palette3)
+                    )
+                },
+                modifier = modifier
+            )
+
+            CustomTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = "Email",
+                singleLine = true,
+                placeholder = "Alamat Email",
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Mail,
+                        contentDescription = null,
+                        tint = colorResource(R.color.color_palette3)
+                    )
+                },
+                modifier = modifier
+            )
+
+            CustomTextField(
+                value = vehicleNumber,
+                onValueChange = { vehicleNumber = it },
+                label = "Plat Nomer Kendaraan",
+                singleLine = true,
+                placeholder = "Masukan Plat Nomer Kendaraan",
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Garage,
                         contentDescription = null,
                         tint = colorResource(R.color.color_palette3)
                     )
@@ -156,16 +196,10 @@ class SignUpActivity : ComponentActivity() {
                 modifier = modifier
             )
 
-            Text(
-                text = "Lupa Password?",
-                style = TextStyle(
-                    fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
-                    fontWeight = FontWeight(700),
-                    color = colorResource(R.color.color_palette3),
-                ),
-                modifier = modifier
-                    .padding(top = 15.dp, bottom = 30.dp)
+            CustomCheckbox(
+                value = tncAgreement,
+                onCheckedChange = { tncAgreement = it },
+                text = "Setuju dengan syarat dan ketentuan"
             )
 
             Button(
@@ -180,13 +214,13 @@ class SignUpActivity : ComponentActivity() {
                     .height(50.dp)
             ) {
                 Icon(
-                    imageVector = Icons.Filled.Login,
+                    imageVector = Icons.Filled.PersonAdd,
                     contentDescription = null,
                     tint = colorResource(R.color.color_palette1),
                     modifier = modifier
                         .padding(end = 10.dp)
                 )
-                Text(text = "Sign In",
+                Text(text = "Sign Up",
                     fontSize = 14.83.sp,
                     fontFamily = Poppins.poppinsFamily,
                     color = colorResource(id = R.color.color_palette1)
@@ -256,36 +290,6 @@ class SignUpActivity : ComponentActivity() {
                             .size(22.dp)
                     )
                 }
-            }
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = modifier
-                    .padding(vertical = 15.dp)
-            ){
-                Text(
-                    style = TextStyle(
-                        background = colorResource(id = R.color.color_palette1),
-                        color = colorResource(id = R.color.color_palette4),
-                        fontFamily = Poppins.poppinsFamily,
-                        fontSize = 12.sp
-                    ),
-                    text = "Belum memiliki akun?"
-                )
-                Text(
-                    style = TextStyle(
-                        background = colorResource(id = R.color.color_palette1),
-                        color = colorResource(id = R.color.color_palette3),
-                        fontFamily = Poppins.poppinsFamily,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight(700)
-                    ),
-                    text = "\u0020Daftar Disini",
-                    modifier = modifier
-                        .clickable {
-                            startActivity(Intent(this@SignUpActivity, SignUpActivity::class.java))
-                        }
-                )
             }
         }
     }
