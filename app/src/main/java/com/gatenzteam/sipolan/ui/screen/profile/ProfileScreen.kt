@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,21 +40,29 @@ import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
+import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.colorpalette4
 
 @Composable
 fun ProfileScreen(navController: NavController) {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(25.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(colorpalette1)
     ) {
-        ProfileSection()
-        Spacer(modifier = Modifier.height(25.dp))
-        SettingsSection {
-            navController.navigate(it){
-                restoreState = true
-                launchSingleTop = true
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(25.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            ProfileSection()
+            Spacer(modifier = Modifier.height(25.dp))
+            SettingsSection {
+                navController.navigate(it) {
+                    restoreState = true
+                    launchSingleTop = true
+                }
             }
         }
     }
@@ -96,6 +105,7 @@ fun ProfileSection() {
         fontFamily = Poppins.poppinsFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
+        color = colorpalette4,
         modifier = Modifier
             .padding(top = 10.dp)
     )
@@ -105,6 +115,7 @@ fun ProfileSection() {
         fontFamily = Poppins.poppinsFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 11.2.sp,
+        color = colorpalette4,
         modifier = Modifier
             .padding(top = 5.dp)
     )
@@ -144,6 +155,7 @@ fun SettingItem(text: String, onClick: () -> Unit) {
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
+            color = colorpalette4,
         )
         Icon(
             imageVector = Icons.Default.KeyboardArrowRight,
