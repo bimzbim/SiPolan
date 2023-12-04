@@ -42,6 +42,7 @@ import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
 import com.gatenzteam.sipolan.ui.screen.ganti_password.GantiPasswordScreen
 import com.gatenzteam.sipolan.ui.screen.home.HomeScreen
+import com.gatenzteam.sipolan.ui.screen.metode_bayar.MetodeBayarScreen
 import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
 import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
@@ -94,7 +95,10 @@ fun SiPolanApp(
                 GantiPasswordScreen(navController)
             }
             composable(Screen.DetailPembayaran.route){
-                DetailBayarScreen()
+                DetailBayarScreen(navController)
+            }
+            composable(Screen.MetodePembayaran.route){
+                MetodeBayarScreen()
             }
         }
     }
