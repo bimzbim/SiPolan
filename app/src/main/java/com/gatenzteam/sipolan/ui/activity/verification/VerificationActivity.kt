@@ -22,7 +22,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.LockReset
 import androidx.compose.material.icons.filled.MailLock
+import androidx.compose.material.icons.filled.MarkEmailUnread
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -69,7 +71,8 @@ class VerificationActivity : ComponentActivity() {
         ){
             Column(
                 horizontalAlignment = Alignment.Start,
-                verticalArrangement = Arrangement.Center,
+                modifier = modifier
+                    .fillMaxWidth()
             ){
                 Text(
                     text = "Verify your Account",
@@ -84,7 +87,7 @@ class VerificationActivity : ComponentActivity() {
                         .padding(bottom = 5.dp)
                 )
                 Text(
-                    text = "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et\ndolore magna aliqua.",
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod et dolore magna aliqua.",
                     style = TextStyle(
                         fontSize = 14.83.sp,
                         fontFamily = Poppins.poppinsFamily,
@@ -99,13 +102,13 @@ class VerificationActivity : ComponentActivity() {
 
             Box(
                 modifier = modifier
-                    .height(295.dp)
+                    .height(320.dp)
             ){
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center,
                     modifier = modifier
-                        .height(210.dp)
+                        .height(240.dp)
                         .align(Alignment.BottomCenter)
                         .background(
                             color = colorResource(id = R.color.color_palette3),
@@ -123,24 +126,34 @@ class VerificationActivity : ComponentActivity() {
                             textAlign = TextAlign.Center,
                         ),
                         modifier = modifier
-                            .padding(top = 80.dp, bottom = 5.dp)
+                            .padding(top = 80.dp, bottom = 10.dp)
                     )
+
                     CustomTextField(
                         value = otpCode,
                         onValueChange = { otpCode = it },
                         label = "Kode OTP",
+                        labelColor = colorResource(id = R.color.color_palette1),
                         singleLine = true,
                         placeholder = "Masukan Kode OTP",
+                        placeholderColor = colorResource(id = R.color.color_palette1),
                         leadingIcon = {
                             Icon(
                                 imageVector = Icons.Filled.MailLock,
                                 contentDescription = null,
-                                tint = colorResource(R.color.color_palette3)
+                                tint = colorResource(R.color.color_palette1)
                             )
                         },
-                        modifier = modifier
-                            .padding(bottom = 10.dp)
+                        color = OutlinedTextFieldDefaults.colors(
+                            cursorColor = colorResource(id = R.color.color_palette1),
+                            focusedLabelColor = colorResource(id = R.color.color_palette1),
+                            unfocusedLabelColor = colorResource(id = R.color.color_palette1),
+                            focusedTextColor = colorResource(id = R.color.color_palette1),
+                            focusedBorderColor = colorResource(id = R.color.color_palette2),
+                            unfocusedBorderColor = colorResource(id = R.color.color_palette2)
+                        )
                     )
+
                 }
                 Image(
                     painter = painterResource(id = R.drawable.logo_verification),
@@ -163,15 +176,16 @@ class VerificationActivity : ComponentActivity() {
                 modifier = modifier
                     .padding(vertical = 20.dp)
             )
+
             CustomIconButton(
                 onClick = {
                     startActivity(Intent(this@VerificationActivity, MainActivity::class.java))
                     finish()
                 },
-                icon = Icons.Filled.LockReset,
+                icon = Icons.Filled.MarkEmailUnread,
                 text = "Kirim Ulang",
                 modifier = modifier
-                    .width(200.dp)
+                    .width(190.dp)
             )
         }
     }

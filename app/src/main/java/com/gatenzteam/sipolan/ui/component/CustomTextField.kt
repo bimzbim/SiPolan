@@ -18,6 +18,7 @@ import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
@@ -36,12 +37,22 @@ fun CustomTextField(
     enabled: Boolean = true,
     readOnly: Boolean = false,
     label: String,
+    labelColor: Color = colorResource(id = R.color.color_palette3),
     placeholder: String,
+    placeholderColor: Color = colorResource(id = R.color.color_palette3),
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     singleLine: Boolean = false,
+    color: TextFieldColors = OutlinedTextFieldDefaults.colors(
+        cursorColor = colorResource(id = R.color.color_palette3),
+        focusedLabelColor = colorResource(id = R.color.color_palette4),
+        unfocusedLabelColor = colorResource(id = R.color.color_palette3),
+        focusedTextColor = colorResource(id = R.color.color_palette4),
+        focusedBorderColor = colorResource(id = R.color.color_palette3),
+        unfocusedBorderColor = colorResource(id = R.color.color_palette2)
+    ),
     modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
@@ -52,7 +63,7 @@ fun CustomTextField(
                 text = label,
                 style = TextStyle(
                     fontFamily = Poppins.poppinsFamily,
-                    color = colorResource(R.color.color_palette4)
+                    color = labelColor,
                 ),
             )
         },
@@ -62,14 +73,14 @@ fun CustomTextField(
         textStyle = TextStyle(
             fontFamily = Poppins.poppinsFamily,
             fontSize = 14.83.sp,
-            color = colorResource(id = R.color.color_palette3),
+            color = labelColor,
         ),
         placeholder = {
             Text(
                 text = placeholder,
                 style = TextStyle(
                     fontFamily = Poppins.poppinsFamily,
-                    color = colorResource(R.color.color_palette4)
+                    color = placeholderColor,
                 ),
             )
         },
@@ -77,16 +88,9 @@ fun CustomTextField(
         trailingIcon = trailingIcon,
         visualTransformation = visualTransformation,
         keyboardOptions = keyboardOptions,
-        colors = OutlinedTextFieldDefaults.colors(
-            cursorColor = colorResource(id = R.color.color_palette3),
-            focusedLabelColor = colorResource(id = R.color.color_palette4),
-            unfocusedLabelColor = colorResource(id = R.color.color_palette3),
-            focusedTextColor = colorResource(id = R.color.color_palette4),
-            focusedBorderColor = colorResource(id = R.color.color_palette3),
-            unfocusedBorderColor = colorResource(id = R.color.color_palette2)
-        ),
+        colors = color,
         shape = RoundedCornerShape(15.dp),
-        modifier = modifier
+        modifier = Modifier
             .padding(bottom = 15.dp)
             .fillMaxWidth()
     )
