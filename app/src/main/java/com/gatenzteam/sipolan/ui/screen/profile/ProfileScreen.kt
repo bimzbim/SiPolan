@@ -40,7 +40,9 @@ import com.gatenzteam.sipolan.ui.theme.colorpalette1
 import com.gatenzteam.sipolan.ui.theme.colorpalette4
 
 @Composable
-fun ProfileScreen(navController: NavController) {
+fun ProfileScreen(
+    navController: NavController
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
