@@ -60,7 +60,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
-import com.gatenzteam.sipolan.ui.activity.verification.VerificationActivity
 import com.gatenzteam.sipolan.ui.component.CustomCheckbox
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
@@ -205,7 +204,7 @@ class SignUpActivity : ComponentActivity() {
 
             Button(
                 onClick = {
-                    startActivity(Intent(this@SignUpActivity, VerificationActivity::class.java))
+                    startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
                     finish()
                 },
                 colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),

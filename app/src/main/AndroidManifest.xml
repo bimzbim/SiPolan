@@ -40,9 +40,6 @@
         <activity
             android:name=".ui.activity.forgot.ForgotActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.activity.verification.VerificationActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
