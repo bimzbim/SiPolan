@@ -169,7 +169,9 @@ class VerificationActivity : ComponentActivity() {
                     finish()
                 },
                 icon = Icons.Filled.LockReset,
-                text = "Forgot Password"
+                text = "Kirim Ulang",
+                modifier = modifier
+                    .width(200.dp)
             )
         }
     }
