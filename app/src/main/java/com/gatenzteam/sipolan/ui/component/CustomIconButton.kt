@@ -18,7 +18,7 @@ import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.font.Poppins
 
 @Composable
-fun CustomIconButtom(
+fun CustomIconButton(
     onClick: () -> Unit,
     icon: ImageVector,
     text: String,
@@ -36,7 +36,7 @@ fun CustomIconButtom(
             imageVector = icon,
             contentDescription = null,
             tint = colorResource(R.color.color_palette1),
-            modifier = modifier
+            modifier = Modifier
                 .padding(end = 10.dp)
         )
         Text(text = text,

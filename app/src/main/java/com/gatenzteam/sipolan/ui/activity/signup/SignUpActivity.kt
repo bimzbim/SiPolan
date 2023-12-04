@@ -61,6 +61,7 @@ import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomCheckbox
+import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
@@ -202,30 +203,14 @@ class SignUpActivity : ComponentActivity() {
                 text = "Setuju dengan syarat dan ketentuan"
             )
 
-            Button(
+            CustomIconButton(
                 onClick = {
                     startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
                     finish()
                 },
-                colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
-                shape = RoundedCornerShape(15.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.PersonAdd,
-                    contentDescription = null,
-                    tint = colorResource(R.color.color_palette1),
-                    modifier = modifier
-                        .padding(end = 10.dp)
-                )
-                Text(text = "Sign Up",
-                    fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
-                    color = colorResource(id = R.color.color_palette1)
-                )
-            }
+                icon = Icons.Filled.PersonAdd,
+                text = "Sign Up",
+            )
 
             Box(
                 contentAlignment = Alignment.Center,
