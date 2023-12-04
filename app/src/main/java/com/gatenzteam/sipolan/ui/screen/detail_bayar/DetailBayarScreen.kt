@@ -22,6 +22,6 @@ fun DetailBayarScreen(
             .fillMaxSize()
             .background(colorpalette1)
     ){
-        Text(text = "Detail Bayar", color = colorpalette4)
+        Text(text = "Detail Pembayaran", color = colorpalette4)
     }
 }
