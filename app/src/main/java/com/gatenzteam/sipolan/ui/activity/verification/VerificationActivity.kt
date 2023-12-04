@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
-import com.gatenzteam.sipolan.ui.component.CustomIconButtom
+import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 
@@ -163,7 +163,7 @@ class VerificationActivity : ComponentActivity() {
                 modifier = modifier
                     .padding(vertical = 20.dp)
             )
-            CustomIconButtom(
+            CustomIconButton(
                 onClick = {
                     startActivity(Intent(this@VerificationActivity, MainActivity::class.java))
                     finish()

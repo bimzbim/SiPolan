@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
-import com.gatenzteam.sipolan.ui.component.CustomIconButtom
+import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
@@ -109,7 +109,7 @@ class ForgotActivity : ComponentActivity(){
                 modifier = modifier
                     .padding(bottom = 15.dp)
             )
-            CustomIconButtom(
+            CustomIconButton(
                 onClick = {
                     startActivity(Intent(this@ForgotActivity, MainActivity::class.java))
                     finish()

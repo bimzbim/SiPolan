@@ -70,7 +70,7 @@ import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.ui.activity.forgot.ForgotActivity
 import com.gatenzteam.sipolan.ui.activity.signup.SignUpActivity
-import com.gatenzteam.sipolan.ui.component.CustomIconButtom
+import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
@@ -180,7 +180,7 @@ class SignInActivity : ComponentActivity() {
                     }
             )
 
-            CustomIconButtom(
+            CustomIconButton(
                 onClick = {
                     startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                     finish()
