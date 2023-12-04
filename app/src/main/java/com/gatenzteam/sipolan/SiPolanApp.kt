@@ -37,6 +37,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
+import com.gatenzteam.sipolan.ui.screen.detail_bayar.DetailBayarScreen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
 import com.gatenzteam.sipolan.ui.screen.ganti_password.GantiPasswordScreen
@@ -81,7 +82,7 @@ fun SiPolanApp(
                 EditAkunScreen(navController)
             }
             composable(Screen.RiwayatPembayaran.route){
-                RiwayatBayarScreen()
+                RiwayatBayarScreen(navController)
             }
             composable(Screen.PelanggaranSaya.route){
                 PelanggaranSayaScreen()
@@ -91,6 +92,9 @@ fun SiPolanApp(
             }
             composable(Screen.GantiPassword.route){
                 GantiPasswordScreen(navController)
+            }
+            composable(Screen.DetailPembayaran.route){
+                DetailBayarScreen()
             }
         }
     }
