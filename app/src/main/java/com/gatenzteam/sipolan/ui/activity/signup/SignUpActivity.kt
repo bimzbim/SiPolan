@@ -60,6 +60,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.activity.verification.VerificationActivity
 import com.gatenzteam.sipolan.ui.component.CustomCheckbox
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
@@ -205,7 +206,7 @@ class SignUpActivity : ComponentActivity() {
 
             CustomIconButton(
                 onClick = {
-                    startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+                    startActivity(Intent(this@SignUpActivity, VerificationActivity::class.java))
                     finish()
                 },
                 icon = Icons.Filled.PersonAdd,
