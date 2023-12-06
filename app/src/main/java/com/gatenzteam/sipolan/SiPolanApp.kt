@@ -19,9 +19,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,6 +50,7 @@ import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
 import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
 import com.gatenzteam.sipolan.ui.screen.riwayat_bayar.RiwayatBayarScreen
 import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.colorpalette2
 import com.gatenzteam.sipolan.ui.theme.colorpalette3
 import com.gatenzteam.sipolan.ui.theme.colorpalette4
 
@@ -170,10 +171,12 @@ fun BottomBar(
     modifier: Modifier = Modifier,
     navController: NavHostController
 ) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
     NavigationBar(
         modifier = modifier,
-        containerColor = colorpalette1,
-        contentColor = colorpalette3
+        containerColor = colorpalette1
     ){
         val navigationItem = listOf(
             NavigationItem(
@@ -194,7 +197,7 @@ fun BottomBar(
         )
         navigationItem.map { item ->
             NavigationBarItem(
-                selected = false,
+                selected = currentRoute == item.screen.route,
                 onClick = {
                     navController.navigate(item.screen.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
@@ -206,18 +209,23 @@ fun BottomBar(
                 },
                 icon = {
                     Icon(
-                       imageVector = item.icon,
-                        contentDescription = item.title,
-                        tint = colorpalette4
+                        imageVector = item.icon,
+                        contentDescription = item.title
                     )
                 },
                 label =
                 {
                     Text(
-                        text = item.title,
-                        color = colorpalette4
+                        text = item.title
                     )
-                }
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = colorpalette3,
+                    selectedTextColor = colorpalette3,
+                    indicatorColor = colorpalette2,
+                    unselectedIconColor = colorpalette4,
+                    unselectedTextColor = colorpalette4,
+                ),
             )
         }
     }
