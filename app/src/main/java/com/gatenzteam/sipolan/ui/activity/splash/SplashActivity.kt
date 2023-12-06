@@ -6,15 +6,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -24,6 +31,8 @@ import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.onboarding.OnboardingActivity
+import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.colorpalette2
 import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
@@ -47,10 +56,8 @@ class SplashActivity : ComponentActivity() {
         Box(
             modifier = modifier
                 .fillMaxSize()
-                .paint(
-                    painterResource(id = R.drawable.bg_splash),
-                    contentScale = ContentScale.FillBounds
-                )
+                .background(colorpalette1),
+            contentAlignment = Alignment.Center
         ){
             Column(
                 modifier = modifier.fillMaxSize(),
