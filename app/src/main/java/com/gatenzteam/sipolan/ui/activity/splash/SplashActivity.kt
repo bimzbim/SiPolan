@@ -49,7 +49,7 @@ class SplashActivity : ComponentActivity() {
         modifier: Modifier = Modifier
     ) {
         LaunchedEffect(key1 = true){
-            delay(2000)
+            delay(10000)
             startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
             finish()
         }
