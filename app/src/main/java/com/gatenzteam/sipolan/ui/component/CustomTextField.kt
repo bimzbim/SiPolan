@@ -44,7 +44,7 @@ fun CustomTextField(
     trailingIcon: @Composable (() -> Unit)? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    singleLine: Boolean = true,
+    singleLine: Boolean = false,
     color: TextFieldColors = OutlinedTextFieldDefaults.colors(
         cursorColor = colorResource(id = R.color.color_palette3),
         focusedLabelColor = colorResource(id = R.color.color_palette4),
