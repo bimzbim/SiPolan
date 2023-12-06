@@ -3,9 +3,11 @@ package com.gatenzteam.sipolan.ui.activity.splash
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.onboarding.OnboardingActivity
+import com.gatenzteam.sipolan.ui.theme.colorpalette1
 import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
@@ -45,23 +48,15 @@ class SplashActivity : ComponentActivity() {
             finish()
         }
         Box(
+            contentAlignment = Alignment.Center,
             modifier = modifier
                 .fillMaxSize()
-                .paint(
-                    painterResource(id = R.drawable.bg_splash),
-                    contentScale = ContentScale.FillBounds
-                )
+                .background(colorpalette1)
         ){
-            Column(
-                modifier = modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ){
-                Image(
-                    painter = painterResource(id = R.drawable.logo_polan),
-                    modifier = modifier.size(width = 150.dp, height = 200.dp),
-                    contentDescription = stringResource(id = R.string.splashscreen_contentdesc))
-            }
+            Image(
+                painter = painterResource(id = R.drawable.logo_polan),
+                modifier = modifier.size(width = 150.dp, height = 200.dp),
+                contentDescription = stringResource(id = R.string.splashscreen_contentdesc))
         }
     }
 

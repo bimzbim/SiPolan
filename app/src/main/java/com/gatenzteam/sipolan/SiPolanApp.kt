@@ -37,6 +37,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.detail_bayar.DetailBayarScreen
@@ -215,7 +216,7 @@ fun BottomBar(
                 },
                 label =
                 {
-                    Text(
+                    CustomText(
                         text = item.title
                     )
                 },
