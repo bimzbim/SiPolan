@@ -128,7 +128,7 @@ fun PelanggaranListItem(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxSize()
-                    .clip(RoundedCornerShape(8.dp))
+                    .clip(RoundedCornerShape(10.dp))
             )
 
             Box(

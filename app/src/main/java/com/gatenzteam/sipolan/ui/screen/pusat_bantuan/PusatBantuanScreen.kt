@@ -1,30 +1,24 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.gatenzteam.sipolan.ui.screen.pusat_bantuan
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
-import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuItemColors
+import androidx.compose.material3.ExposedDropdownMenuDefaults.textFieldColors
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,16 +26,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.toSize
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.colorpalette1
 import com.gatenzteam.sipolan.ui.theme.colorpalette2
@@ -59,107 +47,55 @@ fun PusatBantuanScreen(
             .fillMaxSize()
             .background(colorpalette1)
     ){
-        KategoriDropdownMenu()
+        Box(
+            modifier = Modifier.padding(25.dp)
+        ){
+            Column {
+                KategoriDropdownMenu()
+                Spacer(Modifier.height(10.dp))
+                PesanTextArea()
+                Spacer(Modifier.height(20.dp))
+                FormatSection()
+            }
+        }
     }
 }
 
-//@OptIn(ExperimentalMaterial3Api::class)
-//@Composable
-//fun KategoriDropdownMenu(
-//    modifier: Modifier
-//){
-//    var expanded by remember { mutableStateOf(false) }
-//    val genderList by remember { mutableStateOf(listOf("Male", "Female")) }
-//    var textFieldSize by remember { mutableStateOf(Size.Zero) }
-//
-//    val icon = if (expanded)
-//        Icons.Filled.ArrowDropUp
-//    else
-//        Icons.Filled.ArrowDropDown
-//
-//    ExposedDropdownMenuBox(
-//        modifier = modifier
-//            .clickable(onClick = { expanded = true }),
-//        expanded = expanded,
-//        onExpandedChange = { expanded = !expanded }
-//    ) {
-//        OutlinedTextField(
-//            value = "",
-//            onValueChange = {},
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .onGloballyPositioned { coordinates ->
-//                    textFieldSize = coordinates.size.toSize()
-//                },
-//            colors = TextFieldDefaults.textFieldColors(
-//                backgroundColor = colorpalette1,
-//                unfocusedIndicatorColor = Color.Transparent,
-//                focusedIndicatorColor = BrandColor,
-//                focusedLabelColor = BrandColor,
-//            ),
-//            leadingIcon = {
-//                Image(
-//                    painter = painterResource(id = R.drawable.ic_complete_registration_sex),
-//                    contentDescription = null
-//                )
-//            },
-//            trailingIcon = { Icon(icon, null) },
-//            shape = RoundedCornerShape(Dimen.Dimen14),
-//            label = {
-//                Text(
-//                    "Choose Gender",
-//                    style = PoppinsNormalStyle14
-//                )
-//            },
-//            readOnly = true
-//        )
-//
-//        ExposedDropdownMenu(
-//            expanded = expanded,
-//            onDismissRequest = { expanded = false },
-//            modifier = Modifier
-//                .background(Color.White)
-//                .width(with(LocalDensity.current) { textFieldSize.width.toDp() })
-//        ) {
-//            genderList.forEach {
-//                DropdownMenuItem(
-//                    onClick = { expanded = false },
-//                ) {
-//                    Text(it, style = PoppinsNormalStyle12Gray2)
-//                }
-//            }
-//        }
-//    }
-//}
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KategoriDropdownMenu() {
+fun KategoriDropdownMenu(
+    modifier: Modifier = Modifier
+) {
     var isExpanded by remember { mutableStateOf(false) }
     val bantuanList by remember { mutableStateOf(listOf("Pembayaran", "Konfirmasi", "Lainnya"))}
+    var pilihan by remember { mutableStateOf("") }
 
     ExposedDropdownMenuBox(
         expanded = isExpanded,
         onExpandedChange = {isExpanded = it},
     ) {
         OutlinedTextField(
-            value = "Kategori Bantuan",
+            value = pilihan,
             onValueChange = {},
             readOnly = true,
             trailingIcon = {
                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
             },
-            colors =  ExposedDropdownMenuDefaults.textFieldColors(
+            colors =  textFieldColors(
                 unfocusedContainerColor = colorpalette1,
                 focusedContainerColor = colorpalette1,
                 unfocusedTrailingIconColor = colorpalette3,
                 focusedTrailingIconColor = colorpalette3,
                 unfocusedIndicatorColor = colorpalette2,
-                focusedIndicatorColor = colorpalette2
+                focusedIndicatorColor = colorpalette2,
+                unfocusedTextColor = colorpalette3,
+                focusedTextColor = colorpalette3
             ),
             textStyle = TextStyle(fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp),
             shape = RoundedCornerShape(15.dp),
-            modifier = Modifier.menuAnchor(),
+            modifier = modifier
+                .menuAnchor()
+                .fillMaxWidth(),
+            label = { Text(text = "Kategori Bantuan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = colorpalette4) },
         )
 
         ExposedDropdownMenu(
@@ -170,10 +106,89 @@ fun KategoriDropdownMenu() {
                 DropdownMenuItem(
                     text = {Text(it, fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp)},
                     onClick = {
+                        pilihan = it
                         isExpanded = false
                     }
                 )
             }
+        }
+    }
+}
+
+@Composable
+fun PesanTextArea(
+    modifier: Modifier = Modifier
+){
+    var text by remember { mutableStateOf("") }
+
+    Column(
+        modifier = modifier
+    ) {
+        OutlinedTextField(
+            value = text,
+            onValueChange = {
+                text = it
+            },
+            colors = textFieldColors(
+                unfocusedContainerColor = colorpalette1,
+                focusedContainerColor = colorpalette1,
+                unfocusedIndicatorColor = colorpalette2,
+                focusedIndicatorColor = colorpalette2,
+                unfocusedTextColor = colorpalette3,
+                focusedTextColor = colorpalette3
+            ),
+            shape = RoundedCornerShape(15.dp),
+            label = { Text("Pesan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = colorpalette4) },
+            modifier = modifier
+                .fillMaxWidth()
+                .height(200.dp)
+        )
+    }
+}
+
+@Composable
+fun FormatSection(
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color = colorpalette2, shape = RoundedCornerShape(15.dp))
+    ) {
+        Column (
+            modifier = modifier.padding(15.dp)
+        ){
+            Text(
+                text = "Isikan kolom pesan dengan format seperti berikut: ",
+                fontFamily = Poppins.poppinsFamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.83.sp,
+                color = colorpalette3
+            )
+
+            Spacer(modifier.height(10.dp))
+
+            Text(
+                text = "ID Pembayaran: (Isikan sendiri)",
+                fontFamily = Poppins.poppinsFamily,
+                fontWeight = FontWeight.Normal,
+                fontSize = 11.1.sp,
+                color = colorpalette4
+            )
+            Text(
+                text = "ID Pembayaran: (Isikan sendiri)",
+                fontFamily = Poppins.poppinsFamily,
+                fontWeight = FontWeight.Normal,
+                fontSize = 11.1.sp,
+                color = colorpalette4
+            )
+            Text(
+                text = "ID Pembayaran: (Isikan sendiri)",
+                fontFamily = Poppins.poppinsFamily,
+                fontWeight = FontWeight.Normal,
+                fontSize = 11.1.sp,
+                color = colorpalette4
+            )
         }
     }
 }
