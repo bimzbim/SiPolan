@@ -224,6 +224,7 @@ class SignInActivity : ComponentActivity() {
                     shape = RoundedCornerShape(15.dp),
                     modifier = Modifier
                         .height(50.dp)
+                        .width(90.dp)
                         .padding(horizontal = 5.dp)
                 ) {
                     Icon(
@@ -243,6 +244,7 @@ class SignInActivity : ComponentActivity() {
                     shape = RoundedCornerShape(15.dp),
                     modifier = Modifier
                         .height(50.dp)
+                        .width(90.dp)
                         .padding(horizontal = 5.dp)
                 ) {
                     Icon(
