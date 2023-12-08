@@ -8,8 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
+import com.gatenzteam.sipolan.ui.component.CustomText
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun ArtikelDetailScreen(
@@ -20,8 +21,8 @@ fun ArtikelDetailScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ){
-        Text(text = "Detail", color = colorpalette4)
+        CustomText(text = "Detail", color = ColorPalette4)
     }
 }
