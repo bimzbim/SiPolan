@@ -133,6 +133,9 @@ fun SettingsSection(onSettingClick: (String) -> Unit) {
     SettingItem(text = stringResource(id = R.string.setting4)) {
         onSettingClick(Screen.PusatBantuan.route)
     }
+    SettingItem(text = "Artikel") {
+        onSettingClick(Screen.Artikel.route)
+    }
 }
 
 
