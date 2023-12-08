@@ -26,7 +26,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -39,7 +38,9 @@ import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun EditAkunScreen(
@@ -48,7 +49,7 @@ fun EditAkunScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ) {
         Column(
             modifier = Modifier
@@ -91,12 +92,12 @@ fun EditSection(
                 .align(Alignment.BottomCenter)
                 .size(30.dp)
                 .clip(CircleShape)
-                .background(colorResource(id = R.color.color_palette3))
+                .background(ColorPalette3)
         ){
             Icon(
                 imageVector = Icons.Default.Person,
                 contentDescription = "Icon",
-                tint = colorResource(id = R.color.color_palette1),
+                tint = ColorPalette1,
                 modifier = Modifier
                     .align(Alignment.Center)
             )
@@ -114,7 +115,7 @@ fun EditSection(
             Icon(
                 imageVector = Icons.Filled.AccountBox,
                 contentDescription = null,
-                tint = colorResource(R.color.color_palette3)
+                tint = ColorPalette3
             )
         },
         modifier = modifier
@@ -130,7 +131,7 @@ fun EditSection(
             Icon(
                 imageVector = Icons.Filled.Email,
                 contentDescription = null,
-                tint = colorResource(R.color.color_palette3)
+                tint = ColorPalette3
             )
         },
         modifier = modifier
@@ -142,7 +143,7 @@ fun EditSection(
             fontSize = 14.83.sp,
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Normal,
-            color = colorResource(R.color.color_palette4),
+            color = ColorPalette4,
         ),
         modifier = modifier
             .padding(top = 25.dp, bottom = 5.dp)
@@ -154,7 +155,7 @@ fun EditSection(
             fontSize = 14.83.sp,
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Bold,
-            color = colorResource(R.color.color_palette3)
+            color = ColorPalette3
         ),
         modifier = modifier.clickable{
             onClick()

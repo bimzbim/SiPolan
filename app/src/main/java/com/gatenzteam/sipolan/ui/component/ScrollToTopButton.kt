@@ -8,8 +8,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 
 @Composable
 fun ScrollToTopButton(
@@ -18,12 +18,12 @@ fun ScrollToTopButton(
 ) {
     IconButton(
         onClick = onClick,
-        modifier = modifier.background(colorpalette3, CircleShape)
+        modifier = modifier.background(ColorPalette3, CircleShape)
     ) {
         Icon(
             imageVector = Icons.Filled.KeyboardArrowUp,
             contentDescription = "Scroll to Top",
-            tint = colorpalette1
+            tint = ColorPalette1
         )
     }
 }

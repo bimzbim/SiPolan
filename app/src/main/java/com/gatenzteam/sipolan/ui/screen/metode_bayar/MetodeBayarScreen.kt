@@ -8,8 +8,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun MetodeBayarScreen(
@@ -20,8 +20,8 @@ fun MetodeBayarScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ){
-        Text(text = "Metode Bayar", color = colorpalette4)
+        Text(text = "Metode Bayar", color = ColorPalette4)
     }
 }

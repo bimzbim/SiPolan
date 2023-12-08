@@ -36,8 +36,8 @@ import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun ProfileScreen(
@@ -46,7 +46,7 @@ fun ProfileScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ) {
         Column(
             modifier = Modifier
@@ -103,7 +103,7 @@ fun ProfileSection() {
         fontFamily = Poppins.poppinsFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
-        color = colorpalette4,
+        color = ColorPalette4,
         modifier = Modifier
             .padding(top = 10.dp)
     )
@@ -113,7 +113,7 @@ fun ProfileSection() {
         fontFamily = Poppins.poppinsFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 11.2.sp,
-        color = colorpalette4,
+        color = ColorPalette4,
         modifier = Modifier
             .padding(top = 5.dp)
     )
@@ -153,7 +153,7 @@ fun SettingItem(text: String, onClick: () -> Unit) {
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
-            color = colorpalette4,
+            color = ColorPalette4,
         )
         Icon(
             imageVector = Icons.Default.KeyboardArrowRight,
