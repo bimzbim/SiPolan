@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.riwayat_bayar.DataBayar
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import kotlinx.coroutines.launch
 
 @Composable
@@ -40,7 +40,7 @@ fun ArtikelScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ){
         ArtikelColumn {
             navController.navigate(Screen.ArtikelDetail.route)
