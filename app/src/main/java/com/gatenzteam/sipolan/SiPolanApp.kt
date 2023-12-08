@@ -42,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
+import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelScreen
 import com.gatenzteam.sipolan.ui.screen.detail_bayar.DetailBayarScreen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
@@ -110,6 +111,9 @@ fun SiPolanApp(
             }
             composable(Screen.MetodePembayaran.route){
                 MetodeBayarScreen()
+            }
+            composable(Screen.Artikel.route){
+                ArtikelScreen()
             }
         }
     }
