@@ -80,7 +80,7 @@ fun SiPolanApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(Modifier, navController)
             }
             composable(Screen.Profile.route) {
                 ProfileScreen(navController)

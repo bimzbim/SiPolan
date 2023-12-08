@@ -26,7 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.ui.component.CustomText
+import com.gatenzteam.sipolan.ui.navigation.Screen
+import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelColumn
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
@@ -34,7 +37,8 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController : NavHostController
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -153,6 +157,10 @@ fun HomeScreen(
                     contentDescription = "Lihat deteksi pelanggaran hari ini"
                 )
             }
+        }
+
+        ArtikelColumn {
+            navController.navigate(Screen.ArtikelDetail.route)
         }
     }
 }
