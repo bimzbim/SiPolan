@@ -45,7 +45,6 @@ import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
-import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 import kotlinx.coroutines.launch
@@ -60,7 +59,7 @@ fun ArtikelScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(ColorPalette2)
+            .background(ColorPalette1)
     ){
         ArtikelColumn {
             navController.navigate(Screen.ArtikelDetail.route)
