@@ -34,10 +34,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.font.Poppins
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette2
-import com.gatenzteam.sipolan.ui.theme.colorpalette3
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 import kotlinx.coroutines.launch
 
 @Composable
@@ -49,7 +49,7 @@ fun PelanggaranSayaScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ){
         ColumnPelanggaran(onClick = { /*TODO*/ })
     }
@@ -114,7 +114,7 @@ fun PelanggaranListItem(
         modifier = modifier
             .fillMaxWidth()
             .padding(15.dp)
-            .background(color = colorpalette2, shape = RoundedCornerShape(10.dp))
+            .background(color = ColorPalette2, shape = RoundedCornerShape(10.dp))
             .clickable {
                 onClick()
             }
@@ -144,7 +144,7 @@ fun PelanggaranListItem(
                         text = jenis,
                         fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight.Bold,
-                        color = colorpalette3,
+                        color = ColorPalette3,
                         fontSize = 18.sp,
                     )
 
@@ -152,7 +152,7 @@ fun PelanggaranListItem(
                         text = nopol,
                         fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight.Medium,
-                        color = colorpalette4,
+                        color = ColorPalette4,
                         fontSize = 11.12.sp
                     )
 
@@ -160,7 +160,7 @@ fun PelanggaranListItem(
                         text = tgl,
                         fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight.Medium,
-                        color = colorpalette4,
+                        color = ColorPalette4,
                         fontSize = 11.12.sp
                     )
                 }

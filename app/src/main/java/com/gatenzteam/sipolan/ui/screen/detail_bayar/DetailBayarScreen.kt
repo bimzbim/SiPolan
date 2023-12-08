@@ -25,11 +25,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette2
-import com.gatenzteam.sipolan.ui.theme.colorpalette3
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
-import com.google.android.gms.wallet.button.ButtonConstants
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun DetailBayarScreen(
@@ -39,7 +38,7 @@ fun DetailBayarScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
             .padding(5.dp)
     ){
         val paymentDetails = DataDetailBayar.dummy
@@ -77,7 +76,7 @@ fun DetailBayarContent(
 ){
     Box(
         modifier = modifier
-            .background(color = colorpalette2, shape = RoundedCornerShape(10.dp))
+            .background(color = ColorPalette2, shape = RoundedCornerShape(10.dp))
     ) {
         Row(
             modifier = Modifier
@@ -91,7 +90,7 @@ fun DetailBayarContent(
                     fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Bold,
                     fontSize = 11.1.sp,
-                    color = colorpalette3
+                    color = ColorPalette3
                 )
                 Text(
                     text = biaya,
@@ -111,14 +110,14 @@ fun DetailBayarContent(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(
-                            color = if (status) colorpalette3 else Color.Red,
+                            color = if (status) ColorPalette3 else Color.Red,
                             shape = RoundedCornerShape(10.dp)
                         ),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = if (status) "Sukses" else "Gagal",
-                        color = if(status) colorpalette1 else colorpalette4,
+                        color = if(status) ColorPalette1 else ColorPalette4,
                         fontWeight = FontWeight.Bold,
                         fontSize = 10.sp,
                         modifier = Modifier.padding(5.dp)
@@ -139,7 +138,7 @@ fun DetailBayarContent(
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
-            color = colorpalette4
+            color = ColorPalette4
         )
 
         Text(
@@ -147,7 +146,7 @@ fun DetailBayarContent(
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Normal,
             fontSize = 11.1.sp,
-            color = colorpalette4
+            color = ColorPalette4
         )
     }
 
@@ -162,7 +161,7 @@ fun DetailBayarContent(
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
-            color = colorpalette4
+            color = ColorPalette4
         )
 
         Text(
@@ -170,7 +169,7 @@ fun DetailBayarContent(
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Normal,
             fontSize = 11.1.sp,
-            color = colorpalette4
+            color = ColorPalette4
         )
     }
 
@@ -185,7 +184,7 @@ fun DetailBayarContent(
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
-            color = colorpalette4
+            color = ColorPalette4
         )
 
         Text(
@@ -193,7 +192,7 @@ fun DetailBayarContent(
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Normal,
             fontSize = 11.1.sp,
-            color = colorpalette4
+            color = ColorPalette4
         )
     }
 }
@@ -205,7 +204,7 @@ fun NextButton(
 ){
     Button(
         colors = ButtonDefaults.buttonColors(
-            colorpalette3
+            ColorPalette3
         ),
         onClick = {
             onClick()
@@ -217,6 +216,6 @@ fun NextButton(
         Text(text = "Next",
             fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.Bold,
-            color = colorpalette1)
+            color = ColorPalette1)
     }
 }

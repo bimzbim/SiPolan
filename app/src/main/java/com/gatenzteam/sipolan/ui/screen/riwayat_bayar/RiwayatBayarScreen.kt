@@ -50,9 +50,9 @@ import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette2
-import com.gatenzteam.sipolan.ui.theme.colorpalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import kotlinx.coroutines.launch
 
 @Composable
@@ -63,7 +63,7 @@ fun RiwayatBayarScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ){
         RiwayatBayarColumn(onClick = {
             navController.navigate(Screen.DetailPembayaran.route)
@@ -129,7 +129,7 @@ fun BayarListItem(
         modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
-            .background(color = colorpalette2, shape = RoundedCornerShape(10.dp))
+            .background(color = ColorPalette2, shape = RoundedCornerShape(10.dp))
     ) {
         Row(
             modifier = Modifier
@@ -143,7 +143,7 @@ fun BayarListItem(
                     fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Bold,
                     fontSize = 12.sp,
-                    color = colorpalette3
+                    color = ColorPalette3
                 )
                 Text(
                     text = "Biaya: Rp$biaya",

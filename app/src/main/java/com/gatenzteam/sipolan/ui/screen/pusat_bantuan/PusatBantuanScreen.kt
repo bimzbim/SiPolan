@@ -31,10 +31,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.ui.font.Poppins
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette2
-import com.gatenzteam.sipolan.ui.theme.colorpalette3
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun PusatBantuanScreen(
@@ -45,7 +45,7 @@ fun PusatBantuanScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(colorpalette1)
+            .background(ColorPalette1)
     ){
         Box(
             modifier = Modifier.padding(25.dp)
@@ -81,21 +81,21 @@ fun KategoriDropdownMenu(
                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
             },
             colors =  textFieldColors(
-                unfocusedContainerColor = colorpalette1,
-                focusedContainerColor = colorpalette1,
-                unfocusedTrailingIconColor = colorpalette3,
-                focusedTrailingIconColor = colorpalette3,
-                unfocusedIndicatorColor = colorpalette2,
-                focusedIndicatorColor = colorpalette2,
-                unfocusedTextColor = colorpalette3,
-                focusedTextColor = colorpalette3
+                unfocusedContainerColor = ColorPalette1,
+                focusedContainerColor = ColorPalette1,
+                unfocusedTrailingIconColor = ColorPalette3,
+                focusedTrailingIconColor = ColorPalette3,
+                unfocusedIndicatorColor = ColorPalette2,
+                focusedIndicatorColor = ColorPalette2,
+                unfocusedTextColor = ColorPalette3,
+                focusedTextColor = ColorPalette3
             ),
             textStyle = TextStyle(fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp),
             shape = RoundedCornerShape(15.dp),
             modifier = modifier
                 .menuAnchor()
                 .fillMaxWidth(),
-            label = { Text(text = "Kategori Bantuan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = colorpalette4) },
+            label = { Text(text = "Kategori Bantuan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = ColorPalette4) },
         )
 
         ExposedDropdownMenu(
@@ -130,15 +130,15 @@ fun PesanTextArea(
                 text = it
             },
             colors = textFieldColors(
-                unfocusedContainerColor = colorpalette1,
-                focusedContainerColor = colorpalette1,
-                unfocusedIndicatorColor = colorpalette2,
-                focusedIndicatorColor = colorpalette2,
-                unfocusedTextColor = colorpalette3,
-                focusedTextColor = colorpalette3
+                unfocusedContainerColor = ColorPalette1,
+                focusedContainerColor = ColorPalette1,
+                unfocusedIndicatorColor = ColorPalette2,
+                focusedIndicatorColor = ColorPalette2,
+                unfocusedTextColor = ColorPalette3,
+                focusedTextColor = ColorPalette3
             ),
             shape = RoundedCornerShape(15.dp),
-            label = { Text("Pesan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = colorpalette4) },
+            label = { Text("Pesan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = ColorPalette4) },
             modifier = modifier
                 .fillMaxWidth()
                 .height(200.dp)
@@ -153,7 +153,7 @@ fun FormatSection(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = colorpalette2, shape = RoundedCornerShape(15.dp))
+            .background(color = ColorPalette2, shape = RoundedCornerShape(15.dp))
     ) {
         Column (
             modifier = modifier.padding(15.dp)
@@ -163,7 +163,7 @@ fun FormatSection(
                 fontFamily = Poppins.poppinsFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 14.83.sp,
-                color = colorpalette3
+                color = ColorPalette3
             )
 
             Spacer(modifier.height(10.dp))
@@ -173,21 +173,21 @@ fun FormatSection(
                 fontFamily = Poppins.poppinsFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 11.1.sp,
-                color = colorpalette4
+                color = ColorPalette4
             )
             Text(
                 text = "ID Pembayaran: (Isikan sendiri)",
                 fontFamily = Poppins.poppinsFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 11.1.sp,
-                color = colorpalette4
+                color = ColorPalette4
             )
             Text(
                 text = "ID Pembayaran: (Isikan sendiri)",
                 fontFamily = Poppins.poppinsFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 11.1.sp,
-                color = colorpalette4
+                color = ColorPalette4
             )
         }
     }

@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.onboarding.OnboardingActivity
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
@@ -51,7 +51,7 @@ class SplashActivity : ComponentActivity() {
             contentAlignment = Alignment.Center,
             modifier = modifier
                 .fillMaxSize()
-                .background(colorpalette1)
+                .background(ColorPalette1)
         ){
             Image(
                 painter = painterResource(id = R.drawable.logo_polan),

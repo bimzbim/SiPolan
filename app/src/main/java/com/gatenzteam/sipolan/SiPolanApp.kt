@@ -30,7 +30,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -52,10 +54,10 @@ import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
 import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
 import com.gatenzteam.sipolan.ui.screen.riwayat_bayar.RiwayatBayarScreen
-import com.gatenzteam.sipolan.ui.theme.colorpalette1
-import com.gatenzteam.sipolan.ui.theme.colorpalette2
-import com.gatenzteam.sipolan.ui.theme.colorpalette3
-import com.gatenzteam.sipolan.ui.theme.colorpalette4
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun SiPolanApp(
@@ -128,24 +130,56 @@ fun TopAppBar(
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = colorpalette1,
-            titleContentColor = colorpalette4,
+            containerColor = ColorPalette1,
+            titleContentColor = ColorPalette4,
         ),
         title = {
-            Image(
-                painter = painterResource(id = R.drawable.logo_polan_without_text),
-                contentDescription = null,
-                modifier = Modifier
-                    .height(64.dp)
-                    .padding(vertical = 10.dp)
-            )
+            when(currentRoute){
+                Screen.EditAkun.route -> {
+                    CustomText(
+                        text = "Edit Akun",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight(600)
+                    )
+                }
+                Screen.RiwayatPembayaran.route -> {
+                    CustomText(
+                        text = "Riwayat Pembayaran",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight(600)
+                    )
+                }
+                Screen.PelanggaranSaya.route -> {
+                    CustomText(
+                        text = "Pelanggaran Saya",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight(600)
+                    )
+                }
+                Screen.PusatBantuan.route -> {
+                    CustomText(
+                        text = "Pusat Bantuan",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight(600)
+                    )
+                }
+                else -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.logo_polan_without_text),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(64.dp)
+                            .padding(vertical = 10.dp)
+                    )
+                }
+            }
         },
         navigationIcon = {
             if(currentRoute != Screen.Home.route){
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(Icons.Default.KeyboardArrowLeft,
                         contentDescription = "Back",
-                        tint = colorpalette3)
+                        tint = ColorPalette3)
                 }
             }
         },
@@ -182,7 +216,7 @@ fun BottomBar(
 
     NavigationBar(
         modifier = modifier,
-        containerColor = colorpalette1
+        containerColor = ColorPalette1
     ){
         val navigationItem = listOf(
             NavigationItem(
@@ -226,11 +260,11 @@ fun BottomBar(
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = colorpalette3,
-                    selectedTextColor = colorpalette3,
-                    indicatorColor = colorpalette2,
-                    unselectedIconColor = colorpalette4,
-                    unselectedTextColor = colorpalette4,
+                    selectedIconColor = ColorPalette3,
+                    selectedTextColor = ColorPalette3,
+                    indicatorColor = ColorPalette2,
+                    unselectedIconColor = ColorPalette4,
+                    unselectedTextColor = ColorPalette4,
                 ),
             )
         }
