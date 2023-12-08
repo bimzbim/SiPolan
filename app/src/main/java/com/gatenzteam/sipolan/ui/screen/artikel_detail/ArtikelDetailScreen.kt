@@ -2,8 +2,10 @@ package com.gatenzteam.sipolan.ui.screen.artikel_detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,5 +26,20 @@ fun ArtikelDetailScreen(
             .background(ColorPalette1)
     ){
         CustomText(text = "Detail", color = ColorPalette4)
+    }
+}
+
+@Composable
+fun DetailArtikel(
+    judul: String,
+    tanggal: String,
+    img: Int,
+    isi: String,
+){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ){
+
     }
 }
