@@ -45,6 +45,7 @@ import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 import kotlinx.coroutines.launch
@@ -59,7 +60,7 @@ fun ArtikelScreen(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(ColorPalette1)
+            .background(ColorPalette2)
     ){
         ArtikelColumn {
             navController.navigate(Screen.ArtikelDetail.route)
@@ -72,7 +73,7 @@ fun ArtikelColumn(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
-    Box(modifier = modifier.padding(25.dp)) {
+    Box(modifier = modifier) {
         val scope = rememberCoroutineScope()
         val listState = rememberLazyListState()
         val showButton: Boolean by remember {
@@ -80,6 +81,7 @@ fun ArtikelColumn(
         }
         LazyColumn(
             state = listState,
+            modifier = modifier.padding(20.dp)
         ) {
             items(DataArtikel.dummy, key = { it.id }) { artikel ->
                 ArtikelListItem(
