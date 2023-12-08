@@ -41,14 +41,14 @@ fun DetailBayarScreen(
             .background(ColorPalette1)
             .padding(5.dp)
     ){
-        val paymentDetails = DataDetailBayar.dummy
+        val detailBayar = DataDetailBayar.dummy
         DetailBayarContent(
-            id = paymentDetails.id,
-            jenis = paymentDetails.jenis,
-            biaya = paymentDetails.biaya,
-            tanggal = paymentDetails.tanggal,
-            metode = paymentDetails.metode,
-            status = paymentDetails.status,
+            id = detailBayar.id,
+            jenis = detailBayar.jenis,
+            biaya = detailBayar.biaya,
+            tanggal = detailBayar.tanggal,
+            metode = detailBayar.metode,
+            status = detailBayar.status,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)
