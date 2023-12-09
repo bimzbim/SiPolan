@@ -54,7 +54,55 @@ fun ProfileScreen(
                 .padding(25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            ProfileSection()
+            Box(
+                modifier = Modifier
+                    .height(180.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.photo_profile),
+                    contentDescription = "Profile",
+                    modifier = Modifier
+                        .size(170.dp)
+                        .clip(CircleShape)
+                )
+
+                IconButton(
+                    onClick = {},
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .size(30.dp)
+                        .clip(CircleShape)
+                        .background(colorResource(id = R.color.color_palette3))
+                ){
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = "Icon",
+                        tint = colorResource(id = R.color.color_palette1),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                    )
+                }
+            }
+
+            Text(
+                text = "Aditya Yoga",
+                fontFamily = Poppins.poppinsFamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                color = ColorPalette4,
+                modifier = Modifier
+                    .padding(top = 10.dp)
+            )
+
+            Text(
+                text = "DK 2938 ACL",
+                fontFamily = Poppins.poppinsFamily,
+                fontWeight = FontWeight.Medium,
+                fontSize = 11.2.sp,
+                color = ColorPalette4,
+                modifier = Modifier
+                    .padding(top = 5.dp)
+            )
             Spacer(modifier = Modifier.height(25.dp))
             SettingsSection {
                 navController.navigate(it) {
@@ -64,59 +112,6 @@ fun ProfileScreen(
             }
         }
     }
-}
-
-@Composable
-fun ProfileSection() {
-    Box(
-        modifier = Modifier
-            .height(180.dp)
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.photo_profile),
-            contentDescription = "Profile",
-            modifier = Modifier
-                .size(170.dp)
-                .clip(CircleShape)
-        )
-
-        IconButton(
-            onClick = {},
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .size(30.dp)
-                .clip(CircleShape)
-                .background(colorResource(id = R.color.color_palette3))
-        ){
-            Icon(
-                imageVector = Icons.Default.Lock,
-                contentDescription = "Icon",
-                tint = colorResource(id = R.color.color_palette1),
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
-    }
-
-    Text(
-        text = "Aditya Yoga",
-        fontFamily = Poppins.poppinsFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 18.sp,
-        color = ColorPalette4,
-        modifier = Modifier
-            .padding(top = 10.dp)
-    )
-
-    Text(
-        text = "DK 2938 ACL",
-        fontFamily = Poppins.poppinsFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.2.sp,
-        color = ColorPalette4,
-        modifier = Modifier
-            .padding(top = 5.dp)
-    )
 }
 
 @Composable
@@ -132,9 +127,6 @@ fun SettingsSection(onSettingClick: (String) -> Unit) {
     }
     SettingItem(text = stringResource(id = R.string.setting4)) {
         onSettingClick(Screen.PusatBantuan.route)
-    }
-    SettingItem(text = "Artikel") {
-        onSettingClick(Screen.Artikel.route)
     }
 }
 
