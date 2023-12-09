@@ -21,9 +21,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.CarCrash
@@ -45,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomText
+import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelListItem
 import com.gatenzteam.sipolan.ui.screen.artikel.DataArtikel
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
@@ -180,7 +179,9 @@ fun HomeScreen(
                                 .weight(1f)
                         )
                         IconButton(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                navController.navigate(Screen.Artikel.route)
+                            },
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = ColorPalette3,
                                 contentColor = ColorPalette1
