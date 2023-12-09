@@ -189,7 +189,7 @@ fun TopAppBar(
             when(currentRoute) {
                 Screen.Deteksi.route -> {
                     IconButton(onClick = {
-                        navController.navigate(Screen.Profile.route){
+                        navController.navigate(Screen.PelanggaranSaya.route){
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
                             }
