@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,14 +28,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
-import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
@@ -44,8 +41,12 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun EditAkunScreen(
-    navController: NavController
+    navController: NavController,
+    modifier: Modifier
 ) {
+    var name by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -57,116 +58,91 @@ fun EditAkunScreen(
                 .padding(25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            EditSection(
-                onClick = {
+            Box(
+                modifier = Modifier
+                    .height(180.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.photo_profile),
+                    contentDescription = "Profile",
+                    modifier = Modifier
+                        .size(170.dp)
+                        .clip(CircleShape)
+                )
+
+                IconButton(
+                    onClick = {},
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .size(30.dp)
+                        .clip(CircleShape)
+                        .background(ColorPalette3)
+                ){
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = "Icon",
+                        tint = ColorPalette1,
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(25.dp))
+
+            CustomTextField(
+                value = name,
+                onValueChange = { name = it },
+                label = "Nama",
+                singleLine = true,
+                placeholder = "Masukkan Nama Baru",
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.AccountBox,
+                        contentDescription = null,
+                        tint = ColorPalette3
+                    )
+                },
+                modifier = modifier
+            )
+
+            CustomTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = "Email",
+                singleLine = true,
+                placeholder = "Masukkan Email Baru",
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Email,
+                        contentDescription = null,
+                        tint = ColorPalette3
+                    )
+                },
+                modifier = modifier
+            )
+
+            CustomText(
+                text = "Ingin Mengganti Password?",
+                style = TextStyle(
+                    fontSize = 14.83.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = ColorPalette4,
+                ),
+                modifier = modifier
+                    .padding(top = 25.dp, bottom = 5.dp)
+            )
+
+            CustomText(
+                text = "Ganti Password",
+                style = TextStyle(
+                    fontSize = 14.83.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = ColorPalette3
+                ),
+                modifier = modifier.clickable{
                     navController.navigate(Screen.GantiPassword.route)
                 }
             )
         }
     }
 }
-
-@Composable
-fun EditSection(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-){
-    var name by rememberSaveable { mutableStateOf("") }
-    var email by rememberSaveable { mutableStateOf("") }
-
-    Box(
-        modifier = Modifier
-            .height(180.dp)
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.photo_profile),
-            contentDescription = "Profile",
-            modifier = Modifier
-                .size(170.dp)
-                .clip(CircleShape)
-        )
-
-        IconButton(
-            onClick = {},
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .size(30.dp)
-                .clip(CircleShape)
-                .background(ColorPalette3)
-        ){
-            Icon(
-                imageVector = Icons.Default.Person,
-                contentDescription = "Icon",
-                tint = ColorPalette1,
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
-    }
-    Spacer(modifier = Modifier.height(25.dp))
-
-    CustomTextField(
-        value = name,
-        onValueChange = { name = it },
-        label = "Nama",
-        singleLine = true,
-        placeholder = "Masukkan Nama Baru",
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Filled.AccountBox,
-                contentDescription = null,
-                tint = ColorPalette3
-            )
-        },
-        modifier = modifier
-    )
-
-    CustomTextField(
-        value = email,
-        onValueChange = { email = it },
-        label = "Email",
-        singleLine = true,
-        placeholder = "Masukkan Email Baru",
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Filled.Email,
-                contentDescription = null,
-                tint = ColorPalette3
-            )
-        },
-        modifier = modifier
-    )
-
-    Text(
-        text = "Ingin Mengganti Password?",
-        style = TextStyle(
-            fontSize = 14.83.sp,
-            fontFamily = Poppins.poppinsFamily,
-            fontWeight = FontWeight.Normal,
-            color = ColorPalette4,
-        ),
-        modifier = modifier
-            .padding(top = 25.dp, bottom = 5.dp)
-    )
-
-    Text(
-        text = "Ganti Password",
-        style = TextStyle(
-            fontSize = 14.83.sp,
-            fontFamily = Poppins.poppinsFamily,
-            fontWeight = FontWeight.Bold,
-            color = ColorPalette3
-        ),
-        modifier = modifier.clickable{
-            onClick()
-        }
-    )
-}
-
-@Preview(name = "Edit Akun")
-@Composable
-fun EditAkunScreenPreview() {
-    val navController = rememberNavController()
-    EditAkunScreen(navController)
-}
-

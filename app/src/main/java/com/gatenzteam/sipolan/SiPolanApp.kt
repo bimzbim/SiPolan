@@ -91,7 +91,7 @@ fun SiPolanApp(
                 DeteksiScreen()
             }
             composable(Screen.EditAkun.route){
-                EditAkunScreen(navController)
+                EditAkunScreen(navController, Modifier)
             }
             composable(Screen.RiwayatPembayaran.route){
                 RiwayatBayarScreen(navController)

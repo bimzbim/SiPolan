@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.R
-import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
@@ -84,9 +83,8 @@ fun ProfileScreen(
                 }
             }
 
-            Text(
+            CustomText(
                 text = "Aditya Yoga",
-                fontFamily = Poppins.poppinsFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 color = ColorPalette4,
@@ -94,9 +92,8 @@ fun ProfileScreen(
                     .padding(top = 10.dp)
             )
 
-            Text(
+            CustomText(
                 text = "DK 2938 ACL",
-                fontFamily = Poppins.poppinsFamily,
                 fontWeight = FontWeight.Medium,
                 fontSize = 11.2.sp,
                 color = ColorPalette4,
@@ -143,9 +140,8 @@ fun SettingItem(text: String, onClick: () -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
+        CustomText(
             text = text,
-            fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
             color = ColorPalette4,
