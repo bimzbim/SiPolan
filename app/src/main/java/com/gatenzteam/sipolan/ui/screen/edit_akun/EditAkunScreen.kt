@@ -4,12 +4,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
@@ -52,97 +52,108 @@ fun EditAkunScreen(
             .fillMaxSize()
             .background(ColorPalette1)
     ) {
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Box(
-                modifier = Modifier
-                    .height(180.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.photo_profile),
-                    contentDescription = "Profile",
+            item {
+                Box(
                     modifier = Modifier
-                        .size(170.dp)
-                        .clip(CircleShape)
-                )
-
-                IconButton(
-                    onClick = {},
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .size(30.dp)
-                        .clip(CircleShape)
-                        .background(ColorPalette3)
-                ){
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "Icon",
-                        tint = ColorPalette1,
+                        .height(180.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.photo_profile),
+                        contentDescription = "Profile",
                         modifier = Modifier
-                            .align(Alignment.Center)
+                            .size(170.dp)
+                            .clip(CircleShape)
                     )
+
+                    IconButton(
+                        onClick = {},
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .size(30.dp)
+                            .clip(CircleShape)
+                            .background(ColorPalette3)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = "Icon",
+                            tint = ColorPalette1,
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                        )
+                    }
                 }
+                Spacer(modifier = Modifier.height(25.dp))
             }
-            Spacer(modifier = Modifier.height(25.dp))
 
-            CustomTextField(
-                value = name,
-                onValueChange = { name = it },
-                label = "Nama",
-                singleLine = true,
-                placeholder = "Masukkan Nama Baru",
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Filled.AccountBox,
-                        contentDescription = null,
-                        tint = ColorPalette3
-                    )
-                },
-                modifier = modifier
-            )
+            item {
+                CustomTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = "Nama",
+                    singleLine = true,
+                    placeholder = "Masukkan Nama Baru",
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.AccountBox,
+                            contentDescription = null,
+                            tint = ColorPalette3
+                        )
+                    },
+                    modifier = modifier
+                )
+            }
 
-            CustomTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = "Email",
-                singleLine = true,
-                placeholder = "Masukkan Email Baru",
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Filled.Email,
-                        contentDescription = null,
-                        tint = ColorPalette3
-                    )
-                },
-                modifier = modifier
-            )
+            item {
+                CustomTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = "Email",
+                    singleLine = true,
+                    placeholder = "Masukkan Email Baru",
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Email,
+                            contentDescription = null,
+                            tint = ColorPalette3
+                        )
+                    },
+                    modifier = modifier
+                )
+            }
 
-            CustomText(
-                text = "Ingin Mengganti Password?",
-                style = TextStyle(
-                    fontSize = 14.83.sp,
-                    fontWeight = FontWeight.Normal,
-                    color = ColorPalette4,
-                ),
-                modifier = modifier
-                    .padding(top = 25.dp, bottom = 5.dp)
-            )
+            item {
+                CustomText(
+                    text = "Ingin Mengganti Password?",
+                    style = TextStyle(
+                        fontSize = 14.83.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = ColorPalette4,
+                    ),
+                    modifier = modifier
+                        .padding(top = 25.dp, bottom = 5.dp)
+                )
+            }
 
-            CustomText(
-                text = "Ganti Password",
-                style = TextStyle(
-                    fontSize = 14.83.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = ColorPalette3
-                ),
-                modifier = modifier.clickable{
-                    navController.navigate(Screen.GantiPassword.route)
-                }
-            )
+            item {
+                CustomText(
+                    text = "Ganti Password",
+                    style = TextStyle(
+                        fontSize = 14.83.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = ColorPalette3
+                    ),
+                    modifier = modifier.clickable {
+                        navController.navigate(Screen.GantiPassword.route)
+                    }
+                )
+            }
         }
     }
 }
+
