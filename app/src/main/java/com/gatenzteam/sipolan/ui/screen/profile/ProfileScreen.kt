@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -39,77 +39,81 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
-fun ProfileScreen(
-    navController: NavController
-) {
+fun ProfileScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(ColorPalette1)
     ) {
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Box(
-                modifier = Modifier
-                    .height(180.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.photo_profile),
-                    contentDescription = "Profile",
+            item {
+                Box(
                     modifier = Modifier
-                        .size(170.dp)
-                        .clip(CircleShape)
+                        .height(180.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.photo_profile),
+                        contentDescription = "Profile",
+                        modifier = Modifier
+                            .size(170.dp)
+                            .clip(CircleShape)
+                    )
+
+                    IconButton(
+                        onClick = {},
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .size(30.dp)
+                            .clip(CircleShape)
+                            .background(colorResource(id = R.color.color_palette3))
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Lock,
+                            contentDescription = "Icon",
+                            tint = colorResource(id = R.color.color_palette1),
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                        )
+                    }
+                }
+
+                CustomText(
+                    text = "Aditya Yoga",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    color = ColorPalette4,
+                    modifier = Modifier
+                        .padding(top = 10.dp)
                 )
 
-                IconButton(
-                    onClick = {},
+                CustomText(
+                    text = "DK 2938 ACL",
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 11.2.sp,
+                    color = ColorPalette4,
                     modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .size(30.dp)
-                        .clip(CircleShape)
-                        .background(colorResource(id = R.color.color_palette3))
-                ){
-                    Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = "Icon",
-                        tint = colorResource(id = R.color.color_palette1),
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                    )
-                }
+                        .padding(top = 5.dp)
+                )
+                Spacer(modifier = Modifier.height(25.dp))
             }
 
-            CustomText(
-                text = "Aditya Yoga",
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                color = ColorPalette4,
-                modifier = Modifier
-                    .padding(top = 10.dp)
-            )
-
-            CustomText(
-                text = "DK 2938 ACL",
-                fontWeight = FontWeight.Medium,
-                fontSize = 11.2.sp,
-                color = ColorPalette4,
-                modifier = Modifier
-                    .padding(top = 5.dp)
-            )
-            Spacer(modifier = Modifier.height(25.dp))
-            SettingsSection {
-                navController.navigate(it) {
-                    restoreState = true
-                    launchSingleTop = true
+            item {
+                SettingsSection {
+                    navController.navigate(it) {
+                        restoreState = true
+                        launchSingleTop = true
+                    }
                 }
             }
         }
     }
 }
+
 
 @Composable
 fun SettingsSection(onSettingClick: (String) -> Unit) {
