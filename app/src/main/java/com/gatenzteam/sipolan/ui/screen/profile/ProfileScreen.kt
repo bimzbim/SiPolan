@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.R
-import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
@@ -54,7 +53,53 @@ fun ProfileScreen(
                 .padding(25.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            ProfileSection()
+            Box(
+                modifier = Modifier
+                    .height(180.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.photo_profile),
+                    contentDescription = "Profile",
+                    modifier = Modifier
+                        .size(170.dp)
+                        .clip(CircleShape)
+                )
+
+                IconButton(
+                    onClick = {},
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .size(30.dp)
+                        .clip(CircleShape)
+                        .background(colorResource(id = R.color.color_palette3))
+                ){
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = "Icon",
+                        tint = colorResource(id = R.color.color_palette1),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                    )
+                }
+            }
+
+            CustomText(
+                text = "Aditya Yoga",
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                color = ColorPalette4,
+                modifier = Modifier
+                    .padding(top = 10.dp)
+            )
+
+            CustomText(
+                text = "DK 2938 ACL",
+                fontWeight = FontWeight.Medium,
+                fontSize = 11.2.sp,
+                color = ColorPalette4,
+                modifier = Modifier
+                    .padding(top = 5.dp)
+            )
             Spacer(modifier = Modifier.height(25.dp))
             SettingsSection {
                 navController.navigate(it) {
@@ -64,59 +109,6 @@ fun ProfileScreen(
             }
         }
     }
-}
-
-@Composable
-fun ProfileSection() {
-    Box(
-        modifier = Modifier
-            .height(180.dp)
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.photo_profile),
-            contentDescription = "Profile",
-            modifier = Modifier
-                .size(170.dp)
-                .clip(CircleShape)
-        )
-
-        IconButton(
-            onClick = {},
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .size(30.dp)
-                .clip(CircleShape)
-                .background(colorResource(id = R.color.color_palette3))
-        ){
-            Icon(
-                imageVector = Icons.Default.Lock,
-                contentDescription = "Icon",
-                tint = colorResource(id = R.color.color_palette1),
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
-    }
-
-    Text(
-        text = "Aditya Yoga",
-        fontFamily = Poppins.poppinsFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 18.sp,
-        color = ColorPalette4,
-        modifier = Modifier
-            .padding(top = 10.dp)
-    )
-
-    Text(
-        text = "DK 2938 ACL",
-        fontFamily = Poppins.poppinsFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.2.sp,
-        color = ColorPalette4,
-        modifier = Modifier
-            .padding(top = 5.dp)
-    )
 }
 
 @Composable
@@ -133,9 +125,6 @@ fun SettingsSection(onSettingClick: (String) -> Unit) {
     SettingItem(text = stringResource(id = R.string.setting4)) {
         onSettingClick(Screen.PusatBantuan.route)
     }
-    SettingItem(text = "Artikel") {
-        onSettingClick(Screen.Artikel.route)
-    }
 }
 
 
@@ -151,9 +140,8 @@ fun SettingItem(text: String, onClick: () -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
+        CustomText(
             text = text,
-            fontFamily = Poppins.poppinsFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
             color = ColorPalette4,
