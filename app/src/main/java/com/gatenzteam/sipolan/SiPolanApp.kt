@@ -88,7 +88,7 @@ fun SiPolanApp(
                 ProfileScreen(navController)
             }
             composable(Screen.Deteksi.route) {
-                DeteksiScreen()
+                DeteksiScreen(Modifier, navController)
             }
             composable(Screen.EditAkun.route){
                 EditAkunScreen(navController)
