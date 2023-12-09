@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.PersonSearch
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Warning
@@ -185,23 +186,47 @@ fun TopAppBar(
             }
         },
         actions = {
-            IconButton(onClick = {
-                navController.navigate(Screen.Profile.route){
-                    popUpTo(navController.graph.findStartDestination().id) {
-                        saveState = true
+            when(currentRoute) {
+                Screen.Deteksi.route -> {
+                    IconButton(onClick = {
+                        navController.navigate(Screen.Profile.route){
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            restoreState = true
+                            launchSingleTop = true
+                        }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.PersonSearch,
+                            contentDescription = "Pelanggaran Saya",
+                            tint = ColorPalette3,
+                            modifier = Modifier
+                                .size(30.dp)
+                                .align(Alignment.CenterVertically)
+                        )
                     }
-                    restoreState = true
-                    launchSingleTop = true
                 }
-            }) {
-                Image(
-                    painter = painterResource(id = R.drawable.photo_profile),
-                    contentDescription = "Profile",
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .align(Alignment.CenterVertically)
-                )
+                else ->
+                    IconButton(onClick = {
+                        navController.navigate(Screen.Profile.route){
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            restoreState = true
+                            launchSingleTop = true
+                        }
+                    }) {
+                        Image(
+                            painter = painterResource(id = R.drawable.photo_profile),
+                            contentDescription = "Profile",
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
+
             }
         }
     )
