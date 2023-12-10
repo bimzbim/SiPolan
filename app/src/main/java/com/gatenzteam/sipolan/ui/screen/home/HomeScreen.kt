@@ -197,7 +197,7 @@ fun HomeScreen(
             }
             items(DataArtikel.dummy, key = { it.id }) { artikel ->
                 ArtikelListItem(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Screen.ArtikelDetail.route) },
                     judul = artikel.judul,
                     img = artikel.img,
                     modifier = modifier

@@ -11,7 +11,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +33,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -41,10 +46,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
+import com.gatenzteam.sipolan.ui.screen.deteksi.DataDeteksi
+import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiListItem
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 import kotlinx.coroutines.launch
@@ -54,62 +63,55 @@ fun ArtikelScreen(
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .fillMaxSize()
-            .background(ColorPalette1)
-    ){
-        ArtikelColumn {
-            navController.navigate(Screen.ArtikelDetail.route)
-        }
+    val scope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
+    val showButton: Boolean by remember {
+        derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
-}
 
-@Composable
-fun ArtikelColumn(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-) {
-    Box(modifier = modifier) {
-        val scope = rememberCoroutineScope()
-        val listState = rememberLazyListState()
-        val showButton: Boolean by remember {
-            derivedStateOf { listState.firstVisibleItemIndex > 0 }
-        }
+    Box(
+        modifier = modifier
+            .background(ColorPalette1)
+            .padding(horizontal = 25.dp)
+    ){
         LazyColumn(
             state = listState,
-            modifier = modifier.padding(20.dp)
-        ) {
+            contentPadding = PaddingValues(bottom = 60.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = modifier
+        ){
+            item {
+                Spacer(modifier = modifier.height(20.dp))
+            }
             items(DataArtikel.dummy, key = { it.id }) { artikel ->
                 ArtikelListItem(
-                    onClick = { onClick() },
+                    onClick = { navController.navigate(Screen.ArtikelDetail.route) },
                     judul = artikel.judul,
                     img = artikel.img,
                     modifier = modifier
                 )
             }
-        }
 
+        }
         AnimatedVisibility(
             visible = showButton,
             enter = fadeIn() + slideInVertically(),
             exit = fadeOut() + slideOutVertically(),
             modifier = Modifier
-                .padding(bottom = 30.dp)
+                .padding(vertical = 15.dp)
                 .align(Alignment.BottomCenter)
         ) {
-            ScrollToTopButton(
+            ScrollToTop(
                 onClick = {
                     scope.launch {
-                        listState.scrollToItem(index = 0)
+                        listState.animateScrollToItem(index = 0)
                     }
                 }
             )
         }
     }
 }
+
 
 @Composable
 fun ArtikelListItem(
@@ -124,6 +126,7 @@ fun ArtikelListItem(
             .fillMaxWidth()
             .height(250.dp)
             .padding(bottom = 20.dp)
+            .clickable(onClick = onClick)
     ) {
         Box{
             Image(
@@ -132,6 +135,13 @@ fun ArtikelListItem(
                 contentScale = ContentScale.Crop,
                 modifier = modifier
                     .fillMaxSize()
+            )
+
+            Box(
+                modifier = modifier
+                    .fillMaxSize()
+                    .alpha(0.7F)
+                    .background(ColorPalette2, RoundedCornerShape(15.dp))
             )
 
             Column(
@@ -154,8 +164,6 @@ fun ArtikelListItem(
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.83.sp,
                         color = ColorPalette3,
-                        modifier = modifier
-                            .clickable(onClick = onClick)
                     )
                     Icon(
                         imageVector = Icons.Filled.KeyboardArrowRight,
