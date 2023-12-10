@@ -83,22 +83,22 @@ fun SiPolanApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen(Modifier, navController)
+                HomeScreen(navController = navController)
             }
             composable(Screen.Profile.route) {
-                ProfileScreen(navController)
+                ProfileScreen(navController = navController)
             }
             composable(Screen.Deteksi.route) {
-                DeteksiScreen(Modifier, navController)
+                DeteksiScreen(navController = navController)
             }
             composable(Screen.EditAkun.route){
-                EditAkunScreen(navController, Modifier)
+                EditAkunScreen(navController = navController)
             }
             composable(Screen.RiwayatPembayaran.route){
-                RiwayatBayarScreen(navController)
+                RiwayatBayarScreen(navController = navController)
             }
             composable(Screen.PelanggaranSaya.route){
-                PelanggaranSayaScreen()
+                PelanggaranSayaScreen(navController = navController)
             }
             composable(Screen.PusatBantuan.route){
                 PusatBantuanScreen()
