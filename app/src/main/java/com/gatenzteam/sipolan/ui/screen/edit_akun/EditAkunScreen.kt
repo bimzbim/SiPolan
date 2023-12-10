@@ -34,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
@@ -44,8 +45,8 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun EditAkunScreen(
-    navController: NavController,
-    modifier: Modifier
+    navController: NavHostController,
+    modifier: Modifier = Modifier
 ) {
     var name by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }

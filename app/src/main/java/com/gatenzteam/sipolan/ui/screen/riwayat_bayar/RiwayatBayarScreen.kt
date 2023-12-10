@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,7 +28,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Payments
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -47,6 +51,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ScrollToTop
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.navigation.Screen
@@ -60,38 +66,33 @@ fun RiwayatBayarScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(ColorPalette1)
-    ){
-        RiwayatBayarColumn(onClick = {
-            navController.navigate(Screen.DetailPembayaran.route)
-        })
+    val scope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
+    val showButton: Boolean by remember {
+        derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
-}
-@Composable
-fun RiwayatBayarColumn(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-) {
-    Box(modifier = modifier) {
-        val scope = rememberCoroutineScope()
-        val listState = rememberLazyListState()
-        val showButton: Boolean by remember {
-            derivedStateOf { listState.firstVisibleItemIndex > 0 }
-        }
+
+    Box(
+        modifier = modifier
+            .background(ColorPalette1)
+            .padding(horizontal = 25.dp)
+    ) {
+
         LazyColumn(
             state = listState,
-            contentPadding = PaddingValues(bottom = 20.dp)
+            contentPadding = PaddingValues(bottom = 60.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            items(DataBayar.dummy, key = { it.id }) { bayar ->
+            item { 
+                Spacer(modifier = modifier.height(20.dp))
+            }
+            items(DataBayar.dummy, key = { it.id }) { invoice ->
                 BayarListItem(
-                    { onClick() },
-                    id = bayar.id,
-                    biaya = bayar.biaya,
-                    tanggal = bayar.tanggal,
-                    status = bayar.status,
+                    onClick = { navController.navigate(Screen.DetailPembayaran.route) },
+                    id = invoice.id,
+                    biaya = invoice.biaya,
+                    tanggal = invoice.tanggal,
+                    status = invoice.status,
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -102,13 +103,13 @@ fun RiwayatBayarColumn(
             enter = fadeIn() + slideInVertically(),
             exit = fadeOut() + slideOutVertically(),
             modifier = Modifier
-                .padding(bottom = 30.dp)
+                .padding(vertical = 15.dp)
                 .align(Alignment.BottomCenter)
         ) {
-            ScrollToTopButton(
+            ScrollToTop(
                 onClick = {
                     scope.launch {
-                        listState.scrollToItem(index = 0)
+                        listState.animateScrollToItem(index = 0)
                     }
                 }
             )
@@ -125,41 +126,43 @@ fun BayarListItem(
     status: String,
     modifier: Modifier
 ) {
-    Box(
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = ColorPalette2
+        ),
+        shape = RoundedCornerShape(15.dp),
         modifier = modifier
             .fillMaxWidth()
-            .padding(10.dp)
-            .background(color = ColorPalette2, shape = RoundedCornerShape(10.dp))
+            .padding(bottom = 20.dp)
+            .clickable {
+                onClick()
+            }
     ) {
         Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+                .padding(20.dp)
+                .fillMaxWidth(),
         ) {
             Column {
-                Text(
+                CustomText(
                     text = "ID Pembayaran: #$id",
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp,
+                    fontSize = 15.sp,
                     color = ColorPalette3
                 )
-                Text(
+                CustomText(
                     text = "Biaya: Rp$biaya",
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp
                 )
-                Text(
+                CustomText(
                     text = "Tanggal: $tanggal",
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp
                 )
-                Text(
+                CustomText(
                     text = "Status: $status",
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp
                 )
@@ -180,7 +183,7 @@ fun BayarListItem(
                         .background(colorResource(id = R.color.color_palette3))
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Person,
+                        imageVector = Icons.Default.Payments,
                         contentDescription = "Icon",
                         tint = colorResource(id = R.color.color_palette1),
                     )
