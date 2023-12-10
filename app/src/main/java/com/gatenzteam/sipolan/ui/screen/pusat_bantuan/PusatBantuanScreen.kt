@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -40,90 +42,67 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 fun PusatBantuanScreen(
     modifier: Modifier = Modifier
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-            .fillMaxSize()
-            .background(ColorPalette1)
-    ){
-        Box(
-            modifier = Modifier.padding(25.dp)
-        ){
-            Column {
-                KategoriDropdownMenu()
-                Spacer(Modifier.height(10.dp))
-                PesanTextArea()
-                Spacer(Modifier.height(20.dp))
-                FormatSection()
-            }
-        }
-    }
-}
-
-@Composable
-fun KategoriDropdownMenu(
-    modifier: Modifier = Modifier
-) {
     var isExpanded by remember { mutableStateOf(false) }
     val bantuanList by remember { mutableStateOf(listOf("Pembayaran", "Konfirmasi", "Lainnya"))}
     var pilihan by remember { mutableStateOf("") }
-
-    ExposedDropdownMenuBox(
-        expanded = isExpanded,
-        onExpandedChange = {isExpanded = it},
-    ) {
-        OutlinedTextField(
-            value = pilihan,
-            onValueChange = {},
-            readOnly = true,
-            trailingIcon = {
-                ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
-            },
-            colors =  textFieldColors(
-                unfocusedContainerColor = ColorPalette1,
-                focusedContainerColor = ColorPalette1,
-                unfocusedTrailingIconColor = ColorPalette3,
-                focusedTrailingIconColor = ColorPalette3,
-                unfocusedIndicatorColor = ColorPalette2,
-                focusedIndicatorColor = ColorPalette2,
-                unfocusedTextColor = ColorPalette3,
-                focusedTextColor = ColorPalette3
-            ),
-            textStyle = TextStyle(fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp),
-            shape = RoundedCornerShape(15.dp),
-            modifier = modifier
-                .menuAnchor()
-                .fillMaxWidth(),
-            label = { Text(text = "Kategori Bantuan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = ColorPalette4) },
-        )
-
-        ExposedDropdownMenu(
-            expanded = isExpanded,
-            onDismissRequest = { isExpanded = false },
-        ) {
-            bantuanList.forEach {
-                DropdownMenuItem(
-                    text = {Text(it, fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp)},
-                    onClick = {
-                        pilihan = it
-                        isExpanded = false
-                    }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun PesanTextArea(
-    modifier: Modifier = Modifier
-){
     var text by remember { mutableStateOf("") }
 
     Column(
-        modifier = modifier
-    ) {
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top,
+        modifier = Modifier
+            .background(ColorPalette1)
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 25.dp, vertical = 20.dp)
+    ){
+        ExposedDropdownMenuBox(
+            expanded = isExpanded,
+            onExpandedChange = {isExpanded = it},
+        ) {
+            OutlinedTextField(
+                value = pilihan,
+                onValueChange = {},
+                readOnly = true,
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
+                },
+                colors =  textFieldColors(
+                    unfocusedContainerColor = ColorPalette1,
+                    focusedContainerColor = ColorPalette1,
+                    unfocusedTrailingIconColor = ColorPalette3,
+                    focusedTrailingIconColor = ColorPalette3,
+                    unfocusedIndicatorColor = ColorPalette2,
+                    focusedIndicatorColor = ColorPalette2,
+                    unfocusedTextColor = ColorPalette3,
+                    focusedTextColor = ColorPalette3
+                ),
+                textStyle = TextStyle(fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp),
+                shape = RoundedCornerShape(15.dp),
+                modifier = modifier
+                    .menuAnchor()
+                    .fillMaxWidth(),
+                label = { Text(text = "Kategori Bantuan", fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Light, color = ColorPalette4) },
+            )
+
+            ExposedDropdownMenu(
+                expanded = isExpanded,
+                onDismissRequest = { isExpanded = false },
+            ) {
+                bantuanList.forEach {
+                    DropdownMenuItem(
+                        text = {Text(it, fontFamily = Poppins.poppinsFamily, fontWeight = FontWeight.Normal, fontSize = 14.83.sp)},
+                        onClick = {
+                            pilihan = it
+                            isExpanded = false
+                        }
+                    )
+                }
+            }
+        }
+
+        Spacer(Modifier.height(10.dp))
+
         OutlinedTextField(
             value = text,
             onValueChange = {
@@ -143,52 +122,48 @@ fun PesanTextArea(
                 .fillMaxWidth()
                 .height(200.dp)
         )
-    }
-}
+        Spacer(Modifier.height(20.dp))
 
-@Composable
-fun FormatSection(
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(color = ColorPalette2, shape = RoundedCornerShape(15.dp))
-    ) {
-        Column (
-            modifier = modifier.padding(15.dp)
-        ){
-            Text(
-                text = "Isikan kolom pesan dengan format seperti berikut: ",
-                fontFamily = Poppins.poppinsFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = 14.83.sp,
-                color = ColorPalette3
-            )
+        Box(
+            modifier = modifier
+                .fillMaxWidth()
+                .background(color = ColorPalette2, shape = RoundedCornerShape(15.dp))
+        ) {
+            Column (
+                modifier = modifier.padding(15.dp)
+            ){
+                Text(
+                    text = "Isikan kolom pesan dengan format seperti berikut: ",
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.83.sp,
+                    color = ColorPalette3
+                )
 
-            Spacer(modifier.height(10.dp))
+                Spacer(modifier.height(10.dp))
 
-            Text(
-                text = "ID Pembayaran: (Isikan sendiri)",
-                fontFamily = Poppins.poppinsFamily,
-                fontWeight = FontWeight.Normal,
-                fontSize = 11.1.sp,
-                color = ColorPalette4
-            )
-            Text(
-                text = "ID Pembayaran: (Isikan sendiri)",
-                fontFamily = Poppins.poppinsFamily,
-                fontWeight = FontWeight.Normal,
-                fontSize = 11.1.sp,
-                color = ColorPalette4
-            )
-            Text(
-                text = "ID Pembayaran: (Isikan sendiri)",
-                fontFamily = Poppins.poppinsFamily,
-                fontWeight = FontWeight.Normal,
-                fontSize = 11.1.sp,
-                color = ColorPalette4
-            )
+                Text(
+                    text = "ID Pembayaran: (Isikan sendiri)",
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 11.1.sp,
+                    color = ColorPalette4
+                )
+                Text(
+                    text = "ID Pembayaran: (Isikan sendiri)",
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 11.1.sp,
+                    color = ColorPalette4
+                )
+                Text(
+                    text = "ID Pembayaran: (Isikan sendiri)",
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 11.1.sp,
+                    color = ColorPalette4
+                )
+            }
         }
     }
 }
