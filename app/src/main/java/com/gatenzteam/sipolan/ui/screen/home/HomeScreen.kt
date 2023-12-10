@@ -72,7 +72,6 @@ fun HomeScreen(
             state = listState,
             contentPadding = PaddingValues(bottom = 60.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = modifier
         ){
             item {
                 Column(
