@@ -77,6 +77,8 @@ fun EditPassSection(
     var newpassword by rememberSaveable { mutableStateOf("") }
     var newpasswordconfirm by rememberSaveable { mutableStateOf("") }
     var visibilityPassword by rememberSaveable { mutableStateOf(false) }
+    var visibilityNewPassword by rememberSaveable { mutableStateOf(false) }
+    var visibilityConfirmPassword by rememberSaveable { mutableStateOf(false) }
     var passwordMismatchError by remember { mutableStateOf(false) }
 
     CustomTextField(
@@ -123,14 +125,14 @@ fun EditPassSection(
                 tint = colorResource(R.color.color_palette3)
             )
         },
-        visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
+        visualTransformation = if (visibilityNewPassword) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
-            val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-            val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
-            val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
+            val icon = if (visibilityNewPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+            val contentDescription = if (visibilityNewPassword) "Sembunyikan Password" else "Tampilkan Password"
+            val tintIcon = if (visibilityNewPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
 
-            IconButton(onClick = {visibilityPassword = !visibilityPassword}){
+            IconButton(onClick = {visibilityNewPassword = !visibilityNewPassword}){
                 Icon(
                     imageVector  = icon,
                     contentDescription = contentDescription,
@@ -154,14 +156,14 @@ fun EditPassSection(
                 tint = colorResource(R.color.color_palette3)
             )
         },
-        visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
+        visualTransformation = if (visibilityConfirmPassword) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
-            val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-            val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
-            val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
+            val icon = if (visibilityConfirmPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+            val contentDescription = if (visibilityConfirmPassword) "Sembunyikan Password" else "Tampilkan Password"
+            val tintIcon = if (visibilityConfirmPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
 
-            IconButton(onClick = {visibilityPassword = !visibilityPassword}){
+            IconButton(onClick = {visibilityConfirmPassword = !visibilityConfirmPassword}){
                 Icon(
                     imageVector  = icon,
                     contentDescription = contentDescription,
