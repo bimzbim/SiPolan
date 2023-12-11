@@ -39,52 +39,42 @@ fun ArtikelDetailScreen(
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 25.dp, vertical = 20.dp)
     ){
-        Box(
+        CustomText(
+            text = detailArtikel.judul,
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp,
+            textAlign = TextAlign.Center,
+            color = ColorPalette3,
+            maxLines = 2,
             modifier = modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+        )
+        CustomText(
+            text = detailArtikel.tanggal,
+            fontWeight = FontWeight.Normal,
+            fontSize = 11.1.sp,
+            textAlign = TextAlign.Center,
+            color = ColorPalette4,
+            modifier = modifier
+                .padding(bottom = 10.dp)
+                .fillMaxWidth()
+        )
+        Card(
+            shape = RoundedCornerShape(15.dp),
+            modifier = modifier
+                .padding(bottom = 15.dp)
         ){
-            Column(
-                modifier = modifier
-                    .fillMaxSize()
-            ){
-                CustomText(
-                    text = detailArtikel.judul,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp,
-                    textAlign = TextAlign.Center,
-                    color = ColorPalette3,
-                    maxLines = 2,
-                    modifier = modifier
-                        .fillMaxWidth()
-                )
-                CustomText(
-                    text = detailArtikel.tanggal,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 11.1.sp,
-                    textAlign = TextAlign.Center,
-                    color = ColorPalette4,
-                    modifier = modifier
-                        .padding(bottom = 10.dp)
-                        .fillMaxWidth()
-                )
-                Card(
-                    shape = RoundedCornerShape(15.dp),
-                    modifier = modifier
-                        .padding(bottom = 15.dp)
-                ){
-                    Image(
-                        painter = painterResource(id = detailArtikel.img),
-                        contentDescription = null,
-                    )
-                }
-                CustomText(
-                    text = detailArtikel.isi,
-                    textAlign = TextAlign.Justify,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 12.5.sp,
-                    color = ColorPalette4,
-                )
-            }
+            Image(
+                painter = painterResource(id = detailArtikel.img),
+                contentDescription = null,
+            )
         }
+        CustomText(
+            text = detailArtikel.isi,
+            textAlign = TextAlign.Justify,
+            fontWeight = FontWeight.Normal,
+            fontSize = 12.5.sp,
+            color = ColorPalette4,
+        )
     }
 }

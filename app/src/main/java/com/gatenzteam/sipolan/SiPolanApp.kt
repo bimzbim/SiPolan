@@ -9,7 +9,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.ManageAccounts
 import androidx.compose.material.icons.filled.PersonSearch
+import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Warning
@@ -205,6 +209,70 @@ fun TopAppBar(
                             tint = ColorPalette3,
                             modifier = Modifier
                                 .size(30.dp)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
+                }
+                Screen.ArtikelDetail.route -> {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.Filled.Share,
+                            contentDescription = "Pelanggaran Saya",
+                            tint = ColorPalette3,
+                            modifier = Modifier
+                                .size(25.dp)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
+                }
+                Screen.Profile.route -> {
+                    IconButton(onClick = {
+                        navController.navigate(Screen.EditAkun.route){
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            restoreState = true
+                            launchSingleTop = true
+                        }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.ManageAccounts,
+                            contentDescription = "Pelanggaran Saya",
+                            tint = ColorPalette3,
+                            modifier = Modifier
+                                .size(30.dp)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
+                }
+                Screen.EditAkun.route -> {
+                    IconButton(onClick = {
+                        navController.navigate(Screen.Profile.route){
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            restoreState = true
+                            launchSingleTop = true
+                        }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Save,
+                            contentDescription = "Pelanggaran Saya",
+                            tint = ColorPalette3,
+                            modifier = Modifier
+                                .size(25.dp)
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
+                }
+                Screen.PusatBantuan.route -> {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.Filled.Send,
+                            contentDescription = "Pelanggaran Saya",
+                            tint = ColorPalette3,
+                            modifier = Modifier
+                                .size(25.dp)
                                 .align(Alignment.CenterVertically)
                         )
                     }
