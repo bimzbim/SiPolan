@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun CustomTextField(
@@ -48,7 +49,7 @@ fun CustomTextField(
     color: TextFieldColors = OutlinedTextFieldDefaults.colors(
         cursorColor = colorResource(id = R.color.color_palette3),
         focusedLabelColor = colorResource(id = R.color.color_palette4),
-        unfocusedLabelColor = colorResource(id = R.color.color_palette3),
+        unfocusedLabelColor = colorResource(id = R.color.color_palette4),
         focusedTextColor = colorResource(id = R.color.color_palette4),
         focusedBorderColor = colorResource(id = R.color.color_palette3),
         unfocusedBorderColor = colorResource(id = R.color.color_palette2)
@@ -59,12 +60,8 @@ fun CustomTextField(
         value = value,
         onValueChange = onValueChange,
         label = {
-            Text(
-                text = label,
-                style = TextStyle(
-                    fontFamily = Poppins.poppinsFamily,
-                    color = labelColor,
-                ),
+            CustomText(
+                text = placeholder,
             )
         },
         singleLine = singleLine,
@@ -73,15 +70,12 @@ fun CustomTextField(
         textStyle = TextStyle(
             fontFamily = Poppins.poppinsFamily,
             fontSize = 14.83.sp,
-            color = labelColor,
+            color = ColorPalette4,
         ),
         placeholder = {
-            Text(
+            CustomText(
                 text = placeholder,
-                style = TextStyle(
-                    fontFamily = Poppins.poppinsFamily,
-                    color = placeholderColor,
-                ),
+                color = placeholderColor,
             )
         },
         leadingIcon = leadingIcon,

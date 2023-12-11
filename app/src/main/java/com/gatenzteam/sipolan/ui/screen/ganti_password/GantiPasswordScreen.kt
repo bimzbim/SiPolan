@@ -86,7 +86,7 @@ fun EditPassSection(
         onValueChange = { password = it },
         label = "Password Saat Ini",
         singleLine = true,
-        placeholder = "Masukan Password Saat Ini",
+        placeholder = "Password Saat Ini",
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Lock,
@@ -117,7 +117,7 @@ fun EditPassSection(
         onValueChange = { newpassword = it },
         label = "Password Baru",
         singleLine = true,
-        placeholder = "Masukan Password Baru",
+        placeholder = "Password Baru",
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Lock,
@@ -148,7 +148,7 @@ fun EditPassSection(
         onValueChange = { newpasswordconfirm = it },
         label = "Verifikasi Password Baru",
         singleLine = true,
-        placeholder = "Masukan Ulang Password Baru",
+        placeholder = "Ulang Password Baru",
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Lock,
