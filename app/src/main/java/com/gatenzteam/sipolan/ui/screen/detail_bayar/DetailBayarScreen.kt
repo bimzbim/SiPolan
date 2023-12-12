@@ -52,7 +52,7 @@ fun DetailBayarScreen(
     ){
         Box(
             modifier = modifier
-                .height(145.dp)
+                .height(142.dp)
         ) {
             Column(
                 modifier = modifier
