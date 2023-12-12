@@ -109,7 +109,7 @@ fun EditPassSection(
                 )
             }
         },
-        modifier = modifier
+        modifier = modifier.padding(bottom = 15.dp)
     )
 
     CustomTextField(
@@ -140,7 +140,7 @@ fun EditPassSection(
                 )
             }
         },
-        modifier = modifier
+        modifier = modifier.padding(bottom = 15.dp)
     )
 
     CustomTextField(
@@ -171,10 +171,8 @@ fun EditPassSection(
                 )
             }
         },
-        modifier = modifier
+        modifier = modifier.padding(bottom = 25.dp)
     )
-
-    Spacer(modifier = Modifier.height(20.dp))
 
     Button(
         onClick = {

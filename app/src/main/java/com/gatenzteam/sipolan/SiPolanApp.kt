@@ -195,13 +195,7 @@ fun TopAppBar(
             when(currentRoute) {
                 Screen.Deteksi.route -> {
                     IconButton(onClick = {
-                        navController.navigate(Screen.PelanggaranSaya.route){
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            restoreState = true
-                            launchSingleTop = true
-                        }
+                        navController.navigate(Screen.PelanggaranSaya.route)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.PersonSearch,
@@ -227,13 +221,7 @@ fun TopAppBar(
                 }
                 Screen.Profile.route -> {
                     IconButton(onClick = {
-                        navController.navigate(Screen.EditAkun.route){
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            restoreState = true
-                            launchSingleTop = true
-                        }
+                        navController.navigate(Screen.EditAkun.route)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.ManageAccounts,
@@ -247,13 +235,7 @@ fun TopAppBar(
                 }
                 Screen.EditAkun.route -> {
                     IconButton(onClick = {
-                        navController.navigate(Screen.Profile.route){
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            restoreState = true
-                            launchSingleTop = true
-                        }
+                        navController.navigate(Screen.Profile.route)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Save,

@@ -151,7 +151,8 @@ class VerificationActivity : ComponentActivity() {
                             focusedTextColor = colorResource(id = R.color.color_palette1),
                             focusedBorderColor = colorResource(id = R.color.color_palette2),
                             unfocusedBorderColor = colorResource(id = R.color.color_palette2)
-                        )
+                        ),
+                        modifier = modifier.padding(bottom = 15.dp)
                     )
 
                 }
