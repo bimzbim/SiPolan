@@ -107,7 +107,7 @@ class ForgotActivity : ComponentActivity(){
                     )
                 },
                 modifier = modifier
-                    .padding(bottom = 15.dp)
+                    .padding(bottom = 25.dp)
             )
             CustomIconButton(
                 onClick = {

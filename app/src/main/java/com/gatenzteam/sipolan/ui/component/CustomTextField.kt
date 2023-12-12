@@ -84,8 +84,7 @@ fun CustomTextField(
         keyboardOptions = keyboardOptions,
         colors = color,
         shape = RoundedCornerShape(15.dp),
-        modifier = Modifier
-            .padding(bottom = 15.dp)
+        modifier = modifier
             .fillMaxWidth()
     )
 }

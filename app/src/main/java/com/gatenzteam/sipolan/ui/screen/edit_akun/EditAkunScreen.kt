@@ -102,7 +102,7 @@ fun EditAkunScreen(
                     tint = ColorPalette3
                 )
             },
-            modifier = modifier
+            modifier = modifier.padding(bottom = 15.dp)
         )
         CustomTextField(
             value = email,
@@ -116,8 +116,7 @@ fun EditAkunScreen(
                     contentDescription = null,
                     tint = ColorPalette3
                 )
-            },
-            modifier = modifier
+            }
         )
         CustomText(
             text = "Ingin Mengganti Password?",

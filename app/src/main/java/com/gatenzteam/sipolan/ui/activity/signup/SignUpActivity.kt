@@ -131,7 +131,7 @@ class SignUpActivity : ComponentActivity() {
                         tint = colorResource(R.color.color_palette3)
                     )
                 },
-                modifier = modifier
+                modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
@@ -147,7 +147,7 @@ class SignUpActivity : ComponentActivity() {
                         tint = colorResource(R.color.color_palette3)
                     )
                 },
-                modifier = modifier
+                modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
@@ -163,7 +163,7 @@ class SignUpActivity : ComponentActivity() {
                         tint = colorResource(R.color.color_palette3)
                     )
                 },
-                modifier = modifier
+                modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
@@ -195,7 +195,7 @@ class SignUpActivity : ComponentActivity() {
                         )
                     }
                 },
-                modifier = modifier
+                modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomCheckbox(
