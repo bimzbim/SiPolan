@@ -105,7 +105,7 @@ fun SiPolanApp(
                 RiwayatBayarScreen(navController = navController)
             }
             composable(Screen.PelanggaranSaya.route){
-                PelanggaranSayaScreen()
+                PelanggaranSayaScreen(navController)
             }
             composable(Screen.PusatBantuan.route){
                 PusatBantuanScreen()
