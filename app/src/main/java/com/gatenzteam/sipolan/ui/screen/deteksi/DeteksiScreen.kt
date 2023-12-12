@@ -47,6 +47,7 @@ import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomFilterButton
 import com.gatenzteam.sipolan.ui.component.CustomText
+import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
@@ -55,8 +56,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun DeteksiScreen(
-    modifier: Modifier = Modifier,
-    navController : NavHostController
+    navController : NavHostController,
+    modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
@@ -118,7 +119,9 @@ fun DeteksiScreen(
             }
             items(DataDeteksi.dummy, key = { it.id }) { deteksi ->
                 DeteksiListItem(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        navController.navigate(Screen.DetailPelanggaran.route)
+                    },
                     img = deteksi.img,
                     jenis = deteksi.jenis,
                     nopol = deteksi.nopol,
