@@ -44,6 +44,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.ui.component.CustomText
+import com.gatenzteam.sipolan.ui.detail_pelanggaran.DetailPelanggaranScreen
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelScreen
