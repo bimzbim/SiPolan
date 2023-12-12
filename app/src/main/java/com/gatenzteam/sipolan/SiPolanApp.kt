@@ -53,6 +53,7 @@ import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
 import com.gatenzteam.sipolan.ui.screen.ganti_password.GantiPasswordScreen
 import com.gatenzteam.sipolan.ui.screen.home.HomeScreen
+import com.gatenzteam.sipolan.ui.screen.konfirmasi_pembayaran.KonfirmasiPembayaranScreen
 import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
 import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
@@ -122,6 +123,9 @@ fun SiPolanApp(
             }
             composable(Screen.TataCaraBayar.route){
                 TataCaraBayarScreen(navController)
+            }
+            composable(Screen.KonfirmasiPembayaran.route){
+                KonfirmasiPembayaranScreen()
             }
         }
     }

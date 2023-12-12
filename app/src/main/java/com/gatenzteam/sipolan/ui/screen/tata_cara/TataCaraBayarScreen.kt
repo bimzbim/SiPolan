@@ -91,7 +91,7 @@ fun TataCaraBayarScreen(
                 ColorPalette3
             ),
             onClick = {
-                navController.navigate(Screen.Home.route)
+                navController.navigate(Screen.KonfirmasiPembayaran.route)
             },
             modifier = Modifier
                 .fillMaxWidth()
