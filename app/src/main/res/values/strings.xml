@@ -21,4 +21,10 @@
     <string name="setting3">Pelanggaran Saya</string>
     <string name="setting4">Pusat Bantuan</string>
 
+    <!-- Detail Riwayat Pembayaran Screen -->
+    <string name="metode1">ShoopePay</string>
+    <string name="metode2">Dana</string>
+    <string name="metode3">Gopay</string>
+    <string name="metode4">OVO</string>
+
 </resources>

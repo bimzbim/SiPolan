@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -59,6 +58,7 @@ import com.gatenzteam.sipolan.ui.screen.pelanggaran_saya.PelanggaranSayaScreen
 import com.gatenzteam.sipolan.ui.screen.profile.ProfileScreen
 import com.gatenzteam.sipolan.ui.screen.pusat_bantuan.PusatBantuanScreen
 import com.gatenzteam.sipolan.ui.screen.riwayat_bayar.RiwayatBayarScreen
+import com.gatenzteam.sipolan.ui.screen.tata_cara.TataCaraBayarScreen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
@@ -123,6 +123,9 @@ fun SiPolanApp(
             }
             composable(Screen.ArtikelDetail.route){
                 ArtikelDetailScreen()
+            }
+            composable(Screen.TataCaraBayar.route){
+                TataCaraBayarScreen()
             }
         }
     }
