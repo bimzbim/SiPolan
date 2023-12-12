@@ -24,14 +24,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.ScrollToTop
+import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiListItem
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import kotlinx.coroutines.launch
 
 @Composable
 fun PelanggaranSayaScreen(
-    modifier: Modifier = Modifier,
+    navController : NavHostController,
+    modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
@@ -55,7 +58,9 @@ fun PelanggaranSayaScreen(
             }
             items(DataPelanggaran.dummy, key = { it.id }) { pelanggaran ->
                 DeteksiListItem(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        navController.navigate(Screen.DetailPelanggaran.route)
+                    },
                     img = pelanggaran.img,
                     jenis = pelanggaran.jenis,
                     nopol = pelanggaran.nopol,
