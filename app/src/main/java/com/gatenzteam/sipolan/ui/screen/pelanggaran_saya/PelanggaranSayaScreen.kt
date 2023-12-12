@@ -19,17 +19,12 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.ScrollToTop
-import com.gatenzteam.sipolan.ui.screen.deteksi.DataDeteksi
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiListItem
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import kotlinx.coroutines.launch
@@ -37,7 +32,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun PelanggaranSayaScreen(
     modifier: Modifier = Modifier,
-    navController : NavHostController
 ) {
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
