@@ -79,7 +79,9 @@ fun TataCaraBayarScreen(
             //textAlign = TextAlign.Justify,
             fontSize = 11.sp,
             color = ColorPalette4,
-            modifier = modifier.padding(10.dp)
+            modifier = modifier
+                .padding(10.dp)
+                .align(Alignment.Start)
         )
 
         Spacer(modifier = Modifier.weight(1f))
