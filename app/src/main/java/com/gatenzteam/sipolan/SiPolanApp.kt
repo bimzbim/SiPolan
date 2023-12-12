@@ -124,9 +124,9 @@ fun SiPolanApp(
             composable(Screen.TataCaraBayar.route){
                 TataCaraBayarScreen(navController)
             }
-
-
-
+            composable(Screen.DetailPelanggaran.route){
+                DetailPelanggaranScreen()
+            }
             composable(Screen.KonfirmasiPembayaran.route){
                 KonfirmasiPembayaranScreen()
             }
