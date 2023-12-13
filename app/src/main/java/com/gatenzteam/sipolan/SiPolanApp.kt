@@ -44,7 +44,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.ui.component.CustomText
-import com.gatenzteam.sipolan.ui.detail_pelanggaran.DetailPelanggaranScreen
+import com.gatenzteam.sipolan.ui.screen.detail_pelanggaran.DetailPelanggaranScreen
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelScreen
@@ -105,28 +105,28 @@ fun SiPolanApp(
                 RiwayatBayarScreen(navController = navController)
             }
             composable(Screen.PelanggaranSaya.route){
-                PelanggaranSayaScreen(navController)
+                PelanggaranSayaScreen(navController = navController)
             }
             composable(Screen.PusatBantuan.route){
                 PusatBantuanScreen()
             }
             composable(Screen.GantiPassword.route){
-                GantiPasswordScreen(navController)
+                GantiPasswordScreen(navController = navController)
             }
             composable(Screen.DetailPembayaran.route){
-                DetailBayarScreen(navController)
+                DetailBayarScreen(navController = navController)
             }
             composable(Screen.Artikel.route){
-                ArtikelScreen(navController)
+                ArtikelScreen(navController = navController)
             }
             composable(Screen.ArtikelDetail.route){
                 ArtikelDetailScreen()
             }
             composable(Screen.TataCaraBayar.route){
-                TataCaraBayarScreen(navController)
+                TataCaraBayarScreen(navController = navController)
             }
             composable(Screen.DetailPelanggaran.route){
-                DetailPelanggaranScreen()
+                DetailPelanggaranScreen(navController = navController)
             }
             composable(Screen.KonfirmasiPembayaran.route){
                 KonfirmasiPembayaranScreen()
