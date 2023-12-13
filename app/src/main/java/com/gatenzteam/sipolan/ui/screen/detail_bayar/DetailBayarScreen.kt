@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.ui.component.CustomDetailText
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
@@ -53,7 +54,7 @@ fun DetailBayarScreen(
     ){
         Box(
             modifier = modifier
-                .height(146.dp)
+                .height(156.dp)
         ) {
             Column(
                 modifier = modifier
@@ -65,66 +66,11 @@ fun DetailBayarScreen(
                     .padding(12.5.dp)
             ){
                 Row {
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(25.dp))
                 }
-                Row(
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    CustomText(
-                        text = "Kode Pembayaran",
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 11.sp,
-                        color = ColorPalette4
-                    )
-                    CustomText(
-                        text = "#29112023",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 11.sp,
-                        color = ColorPalette4
-                    )
-
-                }
-                Row(
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ){
-                    CustomText(
-                        text = "Biaya",
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 11.sp,
-                        color = ColorPalette4
-                    )
-                    CustomText(
-                        text = "Rp 500.000",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 11.sp,
-                        color = ColorPalette4
-                    )
-                }
-                Row(
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ){
-                    CustomText(
-                        text = "Tanggal Pembayaran",
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 11.sp,
-                        color = ColorPalette4
-                    )
-                    CustomText(
-                        text = "29 November 2023",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 11.sp,
-                        color = ColorPalette4
-                    )
-                }
+                CustomDetailText("Jenis Pelanggaran", "Tidak Menggunakan Helm")
+                CustomDetailText("Plat Kendaraan", "DK9238ASC")
+                CustomDetailText("Tanggal", "28-11-2023")
             }
             Box(
                 modifier = modifier
