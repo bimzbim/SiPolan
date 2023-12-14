@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,18 +23,20 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -48,10 +49,8 @@ import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomText
-import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
+import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.navigation.Screen
-import com.gatenzteam.sipolan.ui.screen.deteksi.DataDeteksi
-import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiListItem
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
@@ -68,6 +67,7 @@ fun ArtikelScreen(
     val showButton: Boolean by remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
+    var searchQuery by rememberSaveable { mutableStateOf("") }
 
     Box(
         modifier = modifier
@@ -81,7 +81,18 @@ fun ArtikelScreen(
             modifier = modifier
         ){
             item {
-                Spacer(modifier = modifier.height(20.dp))
+                CustomTextField(
+                    value = searchQuery,
+                    onValueChange = { searchQuery = it },
+                    label = "Cari Artikel",
+                    leadingIcon = {
+                        Icon(Icons.Filled.Search, contentDescription = null)
+                    },
+                    singleLine = true,
+                    placeholder = "Cari Artikel",
+                    modifier = modifier
+                        .padding(vertical = 20.dp)
+                )
             }
             items(DataArtikel.dummy, key = { it.id }) { artikel ->
                 ArtikelListItem(
