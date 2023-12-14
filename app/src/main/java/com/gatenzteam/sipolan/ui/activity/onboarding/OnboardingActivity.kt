@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -88,22 +88,20 @@ class OnboardingActivity : ComponentActivity() {
                         .height(50.dp)
                         .align(Alignment.End)
                 ) {
-                    Row(
-
-                    ){
+                    Row{
                         Text(
                             text = stringResource(id = R.string.onboarding_button),
                             fontSize = 15.sp,
                             fontFamily = Poppins.poppinsFamily,
                             color = ColorPalette1,
-                            modifier = Modifier
+                            modifier = Modifier.padding(horizontal = 5.dp)
 
                         )
                         Icon(
-                            imageVector = Icons.Default.CheckCircle,
+                            imageVector = Icons.Default.ArrowForward,
                             contentDescription = null,
                             tint = ColorPalette1,
-                            modifier = Modifier
+                            modifier = Modifier.padding(horizontal = 5.dp)
                         )
                     }
                 }
@@ -118,6 +116,5 @@ class OnboardingActivity : ComponentActivity() {
             OnboardingScreen()
         }
     }
-
 }
 
