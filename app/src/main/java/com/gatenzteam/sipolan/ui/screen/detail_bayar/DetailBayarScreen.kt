@@ -154,7 +154,7 @@ fun MethodItem(
             CustomText(
                 text = text,
                 fontWeight = FontWeight.Bold,
-                fontSize = 11.1.sp,
+                fontSize = 13.sp,
                 color = ColorPalette2,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
