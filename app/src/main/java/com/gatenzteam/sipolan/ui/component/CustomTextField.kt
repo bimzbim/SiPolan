@@ -20,6 +20,7 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun CustomTextField(
+    modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
     enabled: Boolean = true,
@@ -39,7 +40,6 @@ fun CustomTextField(
         focusedBorderColor = ColorPalette3,
         unfocusedBorderColor = ColorPalette2
     ),
-    modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         value = value,

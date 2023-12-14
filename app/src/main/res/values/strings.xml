@@ -41,6 +41,14 @@
     <string name="signup_button">Sign Up</string>
     <string name="signup_divider">\u0020Atau Lanjut Dengan\u0020</string>
 
+    <!-- Verification Screen -->
+    <string name="veri_title">Verifikasi Akun</string>
+    <string name="veri_subtitle">Lakukan verifikasi akun anda</string>
+    <string name="veri_text1">Kami mengirimkan kode OTP ke email anda</string>
+    <string name="veri_text2">Belum menerima email OTP?</string>
+    <string name="veri_input_otp">Masukkan kode OTP</string>
+    <string name="veri_button">Kirim Ulang</string>
+
     <!-- Profile Screen -->
     <string name="setting1">Edit Akun</string>
     <string name="setting2">Riwayat Pembayaran</string>

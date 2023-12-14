@@ -23,7 +23,6 @@ import androidx.compose.material.icons.filled.MailLock
 import androidx.compose.material.icons.filled.MarkEmailUnread
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -40,8 +40,8 @@ import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
-import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
@@ -75,11 +75,10 @@ class VerificationActivity : ComponentActivity() {
                 modifier = modifier
                     .fillMaxWidth()
             ){
-                Text(
-                    text = "Verify your Account",
+                CustomText(
+                    text = stringResource(id = R.string.veri_title),
                     style = TextStyle(
                         fontSize = 24.sp,
-                        fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight(700),
                         color = ColorPalette3,
                         textAlign = TextAlign.Start,
@@ -87,11 +86,10 @@ class VerificationActivity : ComponentActivity() {
                     modifier = modifier
                         .padding(bottom = 5.dp)
                 )
-                Text(
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod et dolore magna aliqua.",
+                CustomText(
+                    text = stringResource(id = R.string.veri_subtitle),
                     style = TextStyle(
                         fontSize = 14.83.sp,
-                        fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight(400),
                         color = ColorPalette4,
                         textAlign = TextAlign.Start,
@@ -117,11 +115,10 @@ class VerificationActivity : ComponentActivity() {
                         )
                         .padding(horizontal = 25.dp)
                 ){
-                    Text(
-                        text = "Kami mengirimkan kode OTP ke Email anda",
+                    CustomText(
+                        text = stringResource(id = R.string.veri_text1),
                         style = TextStyle(
                             fontSize = 14.83.sp,
-                            fontFamily = Poppins.poppinsFamily,
                             fontWeight = FontWeight(600),
                             color = ColorPalette1,
                             textAlign = TextAlign.Center,
@@ -133,7 +130,7 @@ class VerificationActivity : ComponentActivity() {
                     CustomTextField(
                         value = otpCode,
                         onValueChange = { otpCode = it },
-                        placeholder = "Masukan Kode OTP",
+                        placeholder = stringResource(id = R.string.veri_input_otp),
                         placeholderColor = ColorPalette1,
                         leadingIcon = {
                             Icon(
@@ -164,11 +161,10 @@ class VerificationActivity : ComponentActivity() {
                 )
             }
 
-            Text(
-                text = "Belum menerima Email OTP?",
+            CustomText(
+                text = stringResource(id = R.string.veri_text2),
                 style = TextStyle(
                     fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(400),
                     color = ColorPalette4,
                     textAlign = TextAlign.Center,
@@ -183,7 +179,7 @@ class VerificationActivity : ComponentActivity() {
                     finish()
                 },
                 icon = Icons.Filled.MarkEmailUnread,
-                text = "Kirim Ulang",
+                text = stringResource(id = R.string.veri_button),
                 modifier = modifier
                     .width(190.dp)
             )
