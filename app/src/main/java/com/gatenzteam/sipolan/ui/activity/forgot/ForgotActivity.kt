@@ -97,8 +97,6 @@ class ForgotActivity : ComponentActivity(){
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = "Email",
-                singleLine = true,
                 placeholder = "Masukan Email",
                 leadingIcon = {
                     Icon(
@@ -107,6 +105,7 @@ class ForgotActivity : ComponentActivity(){
                         tint = ColorPalette3
                     )
                 },
+                singleLine = true,
                 modifier = modifier
                     .padding(bottom = 25.dp)
             )

@@ -3,12 +3,10 @@ package com.gatenzteam.sipolan.ui.screen.ganti_password
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -84,8 +82,6 @@ fun EditPassSection(
     CustomTextField(
         value = password,
         onValueChange = { password = it },
-        label = "Password Saat Ini",
-        singleLine = true,
         placeholder = "Password Saat Ini",
         leadingIcon = {
             Icon(
@@ -94,8 +90,6 @@ fun EditPassSection(
                 tint = colorResource(R.color.color_palette3)
             )
         },
-        visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
             val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
             val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
@@ -109,14 +103,15 @@ fun EditPassSection(
                 )
             }
         },
+        visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        singleLine = true,
         modifier = modifier.padding(bottom = 15.dp)
     )
 
     CustomTextField(
         value = newpassword,
         onValueChange = { newpassword = it },
-        label = "Password Baru",
-        singleLine = true,
         placeholder = "Password Baru",
         leadingIcon = {
             Icon(
@@ -125,8 +120,6 @@ fun EditPassSection(
                 tint = colorResource(R.color.color_palette3)
             )
         },
-        visualTransformation = if (visibilityNewPassword) VisualTransformation.None else PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
             val icon = if (visibilityNewPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
             val contentDescription = if (visibilityNewPassword) "Sembunyikan Password" else "Tampilkan Password"
@@ -140,14 +133,15 @@ fun EditPassSection(
                 )
             }
         },
+        visualTransformation = if (visibilityNewPassword) VisualTransformation.None else PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        singleLine = true,
         modifier = modifier.padding(bottom = 15.dp)
     )
 
     CustomTextField(
         value = newpasswordconfirm,
         onValueChange = { newpasswordconfirm = it },
-        label = "Verifikasi Password Baru",
-        singleLine = true,
         placeholder = "Ulang Password Baru",
         leadingIcon = {
             Icon(
@@ -156,8 +150,6 @@ fun EditPassSection(
                 tint = colorResource(R.color.color_palette3)
             )
         },
-        visualTransformation = if (visibilityConfirmPassword) VisualTransformation.None else PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
             val icon = if (visibilityConfirmPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
             val contentDescription = if (visibilityConfirmPassword) "Sembunyikan Password" else "Tampilkan Password"
@@ -171,6 +163,9 @@ fun EditPassSection(
                 )
             }
         },
+        visualTransformation = if (visibilityConfirmPassword) VisualTransformation.None else PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        singleLine = true,
         modifier = modifier.padding(bottom = 25.dp)
     )
 

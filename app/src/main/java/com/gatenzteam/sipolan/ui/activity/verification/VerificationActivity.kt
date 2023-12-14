@@ -133,9 +133,6 @@ class VerificationActivity : ComponentActivity() {
                     CustomTextField(
                         value = otpCode,
                         onValueChange = { otpCode = it },
-                        label = "Kode OTP",
-                        labelColor = ColorPalette1,
-                        singleLine = true,
                         placeholder = "Masukan Kode OTP",
                         placeholderColor = ColorPalette1,
                         leadingIcon = {
@@ -145,6 +142,7 @@ class VerificationActivity : ComponentActivity() {
                                 tint = ColorPalette1
                             )
                         },
+                        singleLine = true,
                         color = OutlinedTextFieldDefaults.colors(
                             cursorColor = ColorPalette1,
                             focusedLabelColor = ColorPalette1,
