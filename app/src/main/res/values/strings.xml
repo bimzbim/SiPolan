@@ -10,9 +10,9 @@
     <string name="splashscreen_contentdesc">Si Polan Aplikasi Pendeteksi Pelanggaran Lalu Lintas</string>
 
     <!-- Onboarding Screen -->
-    <string name="onboarding_title">Welcome to Si Polan</string>
-    <string name="onboarding_subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-    <string name="onboarding_button">Get Started</string>
+    <string name="onboarding_title">Selamat Datang di SiPolan</string>
+    <string name="onboarding_subtitle">Mari kita menjaga keamanan berlalu lintas bersama</string>
+    <string name="onboarding_button">Mulai</string>
     <string name="title_activity_onboarding">OnboardingActivity</string>
 
     <!-- Profile Screen -->
