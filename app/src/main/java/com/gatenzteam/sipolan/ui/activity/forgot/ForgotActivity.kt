@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.LockReset
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +23,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -31,9 +31,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.MainActivity
+import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
-import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
@@ -71,22 +72,20 @@ class ForgotActivity : ComponentActivity(){
                 modifier = modifier
                     .size(150.dp)
             )
-            Text(
-                text = "Lupa Password",
+            CustomText(
+                text = stringResource(id = R.string.forgot_title),
                 style = TextStyle(
                     fontSize = 24.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(700),
                     color = ColorPalette3,
                 ),
                 modifier = modifier
                     .padding(top = 30.dp, bottom = 15.dp)
             )
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et\ndolore magna aliqua.",
+            CustomText(
+                text = stringResource(id = R.string.forgot_subtitle),
                 style = TextStyle(
                     fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(400),
                     color = ColorPalette4,
                     textAlign = TextAlign.Center,
@@ -97,7 +96,7 @@ class ForgotActivity : ComponentActivity(){
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                placeholder = "Masukan Email",
+                placeholder = stringResource(id = R.string.forgot_input),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Email,
@@ -115,7 +114,7 @@ class ForgotActivity : ComponentActivity(){
                     finish()
                 },
                 icon = Icons.Filled.LockReset,
-                text = "Forgot Password"
+                text = stringResource(id = R.string.forgot_button),
             )
         }
     }

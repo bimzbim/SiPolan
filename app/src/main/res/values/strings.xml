@@ -24,7 +24,7 @@
     <string name="signin_subtitle">Masukkan data anda di bawah ini</string>
     <string name="signin_input_email">Masukkan Email</string>
     <string name="signin_input_pass">Masukkan Password</string>
-    <string name="signin_forgot">Lupa Passwword?</string>
+    <string name="signin_forgot">Lupa Password?</string>
     <string name="signin_button">Sign In</string>
     <string name="signin_divider">\u0020Atau Lanjut Dengan\u0020</string>
     <string name="signin_no_account">Belum memiliki akun?</string>
@@ -48,6 +48,12 @@
     <string name="veri_text2">Belum menerima email OTP?</string>
     <string name="veri_input_otp">Masukkan kode OTP</string>
     <string name="veri_button">Kirim Ulang</string>
+
+    <!-- Forgot Screen -->
+    <string name="forgot_title">Lupa Password</string>
+    <string name="forgot_subtitle">Kami akan mengirimkan link untuk mengganti password pada email anda</string>
+    <string name="forgot_input">Masukkan email</string>
+    <string name="forgot_button">Lupa Password</string>
 
     <!-- Profile Screen -->
     <string name="setting1">Edit Akun</string>
