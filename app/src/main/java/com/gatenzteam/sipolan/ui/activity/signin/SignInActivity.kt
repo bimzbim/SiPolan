@@ -41,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -55,6 +56,7 @@ import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.forgot.ForgotActivity
 import com.gatenzteam.sipolan.ui.activity.signup.SignUpActivity
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
@@ -87,20 +89,18 @@ class SignInActivity : ComponentActivity() {
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 25.dp, vertical = 30.dp)
         ){
-            Text(
-                text = "Sign In",
+            CustomText(
+                text = stringResource(id = R.string.signin_title),
                 style = TextStyle(
                     fontSize = 24.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(700),
                     color = ColorPalette3,
                     )
             )
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et\ndolore magna aliqua.",
+            CustomText(
+                text = stringResource(id = R.string.signin_subtitle),
                 style = TextStyle(
                     fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(400),
                     color = ColorPalette4,
                     textAlign = TextAlign.Center,
@@ -111,8 +111,6 @@ class SignInActivity : ComponentActivity() {
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = "Email",
-                singleLine = true,
                 placeholder = "Masukan Email",
                 leadingIcon = {
                     Icon(
@@ -121,14 +119,13 @@ class SignInActivity : ComponentActivity() {
                         tint = ColorPalette3
                     )
                 },
+                singleLine = true,
                 modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = "Password",
-                singleLine = true,
                 placeholder = "Masukan Password",
                 leadingIcon = {
                     Icon(
@@ -137,8 +134,6 @@ class SignInActivity : ComponentActivity() {
                         tint = ColorPalette3
                     )
                 },
-                visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 trailingIcon = {
                     val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                     val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
@@ -152,6 +147,9 @@ class SignInActivity : ComponentActivity() {
                         )
                     }
                 },
+                visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                singleLine = true,
                 modifier = modifier.padding(bottom = 15.dp)
             )
             Text(

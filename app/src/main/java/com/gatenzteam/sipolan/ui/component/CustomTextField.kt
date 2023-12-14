@@ -24,8 +24,6 @@ fun CustomTextField(
     onValueChange: (String) -> Unit,
     enabled: Boolean = true,
     readOnly: Boolean = false,
-    label: String,
-    labelColor: Color = ColorPalette3,
     placeholder: String,
     placeholderColor: Color = ColorPalette3,
     leadingIcon: @Composable (() -> Unit)? = null,

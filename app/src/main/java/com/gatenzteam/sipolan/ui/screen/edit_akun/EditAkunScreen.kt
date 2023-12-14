@@ -92,8 +92,6 @@ fun EditAkunScreen(
         CustomTextField(
             value = name,
             onValueChange = { name = it },
-            label = "Nama",
-            singleLine = true,
             placeholder = "Masukkan Nama Baru",
             leadingIcon = {
                 Icon(
@@ -102,13 +100,12 @@ fun EditAkunScreen(
                     tint = ColorPalette3
                 )
             },
+            singleLine = true,
             modifier = modifier.padding(bottom = 15.dp)
         )
         CustomTextField(
             value = email,
             onValueChange = { email = it },
-            label = "Email",
-            singleLine = true,
             placeholder = "Masukkan Email Baru",
             leadingIcon = {
                 Icon(
@@ -116,7 +113,8 @@ fun EditAkunScreen(
                     contentDescription = null,
                     tint = ColorPalette3
                 )
-            }
+            },
+            singleLine = true
         )
         CustomText(
             text = "Ingin Mengganti Password?",

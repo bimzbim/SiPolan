@@ -84,12 +84,11 @@ fun ArtikelScreen(
                 CustomTextField(
                     value = searchQuery,
                     onValueChange = { searchQuery = it },
-                    label = "Cari Artikel",
+                    placeholder = "Cari Artikel",
                     leadingIcon = {
                         Icon(Icons.Filled.Search, contentDescription = null)
                     },
                     singleLine = true,
-                    placeholder = "Cari Artikel",
                     modifier = modifier
                         .padding(vertical = 20.dp)
                 )

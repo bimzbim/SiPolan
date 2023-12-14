@@ -116,8 +116,6 @@ class SignUpActivity : ComponentActivity() {
             CustomTextField(
                 value = fullName,
                 onValueChange = { fullName = it },
-                label = "Nama Lengkap",
-                singleLine = true,
                 placeholder = "Nama Lengkap Anda",
                 leadingIcon = {
                     Icon(
@@ -126,14 +124,13 @@ class SignUpActivity : ComponentActivity() {
                         tint = ColorPalette3
                     )
                 },
+                singleLine = true,
                 modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = "Email",
-                singleLine = true,
                 placeholder = "Alamat Email",
                 leadingIcon = {
                     Icon(
@@ -142,14 +139,13 @@ class SignUpActivity : ComponentActivity() {
                         tint = ColorPalette3
                     )
                 },
+                singleLine = true,
                 modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
                 value = vehicleNumber,
                 onValueChange = { vehicleNumber = it },
-                label = "Plat Nomer Kendaraan",
-                singleLine = true,
                 placeholder = "Masukan Plat Nomer Kendaraan",
                 leadingIcon = {
                     Icon(
@@ -158,14 +154,13 @@ class SignUpActivity : ComponentActivity() {
                         tint = ColorPalette3
                     )
                 },
+                singleLine = true,
                 modifier = modifier.padding(bottom = 15.dp)
             )
 
             CustomTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = "Password",
-                singleLine = true,
                 placeholder = "Masukan Password",
                 leadingIcon = {
                     Icon(
@@ -174,8 +169,6 @@ class SignUpActivity : ComponentActivity() {
                         tint = ColorPalette3
                     )
                 },
-                visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 trailingIcon = {
                     val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                     val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
@@ -189,6 +182,9 @@ class SignUpActivity : ComponentActivity() {
                         )
                     }
                 },
+                visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                singleLine = true,
                 modifier = modifier.padding(bottom = 15.dp)
             )
 

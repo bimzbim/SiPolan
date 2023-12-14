@@ -71,14 +71,13 @@ fun PusatBantuanScreen(
                 value = selectKategori,
                 onValueChange = {},
                 readOnly = true,
+                placeholder = "Pilih Kategori Bantuan",
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
-                },
+                }
+                ,
                 modifier = modifier
                     .menuAnchor()
-                ,
-                label = "Kategori Bantuan",
-                placeholder = "Pilih Kategori Bantuan"
             )
 
             ExposedDropdownMenu(
@@ -134,7 +133,6 @@ fun PusatBantuanScreen(
             onValueChange = {
                 textMessage = it
             },
-            label = "Pesan",
             placeholder = "Masukan Pesan",
             singleLine = false,
             modifier = modifier

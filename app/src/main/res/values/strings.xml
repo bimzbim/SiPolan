@@ -15,6 +15,10 @@
     <string name="onboarding_button">Mulai</string>
     <string name="title_activity_onboarding">OnboardingActivity</string>
 
+    <!-- SignIn Screen -->
+    <string name="signin_title">Sign In</string>
+    <string name="signin_subtitle">Masukkan data anda</string>
+
     <!-- Profile Screen -->
     <string name="setting1">Edit Akun</string>
     <string name="setting2">Riwayat Pembayaran</string>
