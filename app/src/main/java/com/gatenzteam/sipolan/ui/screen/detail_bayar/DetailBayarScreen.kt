@@ -54,22 +54,21 @@ fun DetailBayarScreen(
     ){
         Box(
             modifier = modifier
-                .height(156.dp)
+                .height(225.dp)
         ) {
             Column(
+                verticalArrangement = Arrangement.Center,
                 modifier = modifier
                     .border(
                         border = BorderStroke(3.dp, ColorPalette2),
                         shape = RoundedCornerShape(15.dp)
                     )
+                    .height(210.dp)
                     .align(Alignment.BottomCenter)
-                    .padding(12.5.dp)
+                    .padding(20.dp)
             ){
-                Row {
-                    Spacer(modifier = Modifier.height(25.dp))
-                }
-                CustomDetailText("Jenis Pelanggaran", "Tidak Menggunakan Helm")
-                CustomDetailText("Plat Kendaraan", "DK9238ASC")
+                CustomDetailText("Jenis Pelanggaran", "Tidak Menggunakan Helm", modifier.padding(bottom = 10.dp))
+                CustomDetailText("Plat Kendaraan", "DK9238ASC", modifier.padding(bottom = 10.dp))
                 CustomDetailText("Tanggal", "28-11-2023")
             }
             Box(
