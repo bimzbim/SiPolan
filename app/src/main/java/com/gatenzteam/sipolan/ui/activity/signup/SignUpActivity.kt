@@ -32,7 +32,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -55,8 +55,8 @@ import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.verification.VerificationActivity
 import com.gatenzteam.sipolan.ui.component.CustomCheckbox
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
+import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
-import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
@@ -90,33 +90,31 @@ class SignUpActivity : ComponentActivity() {
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 25.dp, vertical = 30.dp)
         ){
-            Text(
-                text = "Sign Up",
+            CustomText(
+                text = stringResource(id = R.string.signup_title),
                 style = TextStyle(
                     fontSize = 24.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(700),
                     color = ColorPalette3,
                 )
             )
 
-            Text(
-                text = "ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod et dolore\n magna aliqua.",
+            CustomText(
+                text = stringResource(id = R.string.signup_subtitle),
                 style = TextStyle(
                     fontSize = 14.83.sp,
-                    fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(400),
                     color = ColorPalette4,
                     textAlign = TextAlign.Center,
                 ),
                 modifier = modifier
-                    .padding(bottom = 50.dp)
+                    .padding(bottom = 25.dp)
             )
 
             CustomTextField(
                 value = fullName,
                 onValueChange = { fullName = it },
-                placeholder = "Nama Lengkap Anda",
+                placeholder = stringResource(id = R.string.signup_input_nama),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.AccountBox,
@@ -131,7 +129,7 @@ class SignUpActivity : ComponentActivity() {
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                placeholder = "Alamat Email",
+                placeholder = stringResource(id = R.string.signup_input_email),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Mail,
@@ -146,7 +144,7 @@ class SignUpActivity : ComponentActivity() {
             CustomTextField(
                 value = vehicleNumber,
                 onValueChange = { vehicleNumber = it },
-                placeholder = "Masukan Plat Nomer Kendaraan",
+                placeholder = stringResource(id = R.string.signup_input_nopol),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Garage,
@@ -161,7 +159,7 @@ class SignUpActivity : ComponentActivity() {
             CustomTextField(
                 value = password,
                 onValueChange = { password = it },
-                placeholder = "Masukan Password",
+                placeholder = stringResource(id = R.string.signup_input_pass),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Lock,
@@ -171,13 +169,12 @@ class SignUpActivity : ComponentActivity() {
                 },
                 trailingIcon = {
                     val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-                    val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
                     val tintIcon = if (visibilityPassword) ColorPalette3 else ColorPalette4
 
                     IconButton(onClick = {visibilityPassword = !visibilityPassword}){
                         Icon(
                             imageVector  = icon,
-                            contentDescription = contentDescription,
+                            contentDescription = null,
                             tint = tintIcon
                         )
                     }
@@ -191,7 +188,7 @@ class SignUpActivity : ComponentActivity() {
             CustomCheckbox(
                 value = tncAgreement,
                 onCheckedChange = { tncAgreement = it },
-                text = "Setuju dengan syarat dan ketentuan"
+                text = stringResource(id = R.string.signup_terms),
             )
 
             CustomIconButton(
@@ -200,7 +197,7 @@ class SignUpActivity : ComponentActivity() {
                     finish()
                 },
                 icon = Icons.Filled.PersonAdd,
-                text = "Sign Up",
+                text = stringResource(id = R.string.signup_button),
             )
 
             Box(
@@ -211,15 +208,14 @@ class SignUpActivity : ComponentActivity() {
                 Divider(
                     color = ColorPalette4,
                 )
-                Text(
+                CustomText(
                     style = TextStyle(
                         background = ColorPalette1,
                         color = ColorPalette4,
-                        fontFamily = Poppins.poppinsFamily,
                         textAlign = TextAlign.Center,
                         fontSize = 12.sp
                     ),
-                    text = "\u0020Atau Lanjut Dengan\u0020",
+                    text = stringResource(id = R.string.signup_divider),
                     modifier = modifier
                         .width(150.dp)
                 )
@@ -231,7 +227,7 @@ class SignUpActivity : ComponentActivity() {
                 val context = LocalContext.current
                 Button(
                     onClick = {
-                        Toast.makeText( context, "Login Facebook", Toast.LENGTH_SHORT).show()
+                        Toast.makeText( context, R.string.login_fb, Toast.LENGTH_SHORT).show()
                     },
                     colors = ButtonDefaults.buttonColors(ColorPalette3),
                     shape = RoundedCornerShape(15.dp),
@@ -250,7 +246,7 @@ class SignUpActivity : ComponentActivity() {
 
                 Button(
                     onClick = {
-                        Toast.makeText( context, "Login Google", Toast.LENGTH_SHORT).show()
+                        Toast.makeText( context, R.string.login_google, Toast.LENGTH_SHORT).show()
                     },
                     colors = ButtonDefaults.buttonColors(ColorPalette3),
                     shape = RoundedCornerShape(15.dp),

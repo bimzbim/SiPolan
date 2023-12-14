@@ -15,9 +15,13 @@
     <string name="onboarding_button">Mulai</string>
     <string name="title_activity_onboarding">OnboardingActivity</string>
 
+    <!-- Login -->
+    <string name="login_fb">Login Facebook</string>
+    <string name="login_google">Login Google</string>
+
     <!-- SignIn Screen -->
     <string name="signin_title">Sign In</string>
-    <string name="signin_subtitle">Masukkan data anda</string>
+    <string name="signin_subtitle">Masukkan data anda di bawah ini</string>
     <string name="signin_input_email">Masukkan Email</string>
     <string name="signin_input_pass">Masukkan Password</string>
     <string name="signin_forgot">Lupa Passwword?</string>
@@ -25,8 +29,17 @@
     <string name="signin_divider">\u0020Atau Lanjut Dengan\u0020</string>
     <string name="signin_no_account">Belum memiliki akun?</string>
     <string name="signin_signup">\u0020Daftar Di sini</string>
-    <string name="login_fb">Login Facebook</string>
-    <string name="login_google">Login Google</string>
+
+    <!-- SignUp Screen -->
+    <string name="signup_title">Sign Up</string>
+    <string name="signup_subtitle">Lengkapi data diri anda di bawah ini</string>
+    <string name="signup_input_nama">Nama lengkap</string>
+    <string name="signup_input_email">Alamat Email</string>
+    <string name="signup_input_nopol">Plat Nomor Kendaraan</string>
+    <string name="signup_input_pass">Password</string>
+    <string name="signup_terms">Saya setuju dengan syarat dan ketentuan</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="signup_divider">\u0020Atau Lanjut Dengan\u0020</string>
 
     <!-- Profile Screen -->
     <string name="setting1">Edit Akun</string>
