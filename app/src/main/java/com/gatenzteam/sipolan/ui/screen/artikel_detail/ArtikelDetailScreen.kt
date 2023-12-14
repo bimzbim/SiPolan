@@ -1,9 +1,9 @@
 package com.gatenzteam.sipolan.ui.screen.artikel_detail
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
@@ -30,6 +31,7 @@ fun ArtikelDetailScreen(
     modifier: Modifier = Modifier
 ) {
     val detailArtikel = DataDetailArtikel.dummy
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
@@ -61,12 +63,13 @@ fun ArtikelDetailScreen(
         )
         Card(
             shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(3.dp, ColorPalette2),
             modifier = modifier
                 .padding(bottom = 15.dp)
         ){
             Image(
                 painter = painterResource(id = detailArtikel.img),
-                contentDescription = null,
+                contentDescription = "Thumbnail Artikel",
             )
         }
         CustomText(
