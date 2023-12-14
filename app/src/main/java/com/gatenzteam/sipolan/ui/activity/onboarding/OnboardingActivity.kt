@@ -7,28 +7,32 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.signin.SignInActivity
 import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
 
 class OnboardingActivity : ComponentActivity() {
@@ -54,7 +58,7 @@ class OnboardingActivity : ComponentActivity() {
 
             Column(
                 modifier = Modifier
-                    .padding(25 .dp)
+                    .padding(25.dp)
                     .align(Alignment.BottomCenter)
 
             ) {
@@ -79,16 +83,29 @@ class OnboardingActivity : ComponentActivity() {
                         startActivity(Intent(this@OnboardingActivity, SignInActivity::class.java))
                         finish()
                     },
-                    colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
+                    colors = ButtonDefaults.buttonColors(ColorPalette3),
                     modifier = Modifier
                         .height(50.dp)
                         .align(Alignment.End)
                 ) {
-                    Text(text = stringResource(id = R.string.onboarding_button),
-                        fontSize = 15.sp,
-                        fontFamily = Poppins.poppinsFamily,
-                        color = colorResource(id = R.color.color_palette1)
-                    )
+                    Row(
+
+                    ){
+                        Text(
+                            text = stringResource(id = R.string.onboarding_button),
+                            fontSize = 15.sp,
+                            fontFamily = Poppins.poppinsFamily,
+                            color = ColorPalette1,
+                            modifier = Modifier
+
+                        )
+                        Icon(
+                            imageVector = Icons.Default.CheckCircle,
+                            contentDescription = null,
+                            tint = ColorPalette1,
+                            modifier = Modifier
+                        )
+                    }
                 }
             }
         }

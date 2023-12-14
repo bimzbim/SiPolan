@@ -76,7 +76,7 @@ fun ProfileScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Logout,
                     contentDescription = "Icon",
-                    tint = colorResource(id = R.color.color_palette1),
+                    tint = ColorPalette1,
                     modifier = Modifier
                         .align(Alignment.Center)
                 )

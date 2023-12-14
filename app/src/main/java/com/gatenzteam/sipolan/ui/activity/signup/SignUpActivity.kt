@@ -6,13 +6,11 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,18 +21,14 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Garage
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Login
 import androidx.compose.material.icons.filled.Mail
 import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -47,7 +41,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -58,13 +51,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.activity.verification.VerificationActivity
 import com.gatenzteam.sipolan.ui.component.CustomCheckbox
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 import com.gatenzteam.sipolan.ui.theme.SiPolanTheme
 
 class SignUpActivity : ComponentActivity() {
@@ -90,7 +85,7 @@ class SignUpActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = modifier
-                .background(color = colorResource(R.color.color_palette1))
+                .background(color = ColorPalette1)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 25.dp, vertical = 30.dp)
@@ -101,7 +96,7 @@ class SignUpActivity : ComponentActivity() {
                     fontSize = 24.sp,
                     fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(700),
-                    color = colorResource(R.color.color_palette3),
+                    color = ColorPalette3,
                 )
             )
 
@@ -111,7 +106,7 @@ class SignUpActivity : ComponentActivity() {
                     fontSize = 14.83.sp,
                     fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(400),
-                    color = colorResource(R.color.color_palette4),
+                    color = ColorPalette4,
                     textAlign = TextAlign.Center,
                 ),
                 modifier = modifier
@@ -128,7 +123,7 @@ class SignUpActivity : ComponentActivity() {
                     Icon(
                         imageVector = Icons.Filled.AccountBox,
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette3)
+                        tint = ColorPalette3
                     )
                 },
                 modifier = modifier.padding(bottom = 15.dp)
@@ -144,7 +139,7 @@ class SignUpActivity : ComponentActivity() {
                     Icon(
                         imageVector = Icons.Filled.Mail,
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette3)
+                        tint = ColorPalette3
                     )
                 },
                 modifier = modifier.padding(bottom = 15.dp)
@@ -160,7 +155,7 @@ class SignUpActivity : ComponentActivity() {
                     Icon(
                         imageVector = Icons.Filled.Garage,
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette3)
+                        tint = ColorPalette3
                     )
                 },
                 modifier = modifier.padding(bottom = 15.dp)
@@ -176,7 +171,7 @@ class SignUpActivity : ComponentActivity() {
                     Icon(
                         imageVector = Icons.Filled.Lock,
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette3)
+                        tint = ColorPalette3
                     )
                 },
                 visualTransformation = if (visibilityPassword) VisualTransformation.None else PasswordVisualTransformation(),
@@ -184,8 +179,7 @@ class SignUpActivity : ComponentActivity() {
                 trailingIcon = {
                     val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                     val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
-                    val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(
-                        R.color.color_palette4)
+                    val tintIcon = if (visibilityPassword) ColorPalette3 else ColorPalette4
 
                     IconButton(onClick = {visibilityPassword = !visibilityPassword}){
                         Icon(
@@ -219,12 +213,12 @@ class SignUpActivity : ComponentActivity() {
                     .padding(vertical = 30.dp)
             ){
                 Divider(
-                    color = colorResource(id = R.color.color_palette4),
+                    color = ColorPalette4,
                 )
                 Text(
                     style = TextStyle(
-                        background = colorResource(id = R.color.color_palette1),
-                        color = colorResource(id = R.color.color_palette4),
+                        background = ColorPalette1,
+                        color = ColorPalette4,
                         fontFamily = Poppins.poppinsFamily,
                         textAlign = TextAlign.Center,
                         fontSize = 12.sp
@@ -243,7 +237,7 @@ class SignUpActivity : ComponentActivity() {
                     onClick = {
                         Toast.makeText( context, "Login Facebook", Toast.LENGTH_SHORT).show()
                     },
-                    colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
+                    colors = ButtonDefaults.buttonColors(ColorPalette3),
                     shape = RoundedCornerShape(15.dp),
                     modifier = Modifier
                         .height(50.dp)
@@ -252,7 +246,7 @@ class SignUpActivity : ComponentActivity() {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_facebook),
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette1),
+                        tint = ColorPalette1,
                         modifier = modifier
                             .size(25.dp)
                     )
@@ -262,7 +256,7 @@ class SignUpActivity : ComponentActivity() {
                     onClick = {
                         Toast.makeText( context, "Login Google", Toast.LENGTH_SHORT).show()
                     },
-                    colors = ButtonDefaults.buttonColors(colorResource(id = R.color.color_palette3)),
+                    colors = ButtonDefaults.buttonColors(ColorPalette3),
                     shape = RoundedCornerShape(15.dp),
                     modifier = Modifier
                         .height(50.dp)
@@ -271,7 +265,7 @@ class SignUpActivity : ComponentActivity() {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_google),
                         contentDescription = null,
-                        tint = colorResource(R.color.color_palette1),
+                        tint = ColorPalette1,
                         modifier = modifier
                             .size(22.dp)
                     )

@@ -19,8 +19,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.LockReset
 import androidx.compose.material.icons.filled.MailLock
 import androidx.compose.material.icons.filled.MarkEmailUnread
 import androidx.compose.material3.Icon
@@ -33,7 +31,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -45,6 +42,10 @@ import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 class VerificationActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +65,7 @@ class VerificationActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = modifier
-                .background(color = colorResource(R.color.color_palette1))
+                .background(color = ColorPalette1)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 25.dp, vertical = 30.dp)
@@ -80,7 +81,7 @@ class VerificationActivity : ComponentActivity() {
                         fontSize = 24.sp,
                         fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight(700),
-                        color = colorResource(R.color.color_palette3),
+                        color = ColorPalette3,
                         textAlign = TextAlign.Start,
                     ),
                     modifier = modifier
@@ -92,7 +93,7 @@ class VerificationActivity : ComponentActivity() {
                         fontSize = 14.83.sp,
                         fontFamily = Poppins.poppinsFamily,
                         fontWeight = FontWeight(400),
-                        color = colorResource(R.color.color_palette4),
+                        color = ColorPalette4,
                         textAlign = TextAlign.Start,
                     ),
                     modifier = modifier
@@ -111,7 +112,7 @@ class VerificationActivity : ComponentActivity() {
                         .height(240.dp)
                         .align(Alignment.BottomCenter)
                         .background(
-                            color = colorResource(id = R.color.color_palette3),
+                            color = ColorPalette3,
                             shape = RoundedCornerShape(15.dp)
                         )
                         .padding(horizontal = 25.dp)
@@ -122,7 +123,7 @@ class VerificationActivity : ComponentActivity() {
                             fontSize = 14.83.sp,
                             fontFamily = Poppins.poppinsFamily,
                             fontWeight = FontWeight(600),
-                            color = colorResource(R.color.color_palette1),
+                            color = ColorPalette1,
                             textAlign = TextAlign.Center,
                         ),
                         modifier = modifier
@@ -133,24 +134,24 @@ class VerificationActivity : ComponentActivity() {
                         value = otpCode,
                         onValueChange = { otpCode = it },
                         label = "Kode OTP",
-                        labelColor = colorResource(id = R.color.color_palette1),
+                        labelColor = ColorPalette1,
                         singleLine = true,
                         placeholder = "Masukan Kode OTP",
-                        placeholderColor = colorResource(id = R.color.color_palette1),
+                        placeholderColor = ColorPalette1,
                         leadingIcon = {
                             Icon(
                                 imageVector = Icons.Filled.MailLock,
                                 contentDescription = null,
-                                tint = colorResource(R.color.color_palette1)
+                                tint = ColorPalette1
                             )
                         },
                         color = OutlinedTextFieldDefaults.colors(
-                            cursorColor = colorResource(id = R.color.color_palette1),
-                            focusedLabelColor = colorResource(id = R.color.color_palette1),
-                            unfocusedLabelColor = colorResource(id = R.color.color_palette1),
-                            focusedTextColor = colorResource(id = R.color.color_palette1),
-                            focusedBorderColor = colorResource(id = R.color.color_palette2),
-                            unfocusedBorderColor = colorResource(id = R.color.color_palette2)
+                            cursorColor = ColorPalette1,
+                            focusedLabelColor = ColorPalette1,
+                            unfocusedLabelColor = ColorPalette1,
+                            focusedTextColor = ColorPalette1,
+                            focusedBorderColor = ColorPalette2,
+                            unfocusedBorderColor = ColorPalette2
                         ),
                         modifier = modifier.padding(bottom = 15.dp)
                     )
@@ -171,7 +172,7 @@ class VerificationActivity : ComponentActivity() {
                     fontSize = 14.83.sp,
                     fontFamily = Poppins.poppinsFamily,
                     fontWeight = FontWeight(400),
-                    color = colorResource(R.color.color_palette4),
+                    color = ColorPalette4,
                     textAlign = TextAlign.Center,
                 ),
                 modifier = modifier
