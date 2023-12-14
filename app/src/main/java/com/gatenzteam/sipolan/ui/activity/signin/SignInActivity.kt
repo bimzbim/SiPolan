@@ -106,12 +106,12 @@ class SignInActivity : ComponentActivity() {
                     textAlign = TextAlign.Center,
                 ),
                 modifier = modifier
-                    .padding(bottom = 50.dp)
+                    .padding(bottom = 25.dp)
             )
             CustomTextField(
                 value = email,
                 onValueChange = { email = it },
-                placeholder = "Masukan Email",
+                placeholder = stringResource(id = R.string.signin_input_email),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Email,
@@ -126,7 +126,7 @@ class SignInActivity : ComponentActivity() {
             CustomTextField(
                 value = password,
                 onValueChange = { password = it },
-                placeholder = "Masukan Password",
+                placeholder = stringResource(id = R.string.signin_input_pass),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Lock,
@@ -136,13 +136,12 @@ class SignInActivity : ComponentActivity() {
                 },
                 trailingIcon = {
                     val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-                    val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
                     val tintIcon = if (visibilityPassword) ColorPalette3 else ColorPalette4
 
                     IconButton(onClick = {visibilityPassword = !visibilityPassword}){
                         Icon(
                             imageVector  = icon,
-                            contentDescription = contentDescription,
+                            contentDescription = null,
                             tint = tintIcon
                         )
                     }
@@ -153,7 +152,7 @@ class SignInActivity : ComponentActivity() {
                 modifier = modifier.padding(bottom = 15.dp)
             )
             Text(
-                text = "Lupa Password?",
+                text = stringResource(id = R.string.signin_forgot),
                 style = TextStyle(
                     fontSize = 14.83.sp,
                     fontFamily = Poppins.poppinsFamily,
@@ -173,7 +172,7 @@ class SignInActivity : ComponentActivity() {
                     finish()
                 },
                 icon = Icons.Filled.Login,
-                text = "Sign In"
+                text = stringResource(id = R.string.signin_button)
             )
 
 
@@ -185,15 +184,14 @@ class SignInActivity : ComponentActivity() {
                 Divider(
                     color = ColorPalette4,
                 )
-                Text(
+                CustomText(
                     style = TextStyle(
                         background = ColorPalette1,
                         color = ColorPalette4,
-                        fontFamily = Poppins.poppinsFamily,
                         textAlign = TextAlign.Center,
                         fontSize = 12.sp
                     ),
-                    text = "\u0020Atau Lanjut Dengan\u0020",
+                    text = stringResource(id = R.string.signin_divider),
                     modifier = modifier
                         .width(150.dp)
                 )
@@ -205,7 +203,7 @@ class SignInActivity : ComponentActivity() {
                 val context = LocalContext.current
                 Button(
                     onClick = {
-                        Toast.makeText( context, "Login Facebook", Toast.LENGTH_SHORT).show()
+                        Toast.makeText( context, R.string.login_fb, Toast.LENGTH_SHORT).show()
                     },
                     colors = ButtonDefaults.buttonColors(ColorPalette3),
                     shape = RoundedCornerShape(15.dp),
@@ -225,7 +223,7 @@ class SignInActivity : ComponentActivity() {
 
                 Button(
                     onClick = {
-                        Toast.makeText( context, "Login Google", Toast.LENGTH_SHORT).show()
+                        Toast.makeText( context, R.string.login_google, Toast.LENGTH_SHORT).show()
                     },
                     colors = ButtonDefaults.buttonColors(ColorPalette3),
                     shape = RoundedCornerShape(15.dp),
@@ -249,24 +247,22 @@ class SignInActivity : ComponentActivity() {
                 modifier = modifier
                     .padding(vertical = 15.dp)
             ){
-                Text(
+                CustomText(
                     style = TextStyle(
                         background = ColorPalette1,
                         color = ColorPalette4,
-                        fontFamily = Poppins.poppinsFamily,
                         fontSize = 12.sp
                     ),
-                    text = "Belum memiliki akun?"
+                    text = stringResource(id = R.string.signin_no_account)
                 )
-                Text(
+                CustomText(
                     style = TextStyle(
                         background = ColorPalette1,
                         color = ColorPalette3,
-                        fontFamily = Poppins.poppinsFamily,
                         fontSize = 12.sp,
                         fontWeight = FontWeight(700)
                     ),
-                    text = "\u0020Daftar Disini",
+                    text = stringResource(id = R.string.signin_signup),
                     modifier = modifier
                         .clickable {
                             startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
