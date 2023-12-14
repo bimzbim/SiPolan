@@ -82,7 +82,7 @@ class OnboardingActivity : ComponentActivity() {
                     },
                     colors = ButtonDefaults.buttonColors(ColorPalette3),
                     modifier = Modifier
-                        .height(50.dp)
+                        .height( 50.dp)
                         .align(Alignment.End)
                 ) {
                     Row{
@@ -90,14 +90,12 @@ class OnboardingActivity : ComponentActivity() {
                             text = stringResource(id = R.string.onboarding_button),
                             fontSize = 15.sp,
                             color = ColorPalette1,
-                            modifier = Modifier.padding(horizontal = 5.dp)
-
+                            modifier = Modifier.padding(end = 5.dp)
                         )
                         Icon(
                             imageVector = Icons.Default.ArrowForward,
                             contentDescription = null,
-                            tint = ColorPalette1,
-                            modifier = Modifier.padding(horizontal = 5.dp)
+                            tint = ColorPalette1
                         )
                     }
                 }
