@@ -67,4 +67,14 @@
     <string name="metode3">Gopay</string>
     <string name="metode4">OVO</string>
 
+    <!-- Artikel Screen -->
+    <string name="artikel_cari">Cari Artikel</string>
+    <string name="artikel_selengkapnya">Selengkapnya</string>
+
+    <!-- Detail Bayar Screen -->
+    <string name="detailbayar_jenis">Jenis Pelanggaran</string>
+    <string name="detailbayar_plat">Plat Kendaraan</string>
+    <string name="detailbayar_tgl">Tanggal</string>
+    <string name="detailbayar_melalui">Bayar Melalui</string>
+
 </resources>

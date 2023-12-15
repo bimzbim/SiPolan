@@ -67,9 +67,9 @@ fun DetailBayarScreen(
                     .align(Alignment.BottomCenter)
                     .padding(20.dp)
             ){
-                CustomDetailText("Jenis Pelanggaran", "Tidak Menggunakan Helm", modifier.padding(bottom = 10.dp))
-                CustomDetailText("Plat Kendaraan", "DK9238ASC", modifier.padding(bottom = 10.dp))
-                CustomDetailText("Tanggal", "28-11-2023")
+                CustomDetailText(stringResource(R.string.detailbayar_jenis), "Tidak Menggunakan Helm", modifier.padding(bottom = 10.dp))
+                CustomDetailText(stringResource(R.string.detailbayar_plat), "DK9238ASC", modifier.padding(bottom = 10.dp))
+                CustomDetailText(stringResource(R.string.detailbayar_tgl), "28-11-2023")
             }
             Box(
                 modifier = modifier
@@ -91,7 +91,7 @@ fun DetailBayarScreen(
 
         CustomText(
             textAlign = TextAlign.Left,
-            text = "Bayar Melalui",
+            text = stringResource(R.string.detailbayar_melalui),
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,
             color = ColorPalette4
@@ -146,7 +146,7 @@ fun MethodItem(
         ){
             Image(
                 painter = painterResource(id = icon),
-                contentDescription = "Icon",
+                contentDescription = null,
                 modifier = Modifier
                     .fillMaxHeight()
                     .clip(shape = CircleShape)

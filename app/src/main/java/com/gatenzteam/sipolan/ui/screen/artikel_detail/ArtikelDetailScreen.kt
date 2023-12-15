@@ -69,7 +69,7 @@ fun ArtikelDetailScreen(
         ){
             Image(
                 painter = painterResource(id = detailArtikel.img),
-                contentDescription = "Thumbnail Artikel",
+                contentDescription = null,
             )
         }
         CustomText(
