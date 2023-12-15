@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.ManageAccounts
 import androidx.compose.material.icons.filled.PersonSearch
 import androidx.compose.material.icons.filled.Save
@@ -18,7 +17,6 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
@@ -44,12 +42,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.gatenzteam.sipolan.ui.component.CustomText
-import com.gatenzteam.sipolan.ui.screen.detail_pelanggaran.DetailPelanggaranScreen
 import com.gatenzteam.sipolan.ui.navigation.NavigationItem
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelScreen
 import com.gatenzteam.sipolan.ui.screen.artikel_detail.ArtikelDetailScreen
 import com.gatenzteam.sipolan.ui.screen.detail_bayar.DetailBayarScreen
+import com.gatenzteam.sipolan.ui.screen.detail_pelanggaran.DetailPelanggaranScreen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiScreen
 import com.gatenzteam.sipolan.ui.screen.edit_akun.EditAkunScreen
 import com.gatenzteam.sipolan.ui.screen.ganti_password.GantiPasswordScreen
@@ -358,20 +356,5 @@ fun BottomBar(
                 ),
             )
         }
-    }
-}
-
-@Composable
-fun ScrollToTop(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    FilledIconButton(
-        onClick = onClick,
-        modifier = modifier
-    ) {
-        Icon(
-            imageVector = Icons.Filled.KeyboardArrowUp,
-            contentDescription = "Scroll to Top")
     }
 }

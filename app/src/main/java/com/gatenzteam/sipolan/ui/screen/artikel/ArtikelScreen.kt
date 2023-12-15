@@ -47,9 +47,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
-import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
+import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
@@ -111,7 +111,7 @@ fun ArtikelScreen(
                 .padding(vertical = 15.dp)
                 .align(Alignment.BottomCenter)
         ) {
-            ScrollToTop(
+            ScrollToTopButton(
                 onClick = {
                     scope.launch {
                         listState.animateScrollToItem(index = 0)

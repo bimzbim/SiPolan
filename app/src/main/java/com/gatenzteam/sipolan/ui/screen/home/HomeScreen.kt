@@ -41,8 +41,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomText
+import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelListItem
 import com.gatenzteam.sipolan.ui.screen.artikel.DataArtikel
@@ -213,7 +213,7 @@ fun HomeScreen(
                 .padding(vertical = 15.dp)
                 .align(Alignment.BottomCenter)
         ) {
-            ScrollToTop(
+            ScrollToTopButton(
                 onClick = {
                     scope.launch {
                         listState.animateScrollToItem(index = 0)
