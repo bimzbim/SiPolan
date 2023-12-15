@@ -77,4 +77,11 @@
     <string name="detailbayar_tgl">Tanggal</string>
     <string name="detailbayar_melalui">Bayar Melalui</string>
 
+    <!-- Detail Pelanggaran -->
+    <string name="detailpelanggaran_jenis">Jenis Pelanggaran</string>
+    <string name="detailpelanggaran_plat">Plat Kendaraan</string>
+    <string name="detailpelanggaran_tgl">Tanggal</string>
+    <string name="detailpelanggaran_total">Total Biaya</string>
+    <string name="detailpelanggaran_bayar">Bayar Denda</string>
+
 </resources>

@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -66,9 +67,9 @@ fun DetailPelanggaranScreen(
                 modifier = modifier
                     .padding(vertical = 20.dp)
             ){
-                CustomDetailText("Jenis Pelanggaran", "Tidak Menggunakan Helm", modifier.padding(bottom = 10.dp))
-                CustomDetailText("Plat Kendaraan", "DK9238ASC", modifier.padding(bottom = 10.dp))
-                CustomDetailText("Tanggal", "28-11-2023")
+                CustomDetailText(stringResource(R.string.detailpelanggaran_jenis), "Tidak Menggunakan Helm", modifier.padding(bottom = 10.dp))
+                CustomDetailText(stringResource(R.string.detailpelanggaran_plat), "DK9238ASC", modifier.padding(bottom = 10.dp))
+                CustomDetailText(stringResource(R.string.detailpelanggaran_tgl), "28-11-2023")
                 Spacer(modifier = modifier.height(60.dp))
             }
         }
@@ -91,7 +92,7 @@ fun DetailPelanggaranScreen(
                     modifier = modifier
                 ){
                     CustomText(
-                        text = "Total Biaya",
+                        text = stringResource(R.string.detailpelanggaran_total),
                         fontSize = 13.sp,
                         textAlign = TextAlign.Start
                     )
@@ -105,7 +106,7 @@ fun DetailPelanggaranScreen(
                 CustomIconButton(
                     onClick = { navController.navigate(Screen.DetailPembayaran.route) },
                     icon = Icons.Filled.Payments,
-                    text = "Bayar Denda",
+                    text = stringResource(R.string.detailpelanggaran_bayar),
                     modifier = modifier
                         .width(180.dp)
                 )
