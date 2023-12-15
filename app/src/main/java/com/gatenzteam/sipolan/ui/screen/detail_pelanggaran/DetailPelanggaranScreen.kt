@@ -35,6 +35,7 @@ import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 
 @Composable
 fun DetailPelanggaranScreen(
@@ -94,13 +95,15 @@ fun DetailPelanggaranScreen(
                     CustomText(
                         text = stringResource(R.string.detailpelanggaran_total),
                         fontSize = 13.sp,
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Start,
+                        color = ColorPalette4
                     )
                     CustomText(
                         text = "Rp 100.000",
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Start,
+                        color = ColorPalette4
                     )
                 }
                 CustomIconButton(
