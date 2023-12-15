@@ -9,7 +9,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
@@ -20,18 +20,17 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 fun CustomFilterButton(
     onClick: () -> Unit,
     isFilterActive: Boolean,
-    icon: ImageVector,
+    icon: Int,
     contentDescription: String,
     modifier: Modifier = Modifier,
 ) {
-    var buttonColorPref : ButtonColors
-    if(isFilterActive){
-        buttonColorPref = ButtonDefaults.buttonColors(
+    val buttonColorPref : ButtonColors = if(isFilterActive){
+        ButtonDefaults.buttonColors(
             containerColor = ColorPalette2,
             contentColor = ColorPalette3
         )
     } else {
-        buttonColorPref = ButtonDefaults.buttonColors(
+        ButtonDefaults.buttonColors(
             containerColor = ColorPalette1,
             contentColor = ColorPalette4
         )
@@ -43,7 +42,7 @@ fun CustomFilterButton(
         modifier = modifier
     ) {
         Icon(
-            imageVector = icon,
+            painter = painterResource(id = icon),
             contentDescription = contentDescription,
             modifier = Modifier
                 .padding(10.dp)

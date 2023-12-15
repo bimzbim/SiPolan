@@ -22,10 +22,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CarCrash
-import androidx.compose.material.icons.filled.Groups
-import androidx.compose.material.icons.filled.Traffic
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -40,10 +36,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ScrollToTop
 import com.gatenzteam.sipolan.ui.component.CustomFilterButton
 import com.gatenzteam.sipolan.ui.component.CustomText
@@ -92,25 +90,17 @@ fun DeteksiScreen(
                     ){
                         CustomFilterButton(
                             onClick = { filterState = 1 },
-                            isFilterActive = if(filterState == 1) true else false,
-                            icon = Icons.Filled.Traffic,
-                            contentDescription = "Pelanggaran lampu merah",
+                            isFilterActive = filterState == 1,
+                            icon = R.drawable.seatbelt_icon,
+                            contentDescription = stringResource(R.string.deteksi_pelanggaran1),
                             modifier = modifier.weight(1f)
                         )
                         Spacer(modifier = modifier.width(15.dp))
                         CustomFilterButton(
                             onClick = { filterState = 2 },
-                            isFilterActive = if(filterState == 2) true else false,
-                            icon = Icons.Filled.CarCrash,
-                            contentDescription = "Pelanggaran lampu merah",
-                            modifier = modifier.weight(1f)
-                        )
-                        Spacer(modifier = modifier.width(15.dp))
-                        CustomFilterButton(
-                            onClick = { filterState = 3 },
-                            isFilterActive = if(filterState == 3) true else false,
-                            icon = Icons.Filled.Groups,
-                            contentDescription = "Pelanggaran lampu merah",
+                            isFilterActive = filterState == 2,
+                            icon = R.drawable.helmet_icon,
+                            contentDescription = stringResource(R.string.deteksi_pelanggaran2),
                             modifier = modifier.weight(1f)
                         )
                     }
