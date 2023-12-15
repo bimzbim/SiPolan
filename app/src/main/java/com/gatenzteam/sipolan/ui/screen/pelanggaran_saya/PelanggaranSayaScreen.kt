@@ -25,7 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.gatenzteam.sipolan.ScrollToTop
+import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiListItem
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
@@ -78,7 +78,7 @@ fun PelanggaranSayaScreen(
                 .padding(vertical = 15.dp)
                 .align(Alignment.BottomCenter)
         ) {
-            ScrollToTop(
+            ScrollToTopButton(
                 onClick = {
                     scope.launch {
                         listState.animateScrollToItem(index = 0)
