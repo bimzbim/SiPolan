@@ -67,4 +67,8 @@
     <string name="metode3">Gopay</string>
     <string name="metode4">OVO</string>
 
+    <!-- Artikel Screen -->
+    <string name="artikel_cari">Cari Artikel</string>
+    <string name="artikel_selengkapnya">Selengkapnya</string>
+
 </resources>

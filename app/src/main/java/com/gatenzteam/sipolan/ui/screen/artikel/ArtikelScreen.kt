@@ -40,9 +40,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -84,7 +84,7 @@ fun ArtikelScreen(
                 CustomTextField(
                     value = searchQuery,
                     onValueChange = { searchQuery = it },
-                    placeholder = "Cari Artikel",
+                    placeholder = stringResource(R.string.artikel_cari),
                     leadingIcon = {
                         Icon(Icons.Filled.Search, contentDescription = null)
                     },
@@ -170,7 +170,7 @@ fun ArtikelListItem(
                 )
                 Row {
                     CustomText(
-                        text = "Selengkapnya",
+                        text = stringResource(R.string.artikel_selengkapnya),
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.83.sp,
                         color = ColorPalette3,
@@ -185,11 +185,5 @@ fun ArtikelListItem(
             }
         }
     }
-}
-
-@Preview(name = "PreviewList")
-@Composable
-fun ProfileScreenPreview() {
-    ArtikelListItem(onClick = {}, judul = "Helm itu gak penting! Yakin Dek?", img = R.drawable.foto_artikel, modifier = Modifier)
 }
 
