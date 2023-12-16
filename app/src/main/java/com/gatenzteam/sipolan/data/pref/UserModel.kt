@@ -1,4 +1,8 @@
 package com.gatenzteam.sipolan.data.pref
 
-class UserModel {
-}
+data class UserModel(
+    val userId: String,
+    val userName: String,
+    val token: String,
+    val isLogin: Boolean = false
+)
