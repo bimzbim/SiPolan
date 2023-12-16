@@ -19,9 +19,11 @@ import androidx.compose.material.icons.filled.CloudUpload
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
@@ -43,7 +45,7 @@ fun KonfirmasiPembayaranScreen(
             .padding(horizontal = 25.dp, vertical = 20.dp)
     ){
         CustomText(
-            text = "Upload Bukti Pembayaran",
+            text = stringResource(R.string.konfirmasi_title),
             fontWeight = FontWeight.Bold,
             color = ColorPalette3,
             modifier = modifier
@@ -62,15 +64,14 @@ fun KonfirmasiPembayaranScreen(
             CustomIconButton(
                 onClick = { /*TODO*/ },
                 icon = Icons.Filled.CloudUpload,
-                text = "Upload Image",
+                text = stringResource(R.string.konfirmasi_upload),
                 modifier = modifier
                     .width(190.dp)
                     .align(Alignment.Center)
             )
         }
         CustomText(
-            text = "1. Proses validasi pembayaran paling lama 2x24 jam.\n" +
-                    "2. Anda akan mendapat notifikasi via Email setelah proses validasi selesai\n",
+            text = stringResource(R.string.konfirmasi_text),
             fontSize = 13.sp,
             color = ColorPalette4,
             modifier = modifier
