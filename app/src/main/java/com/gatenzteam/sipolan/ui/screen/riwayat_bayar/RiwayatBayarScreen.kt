@@ -137,25 +137,25 @@ fun BayarListItem(
         ) {
             Column {
                 CustomText(
-                    text = stringResource(R.string.id_pembayaran, id),
+                    text = stringResource(R.string.riwayat_id, id),
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp,
                     color = ColorPalette3
                 )
                 CustomText(
-                    text = stringResource(R.string.biaya_rp, biaya),
+                    text = stringResource(R.string.riwayat_biaya, biaya),
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
                     color = ColorPalette4
                 )
                 CustomText(
-                    text = stringResource(R.string.tanggal, tanggal),
+                    text = stringResource(R.string.riwayat_tanggal, tanggal),
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
                     color = ColorPalette4
                 )
                 CustomText(
-                    text = stringResource(R.string.status, status),
+                    text = stringResource(R.string.riwayat_status, status),
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
                     color = ColorPalette4
@@ -178,7 +178,7 @@ fun BayarListItem(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Payments,
-                        contentDescription = "Icon",
+                        contentDescription = null,
                         tint = colorResource(id = R.color.color_palette1),
                     )
                 }
