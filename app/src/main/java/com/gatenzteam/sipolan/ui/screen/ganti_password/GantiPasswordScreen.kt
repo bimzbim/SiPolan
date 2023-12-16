@@ -12,23 +12,24 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -81,7 +82,7 @@ fun EditPassSection(
     CustomTextField(
         value = password,
         onValueChange = { password = it },
-        placeholder = "Password Saat Ini",
+        placeholder = stringResource(R.string.ganti_pass),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Lock,
@@ -91,7 +92,7 @@ fun EditPassSection(
         },
         trailingIcon = {
             val icon = if (visibilityPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-            val contentDescription = if (visibilityPassword) "Sembunyikan Password" else "Tampilkan Password"
+            val contentDescription = null
             val tintIcon = if (visibilityPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
 
             IconButton(onClick = {visibilityPassword = !visibilityPassword}){
@@ -111,7 +112,7 @@ fun EditPassSection(
     CustomTextField(
         value = newpassword,
         onValueChange = { newpassword = it },
-        placeholder = "Password Baru",
+        placeholder = stringResource(R.string.ganti_passbaru),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Lock,
@@ -121,7 +122,7 @@ fun EditPassSection(
         },
         trailingIcon = {
             val icon = if (visibilityNewPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-            val contentDescription = if (visibilityNewPassword) "Sembunyikan Password" else "Tampilkan Password"
+            val contentDescription = null
             val tintIcon = if (visibilityNewPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
 
             IconButton(onClick = {visibilityNewPassword = !visibilityNewPassword}){
@@ -141,7 +142,7 @@ fun EditPassSection(
     CustomTextField(
         value = newpasswordconfirm,
         onValueChange = { newpasswordconfirm = it },
-        placeholder = "Ulang Password Baru",
+        placeholder = stringResource(R.string.ganti_passbbarulagi),
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Lock,
@@ -151,7 +152,7 @@ fun EditPassSection(
         },
         trailingIcon = {
             val icon = if (visibilityConfirmPassword) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-            val contentDescription = if (visibilityConfirmPassword) "Sembunyikan Password" else "Tampilkan Password"
+            val contentDescription = null
             val tintIcon = if (visibilityConfirmPassword) colorResource(R.color.color_palette3) else colorResource(R.color.color_palette4)
 
             IconButton(onClick = {visibilityConfirmPassword = !visibilityConfirmPassword}){
@@ -190,7 +191,7 @@ fun EditPassSection(
             modifier = modifier
                 .padding(end = 10.dp)
         )
-        Text(text = "Ganti Password",
+        Text(text = stringResource(R.string.ganti_ganti),
             fontSize = 14.83.sp,
             fontFamily = Poppins.poppinsFamily,
             color = colorResource(id = R.color.color_palette1)
@@ -199,7 +200,7 @@ fun EditPassSection(
 
     if (passwordMismatchError) {
         Text(
-            text = "Password baru tidak cocok.",
+            text = stringResource(R.string.ganti_tdkcocok),
             color = Color.Red,
             modifier = modifier.padding(top = 10.dp)
         )

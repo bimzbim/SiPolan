@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -65,7 +66,7 @@ fun EditAkunScreen(
         ) {
             Image(
                 painter = painterResource(id = R.drawable.photo_profile),
-                contentDescription = "Profile",
+                contentDescription = null,
                 modifier = Modifier
                     .size(170.dp)
                     .clip(CircleShape)
@@ -80,7 +81,7 @@ fun EditAkunScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.PhotoLibrary,
-                    contentDescription = "Icon",
+                    contentDescription = null,
                     tint = ColorPalette1,
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -91,7 +92,7 @@ fun EditAkunScreen(
         CustomTextField(
             value = name,
             onValueChange = { name = it },
-            placeholder = "Masukkan Nama Baru",
+            placeholder = stringResource(R.string.edit_nama),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.AccountBox,
@@ -105,7 +106,7 @@ fun EditAkunScreen(
         CustomTextField(
             value = email,
             onValueChange = { email = it },
-            placeholder = "Masukkan Email Baru",
+            placeholder = stringResource(R.string.edit_email),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.Email,
@@ -116,7 +117,7 @@ fun EditAkunScreen(
             singleLine = true
         )
         CustomText(
-            text = "Ingin Mengganti Password?",
+            text = stringResource(R.string.edit_pass),
             style = TextStyle(
                 fontSize = 14.83.sp,
                 fontWeight = FontWeight.Normal,
@@ -126,7 +127,7 @@ fun EditAkunScreen(
                 .padding(top = 25.dp, bottom = 5.dp)
         )
         CustomText(
-            text = "Ganti Password",
+            text = stringResource(R.string.edit_ganti),
             style = TextStyle(
                 fontSize = 14.83.sp,
                 fontWeight = FontWeight.Bold,
