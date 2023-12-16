@@ -85,7 +85,6 @@
     <string name="detailpelanggaran_bayar">Bayar Denda</string>
 
     <!-- Deteksi Screen -->
-
     <string name="deteksi_pelanggaran1">Tidak menggunakan sabuk pengaman</string>
     <string name="deteksi_pelanggaran2">Tidak menggunakan helm</string>
 
@@ -103,5 +102,14 @@
     <string name="riwayat_biaya">Biaya: Rp%1$s</string>
     <string name="riwayat_tanggal">Tanggal: %1$s</string>
     <string name="riwayat_status">Status: %1$s</string>
+
+    <!-- Pusat Bantuan Screen -->
+    <string name="opsi1">Pelanggaran tidak Valid</string>
+    <string name="opsi2">Lainnya</string>
+    <string name="bantuan_kategori">Pilih Kategori Bantuan</string>
+    <string name="bantuan_format">"Format Penulisan Pesan : "</string>
+    <string name="bantuan_opsi1">ID Pelanggaran : {ID Pelanggaran}\nKendala : {Informasikan Kendala yang terjadi}</string>
+    <string name="bantuan_opsi2">Kendala : {Informasikan Kendala yang terjadi}</string>
+    <string name="bantuan_pesan">Masukan Pesan</string>
 
 </resources>

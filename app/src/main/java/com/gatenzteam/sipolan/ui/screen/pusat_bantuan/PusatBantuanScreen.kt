@@ -17,8 +17,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.MenuDefaults
-import androidx.compose.material3.MenuItemColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,9 +24,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
@@ -41,8 +41,12 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 fun PusatBantuanScreen(
     modifier: Modifier = Modifier
 ) {
+    val opsi1 = stringResource(R.string.opsi1)
+    val opsi2 = stringResource(R.string.opsi2)
+
+
     var isExpanded by rememberSaveable { mutableStateOf(false) }
-    val bantuanList by rememberSaveable { mutableStateOf(listOf(KategoriBantuan(1, "Pelanggaran tidak Valid"), KategoriBantuan(2, "Lainnya")))}
+    val bantuanList by rememberSaveable { mutableStateOf(listOf(KategoriBantuan(1, opsi1), KategoriBantuan(2, opsi2)))}
     var selectIdKategori by rememberSaveable { mutableStateOf(0) }
     var selectKategori by rememberSaveable { mutableStateOf("") }
     var textMessage by rememberSaveable { mutableStateOf("") }
@@ -65,7 +69,7 @@ fun PusatBantuanScreen(
                 value = selectKategori,
                 onValueChange = {},
                 readOnly = true,
-                placeholder = "Pilih Kategori Bantuan",
+                placeholder = stringResource(R.string.bantuan_kategori),
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
                 }
@@ -99,7 +103,7 @@ fun PusatBantuanScreen(
                 modifier = modifier.padding(15.dp)
             ){
                 CustomText(
-                    text = "Format Penulisan Pesan : ",
+                    text = stringResource(R.string.bantuan_format),
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.83.sp,
                     color = ColorPalette3,
@@ -108,14 +112,13 @@ fun PusatBantuanScreen(
 
                 if(selectIdKategori == 1){
                     CustomText(
-                        text = "ID Pelanggaran : {ID Pelanggaran}\n" +
-                                "Kendala : {Informasikan Kendala yang terjadi}",
+                        text = stringResource(R.string.bantuan_opsi1),
                         fontSize = 13.sp,
                         color = ColorPalette4
                     )
                 } else {
                     CustomText(
-                        text = "Kendala : {Informasikan Kendala yang terjadi}",
+                        text = stringResource(R.string.bantuan_opsi2),
                         fontSize = 13.sp,
                         color = ColorPalette4
                     )
@@ -127,7 +130,7 @@ fun PusatBantuanScreen(
             onValueChange = {
                 textMessage = it
             },
-            placeholder = "Masukan Pesan",
+            placeholder = stringResource(R.string.bantuan_pesan),
             singleLine = false,
             modifier = modifier
                 .height(200.dp)
