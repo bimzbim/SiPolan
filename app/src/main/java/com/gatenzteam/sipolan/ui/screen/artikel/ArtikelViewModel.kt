@@ -15,9 +15,6 @@ class ArtikelViewModel(private val repository: ArtikelRepository) : ViewModel() 
     private val _artikelState = MutableStateFlow<ResultState<GetArtikelResponse>>(ResultState.Loading)
     val artikelState: StateFlow<ResultState<GetArtikelResponse>> get() = _artikelState
 
-    init {
-        getArtikel()
-    }
     fun getArtikel() {
         viewModelScope.launch {
             repository.getArtikel()

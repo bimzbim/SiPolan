@@ -108,6 +108,7 @@ fun ArtikelScreen(
                 )
             }
 
+            viewModel.getArtikel()
             when (dataArtikel) {
                 is ResultState.Loading -> {
                     item {

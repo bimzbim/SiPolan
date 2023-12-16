@@ -15,7 +15,7 @@ class ArtikelRepository private constructor(
     suspend fun getArtikel() : Flow<ResultState<GetArtikelResponse>> {
         try {
             val response = apiService.getArtikel()
-            if(response.total > 0){
+            if(response.articles.isNotEmpty()){
                 return flow { emit(ResultState.Success(response)) }
             } else {
                 return flow { emit(ResultState.Error("Message : Masih belum tersedia artikel untuk anda")) }
