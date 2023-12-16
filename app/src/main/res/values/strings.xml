@@ -112,4 +112,13 @@
     <string name="bantuan_opsi2">Kendala : {Informasikan Kendala yang terjadi}</string>
     <string name="bantuan_pesan">Masukan Pesan</string>
 
+    <!-- Ganti Akun Screen -->
+    <string name="edit_nama">Masukkan Nama Baru</string>
+    <string name="edit_email">Masukkan Email Baru</string>
+    <string name="edit_pass">Ingin Mengganti Password?</string>
+    <string name="edit_ganti">Ganti Password</string>
+
+    <!-- Ganti Password -->
+
+
 </resources>
