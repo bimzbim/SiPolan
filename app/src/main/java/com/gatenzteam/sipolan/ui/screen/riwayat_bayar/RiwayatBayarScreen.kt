@@ -37,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -136,25 +137,25 @@ fun BayarListItem(
         ) {
             Column {
                 CustomText(
-                    text = "ID Pembayaran: #$id",
+                    text = stringResource(R.string.id_pembayaran, id),
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp,
                     color = ColorPalette3
                 )
                 CustomText(
-                    text = "Biaya: Rp$biaya",
+                    text = stringResource(R.string.biaya_rp, biaya),
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
                     color = ColorPalette4
                 )
                 CustomText(
-                    text = "Tanggal: $tanggal",
+                    text = stringResource(R.string.tanggal, tanggal),
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
                     color = ColorPalette4
                 )
                 CustomText(
-                    text = "Status: $status",
+                    text = stringResource(R.string.status, status),
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
                     color = ColorPalette4

@@ -56,7 +56,7 @@ fun ProfileScreen(navController: NavController) {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.photo_profile),
-                contentDescription = "Profile",
+                contentDescription = null,
                 modifier = Modifier
                     .size(170.dp)
                     .clip(CircleShape)
@@ -72,7 +72,7 @@ fun ProfileScreen(navController: NavController) {
             ) {
                 Icon(
                     imageVector = Icons.Default.Logout,
-                    contentDescription = "Icon",
+                    contentDescription = null,
                     tint = ColorPalette1,
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -141,7 +141,7 @@ fun SettingItem(text: String, onClick: () -> Unit) {
         )
         Icon(
             imageVector = Icons.Default.KeyboardArrowRight,
-            contentDescription = "Icon Setting",
+            contentDescription = null,
             tint = colorResource(id = R.color.color_palette3)
         )
     }

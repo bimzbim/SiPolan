@@ -93,10 +93,15 @@
     <string name="home_today">Pelanggaran Hari Ini</string>
     <string name="home_artikel">Artikel Terbaru</string>
 
-
     <!-- Konfirmasi Bayar Screen -->
     <string name="konfirmasi_title">Upload Bukti Pembayaran</string>
     <string name="konfirmasi_text">1. Proses validasi pembayaran paling lama 2x24 jam.\n2. Anda akan mendapat notifikasi via Email setelah proses validasi selesai\n</string>
     <string name="konfirmasi_upload">Upload Image</string>
+
+    <!-- Riwayat Bayar Screen -->
+    <string name="riwayat_id">ID Pembayaran: #%1$s</string>
+    <string name="riwayat_biaya">Biaya: Rp%1$s</string>
+    <string name="riwayat_tanggal">Tanggal: %1$s</string>
+    <string name="riwayat_status">Status: %1$s</string>
 
 </resources>
