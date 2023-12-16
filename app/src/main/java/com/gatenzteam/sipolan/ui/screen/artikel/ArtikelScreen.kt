@@ -86,7 +86,7 @@ fun ArtikelScreen(
                     onValueChange = { searchQuery = it },
                     placeholder = stringResource(R.string.artikel_cari),
                     leadingIcon = {
-                        Icon(Icons.Filled.Search, contentDescription = null)
+                        Icon(Icons.Filled.Search, contentDescription = null, tint = ColorPalette3)
                     },
                     singleLine = true,
                     modifier = modifier

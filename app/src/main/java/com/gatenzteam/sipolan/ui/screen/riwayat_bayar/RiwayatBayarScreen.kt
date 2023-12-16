@@ -48,6 +48,7 @@ import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
+import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 import kotlinx.coroutines.launch
 
 @Composable
@@ -143,17 +144,20 @@ fun BayarListItem(
                 CustomText(
                     text = "Biaya: Rp$biaya",
                     fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp
+                    fontSize = 12.sp,
+                    color = ColorPalette4
                 )
                 CustomText(
                     text = "Tanggal: $tanggal",
                     fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp
+                    fontSize = 12.sp,
+                    color = ColorPalette4
                 )
                 CustomText(
                     text = "Status: $status",
                     fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp
+                    fontSize = 12.sp,
+                    color = ColorPalette4
                 )
             }
 

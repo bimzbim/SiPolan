@@ -125,7 +125,7 @@ fun HomeScreen(
                                 modifier = modifier
                                     .size(50.dp)
                             )
-                            CustomText(text = "12")
+                            CustomText(text = "12", color = ColorPalette4)
                         }
                         Spacer(modifier = modifier.width(15.dp))
                         Column(
@@ -144,7 +144,7 @@ fun HomeScreen(
                                 modifier = modifier
                                     .size(50.dp)
                             )
-                            CustomText(text = "7")
+                            CustomText(text = "7", color = ColorPalette4)
                         }
                         Spacer(modifier = modifier.width(15.dp))
                         Column(
@@ -162,7 +162,7 @@ fun HomeScreen(
                                 modifier = modifier
                                     .size(50.dp)
                             )
-                            CustomText(text = "24")
+                            CustomText(text = "24", color = ColorPalette4)
                         }
                     }
                     Row(

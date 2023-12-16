@@ -54,7 +54,7 @@ fun ArtikelDetailScreen(
         CustomText(
             text = detailArtikel.tanggal,
             fontWeight = FontWeight.Normal,
-            fontSize = 11.1.sp,
+            fontSize = 12.5.sp,
             textAlign = TextAlign.Center,
             color = ColorPalette4,
             modifier = modifier
@@ -76,7 +76,7 @@ fun ArtikelDetailScreen(
             text = detailArtikel.isi,
             textAlign = TextAlign.Justify,
             fontWeight = FontWeight.Normal,
-            fontSize = 12.5.sp,
+            fontSize = 13.sp,
             color = ColorPalette4,
         )
     }
