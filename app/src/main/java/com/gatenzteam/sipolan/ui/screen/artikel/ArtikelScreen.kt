@@ -1,5 +1,6 @@
 package com.gatenzteam.sipolan.ui.screen.artikel
 
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -25,8 +26,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,6 +42,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,8 +50,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
@@ -55,11 +63,15 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
+import com.gatenzteam.sipolan.utils.ArtikelViewModelFactory
 import kotlinx.coroutines.launch
 
 @Composable
 fun ArtikelScreen(
     navController: NavController,
+    viewModel: ArtikelViewModel = viewModel(
+        factory = ArtikelViewModelFactory(Injection.provideArtikelRepository())
+    ),
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -67,7 +79,9 @@ fun ArtikelScreen(
     val showButton: Boolean by remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
+    val dataArtikel by viewModel.artikelState.collectAsState()
     var searchQuery by rememberSaveable { mutableStateOf("") }
+    val context = LocalContext.current
 
     Box(
         modifier = modifier
@@ -77,8 +91,8 @@ fun ArtikelScreen(
         LazyColumn(
             state = listState,
             contentPadding = PaddingValues(bottom = 60.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = modifier
+                .fillMaxSize()
         ){
             item {
                 CustomTextField(
@@ -93,13 +107,34 @@ fun ArtikelScreen(
                         .padding(vertical = 20.dp)
                 )
             }
-            items(DataArtikel.dummy, key = { it.id }) { artikel ->
-                ArtikelListItem(
-                    onClick = { navController.navigate(Screen.ArtikelDetail.route) },
-                    judul = artikel.judul,
-                    img = artikel.img,
-                    modifier = modifier
-                )
+
+            when (dataArtikel) {
+                is ResultState.Loading -> {
+                    item {
+                        LinearProgressIndicator(
+                            color = ColorPalette3,
+                            trackColor = ColorPalette1,
+                            modifier = modifier
+                                .fillMaxWidth()
+                        )
+                    }
+                }
+                is ResultState.Success -> {
+                    val artikelResponse = (dataArtikel as ResultState.Success).data
+
+                    items(artikelResponse.articles, key = { it.id }) { artikel ->
+                        ArtikelListItem(
+                            onClick = { navController.navigate(Screen.ArtikelDetail.route) },
+                            judul = artikel.title,
+                            img = R.drawable.foto_artikel,
+                            modifier = modifier
+                        )
+                    }
+                }
+                is ResultState.Error -> {
+                    val errorMessage = (dataArtikel as ResultState.Error).error
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
             }
 
         }
