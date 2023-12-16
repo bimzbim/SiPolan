@@ -77,15 +77,31 @@
     <string name="detailbayar_tgl">Tanggal</string>
     <string name="detailbayar_melalui">Bayar Melalui</string>
 
-    <!-- Detail Pelanggaran -->
+    <!-- Detail Pelanggaran Screen -->
     <string name="detailpelanggaran_jenis">Jenis Pelanggaran</string>
     <string name="detailpelanggaran_plat">Plat Kendaraan</string>
     <string name="detailpelanggaran_tgl">Tanggal</string>
     <string name="detailpelanggaran_total">Total Biaya</string>
     <string name="detailpelanggaran_bayar">Bayar Denda</string>
+
+    <!-- Deteksi Screen -->
+
     <string name="deteksi_pelanggaran1">Tidak menggunakan sabuk pengaman</string>
     <string name="deteksi_pelanggaran2">Tidak menggunakan helm</string>
 
-    <!-- -->
+    <!-- Home Screen -->
+    <string name="home_today">Pelanggaran Hari Ini</string>
+    <string name="home_artikel">Artikel Terbaru</string>
+
+    <!-- Konfirmasi Bayar Screen -->
+    <string name="konfirmasi_title">Upload Bukti Pembayaran</string>
+    <string name="konfirmasi_text">1. Proses validasi pembayaran paling lama 2x24 jam.\n2. Anda akan mendapat notifikasi via Email setelah proses validasi selesai\n</string>
+    <string name="konfirmasi_upload">Upload Image</string>
+
+    <!-- Riwayat Bayar Screen -->
+    <string name="riwayat_id">ID Pembayaran: #%1$s</string>
+    <string name="riwayat_biaya">Biaya: Rp%1$s</string>
+    <string name="riwayat_tanggal">Tanggal: %1$s</string>
+    <string name="riwayat_status">Status: %1$s</string>
 
 </resources>
