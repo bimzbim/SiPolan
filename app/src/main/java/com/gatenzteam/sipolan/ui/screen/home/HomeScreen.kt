@@ -124,6 +124,7 @@ fun HomeScreen(
                                 tint = ColorPalette3,
                                 modifier = modifier
                                     .size(50.dp)
+                                    .padding(bottom = 10.dp)
                             )
                             CustomText(text = "12", color = ColorPalette4)
                         }
@@ -143,10 +144,10 @@ fun HomeScreen(
                                 tint = ColorPalette3,
                                 modifier = modifier
                                     .size(50.dp)
+                                    .padding(bottom = 10.dp)
                             )
                             CustomText(text = "7", color = ColorPalette4)
                         }
-                        Spacer(modifier = modifier.width(15.dp))
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
