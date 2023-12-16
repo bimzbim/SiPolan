@@ -24,9 +24,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
-import androidx.compose.material.icons.filled.CarCrash
-import androidx.compose.material.icons.filled.Groups
-import androidx.compose.material.icons.filled.Traffic
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -37,10 +34,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
@@ -85,7 +85,7 @@ fun HomeScreen(
                         modifier = modifier.padding(vertical = 20.dp)
                     ){
                         CustomText (
-                            text = "Pelanggaran Hari Ini",
+                            text = stringResource(R.string.home_today),
                             fontSize = 18.sp,
                             fontWeight = FontWeight(600),
                             color = ColorPalette4,
@@ -101,7 +101,7 @@ fun HomeScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.ArrowForward,
-                                contentDescription = "Lihat deteksi pelanggaran hari ini"
+                                contentDescription = null,
                             )
                         }
                     }
@@ -119,8 +119,8 @@ fun HomeScreen(
                                 .height(110.dp)
                         ){
                             Icon(
-                                imageVector = Icons.Filled.Traffic,
-                                contentDescription = "Pelanggaran Lampu Merah",
+                                painter = painterResource(id = R.drawable.seatbelt_icon),
+                                contentDescription = null,
                                 tint = ColorPalette3,
                                 modifier = modifier
                                     .size(50.dp)
@@ -138,8 +138,8 @@ fun HomeScreen(
 
                         ){
                             Icon(
-                                imageVector = Icons.Filled.CarCrash,
-                                contentDescription = "Pelanggaran Lampu Merah",
+                                painter = painterResource(id = R.drawable.helmet_icon) ,
+                                contentDescription = null,
                                 tint = ColorPalette3,
                                 modifier = modifier
                                     .size(50.dp)
@@ -147,30 +147,13 @@ fun HomeScreen(
                             CustomText(text = "7", color = ColorPalette4)
                         }
                         Spacer(modifier = modifier.width(15.dp))
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                            modifier = modifier
-                                .background(ColorPalette2, RoundedCornerShape(15.dp))
-                                .weight(1f)
-                                .height(110.dp)
-                        ){
-                            Icon(
-                                imageVector = Icons.Filled.Groups,
-                                contentDescription = "Pelanggaran Lampu Merah",
-                                tint = ColorPalette3,
-                                modifier = modifier
-                                    .size(50.dp)
-                            )
-                            CustomText(text = "24", color = ColorPalette4)
-                        }
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = modifier.padding(vertical = 20.dp)
                     ){
                         CustomText (
-                            text = "Artikel Terbaru",
+                            text = stringResource(R.string.home_artikel),
                             fontSize = 18.sp,
                             fontWeight = FontWeight(600),
                             color = ColorPalette4,
@@ -188,7 +171,7 @@ fun HomeScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.ArrowForward,
-                                contentDescription = "Lihat deteksi pelanggaran hari ini"
+                                contentDescription = null,
                             )
                         }
                     }
