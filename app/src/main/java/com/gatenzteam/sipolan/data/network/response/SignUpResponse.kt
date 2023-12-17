@@ -3,6 +3,7 @@ package com.gatenzteam.sipolan.data.network.response
 import com.google.gson.annotations.SerializedName
 
 data class SignUpResponse(
+
 	@field:SerializedName("data")
 	val data: Data
 )
