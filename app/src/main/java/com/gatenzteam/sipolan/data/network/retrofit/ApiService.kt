@@ -3,6 +3,7 @@ package com.gatenzteam.sipolan.data.network.retrofit
 import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.GetDeteksiResponse
+import com.gatenzteam.sipolan.data.network.response.GetPelanggaranUserResponse
 import com.gatenzteam.sipolan.data.network.response.LoginResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
 import retrofit2.http.Field
@@ -45,4 +46,10 @@ interface ApiService {
     suspend fun getDeteksi(
         @Query("limit") limit: Int,
     ): GetDeteksiResponse
+
+    @GET("2aeaf614-4caf-429e-94f4-75af13c5d76b")
+    suspend fun getPelanggaranUser(
+        @Query("userId") userId: Int,
+        @Query("limit") limit: Int,
+    ): GetPelanggaranUserResponse
 }
