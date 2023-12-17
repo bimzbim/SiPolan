@@ -17,14 +17,21 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CloudSync
+import androidx.compose.material.icons.filled.Traffic
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,23 +45,34 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.component.CustomFilterButton
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
+import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelListItem
+import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelViewModel
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
+import com.gatenzteam.sipolan.utils.ArtikelViewModelFactory
+import com.gatenzteam.sipolan.utils.DeteksiViewModelFactory
 import kotlinx.coroutines.launch
 
 @Composable
 fun DeteksiScreen(
     navController : NavHostController,
+    viewModel: DeteksiViewModel = viewModel(
+        factory = DeteksiViewModelFactory(Injection.provideDeteksiRepository())
+    ),
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -63,6 +81,7 @@ fun DeteksiScreen(
     val showButton: Boolean by remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
+    val dataDeteksi by viewModel.deteksiState.collectAsState()
 
     Box(
         modifier = modifier
@@ -107,17 +126,55 @@ fun DeteksiScreen(
 
                 }
             }
-            items(DataDeteksi.dummy, key = { it.id }) { deteksi ->
-                DeteksiListItem(
-                    onClick = {
-                        navController.navigate(Screen.DetailPelanggaran.route)
-                    },
-                    img = deteksi.img,
-                    jenis = deteksi.jenis,
-                    nopol = deteksi.nopol,
-                    tgl = deteksi.tgl,
-                    modifier = Modifier.fillMaxWidth()
-                )
+
+            viewModel.getDeteksi(limit = 10)
+            when (dataDeteksi) {
+                is ResultState.Loading -> {
+                    item {
+                        LinearProgressIndicator(
+                            color = ColorPalette3,
+                            trackColor = ColorPalette1,
+                            modifier = modifier
+                                .fillMaxWidth()
+                        )
+                    }
+                }
+                is ResultState.Success -> {
+                    val deteksiResponse = (dataDeteksi as ResultState.Success).data
+
+                    items(deteksiResponse.data.violations, key = { it.id }) { artikel ->
+                        DeteksiListItem(
+                            onClick = {
+                                navController.navigate(Screen.DetailPelanggaran.route)
+                            },
+                            img = R.drawable.foto_pelanggaran,
+                            jenis = artikel.type,
+                            nopol = artikel.vehicleNumberPlate,
+                            tgl = artikel.timestamp,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+                is ResultState.Error -> {
+                    val errorResponse = (dataDeteksi as ResultState.Error).error
+                    item {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = modifier
+                                .fillMaxSize()
+                        ){
+                            Icon(
+                                imageVector = Icons.Filled.Traffic,
+                                contentDescription = null,
+                                tint = ColorPalette3,
+                                modifier = modifier
+                                    .size(150.dp)
+                            )
+                            CustomText(text = errorResponse, fontSize = 15.sp, color = ColorPalette4, textAlign = TextAlign.Center)
+                        }
+                    }
+                }
             }
 
         }
