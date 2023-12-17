@@ -1,10 +1,8 @@
 package com.gatenzteam.sipolan.utils
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gatenzteam.sipolan.data.repository.ArtikelRepository
-import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelViewModel
 
 class ArtikelViewModelFactory(private val repository: ArtikelRepository) :
@@ -19,12 +17,4 @@ class ArtikelViewModelFactory(private val repository: ArtikelRepository) :
         }
     }
 
-    companion object {
-        @Volatile
-        private var instance: ArtikelViewModelFactory? = null
-        fun getInstance(context: Context): ArtikelViewModelFactory =
-            instance ?: synchronized(this) {
-                instance ?: ArtikelViewModelFactory(Injection.provideArtikelRepository())
-            }.also { instance = it }
-    }
 }
