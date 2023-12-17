@@ -26,7 +26,7 @@ interface ApiService {
         @Query("limit") limit: Int
     ): GetArtikelResponse
 
-    @GET("3360292d-e6e9-460f-bed2-5d4a5df58b09")
+    @GET("c85f4d2a-cdda-4f37-88d5-77aacc286440")
     suspend fun getDetailArtikel(
         @Query("articleId") articleId: Int,
     ): DetailArtikelResponse
