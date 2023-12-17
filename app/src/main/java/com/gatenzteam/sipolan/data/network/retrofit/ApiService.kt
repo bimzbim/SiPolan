@@ -4,6 +4,7 @@ import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.GetDeteksiResponse
 import com.gatenzteam.sipolan.data.network.response.GetPelanggaranUserResponse
+import com.gatenzteam.sipolan.data.network.response.GetPembayaranMethodResponse
 import com.gatenzteam.sipolan.data.network.response.LoginResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
 import retrofit2.http.Field
@@ -47,9 +48,15 @@ interface ApiService {
         @Query("limit") limit: Int,
     ): GetDeteksiResponse
 
-    @GET("2aeaf614-4caf-429e-94f4-75af13c5d76b")
+    @GET("07a9595e-f7e5-4610-a7b8-67fd6fcf5867")
     suspend fun getPelanggaranUser(
         @Query("userId") userId: Int,
         @Query("limit") limit: Int,
     ): GetPelanggaranUserResponse
+
+    @GET("97140261-fb36-44f7-8031-d1eb48e69e07")
+    suspend fun getPembayaranMethod(
+        @Query("userId") userId: Int,
+    ): GetPembayaranMethodResponse
+
 }
