@@ -1,5 +1,6 @@
 package com.gatenzteam.sipolan.data.network.retrofit
 
+import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.LoginResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
@@ -17,6 +18,10 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("limit") limit: Int
     ): GetArtikelResponse
+    @GET("3360292d-e6e9-460f-bed2-5d4a5df58b09")
+    suspend fun getDetailArtikel(
+        @Query("articleId") articleId: Int,
+    ): DetailArtikelResponse
 
     @FormUrlEncoded
     @POST("5acfd00a-bf84-48c3-9a5e-8038117298c2")
