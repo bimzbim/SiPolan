@@ -8,6 +8,7 @@ import com.gatenzteam.sipolan.data.network.response.GetDeteksiResponse
 import com.gatenzteam.sipolan.data.network.response.GetPelanggaranUserResponse
 import com.gatenzteam.sipolan.data.network.response.GetPembayaranMethodResponse
 import com.gatenzteam.sipolan.data.network.response.GetPembayaranResponse
+import com.gatenzteam.sipolan.data.network.response.KategoriBantuanResponse
 import com.gatenzteam.sipolan.data.network.response.LoginResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
 import retrofit2.http.Field
@@ -79,5 +80,9 @@ interface ApiService {
         @Field("categoryId") categoryId: Int,
         @Field("message") message: String
     ): BantuanResponse
+
+    @GET("6cf55ed8-17c1-4f49-b80b-edfed899f892")
+    suspend fun kategoriBantuan(
+    ): KategoriBantuanResponse
 
 }
