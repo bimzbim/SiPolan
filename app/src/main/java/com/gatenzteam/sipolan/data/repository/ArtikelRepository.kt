@@ -1,6 +1,7 @@
 package com.gatenzteam.sipolan.data.repository
 
 import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.ErrorResponse
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
 import com.gatenzteam.sipolan.data.network.retrofit.ApiService
@@ -22,6 +23,21 @@ class ArtikelRepository private constructor(
             }
         } catch (e: HttpException) {
             //Mendapatkan Pesan Error
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            return flow { emit(ResultState.Error(errorBody.errors)) }
+        }
+    }
+
+    suspend fun getArtikelDetail(articleId: Int) : Flow<ResultState<DetailArtikelResponse>> {
+        try {
+            val response = apiService.getDetailArtikel(articleId)
+            if(response.data.id != 0){
+                return flow { emit(ResultState.Success(response)) }
+            } else {
+                return flow { emit(ResultState.Error("Artikel tidak ditemukan")) }
+            }
+        } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
             val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
             return flow { emit(ResultState.Error(errorBody.errors)) }

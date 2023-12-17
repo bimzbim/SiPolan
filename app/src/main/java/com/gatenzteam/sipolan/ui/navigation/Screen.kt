@@ -1,6 +1,6 @@
 package com.gatenzteam.sipolan.ui.navigation
 
-sealed class Screen(val route: String){
+    sealed class Screen(val route: String){
     object Home : Screen("home")
     object Profile : Screen("profile")
     object Deteksi : Screen("deteksi")
@@ -15,6 +15,5 @@ sealed class Screen(val route: String){
     object ArtikelDetail : Screen("detail artikel")
     object TataCaraBayar : Screen("tata cara pembayaran")
     object DetailPelanggaran : Screen("detail pelanggaran")
-
     object KonfirmasiPembayaran : Screen("konfirmasi pembayaran")
 }
