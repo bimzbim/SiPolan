@@ -52,7 +52,7 @@ interface ApiService {
         @Query("limit") limit: Int
     ): GetDeteksiResponse
 
-    @GET("07a9595e-f7e5-4610-a7b8-67fd6fcf5867")
+    @GET("538022ac-988e-419e-b69f-e34fc9f3d207")
     suspend fun getPelanggaranUser(
         @Query("userId") userId: Int,
         @Query("limit") limit: Int

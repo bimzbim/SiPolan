@@ -91,8 +91,8 @@ fun DeteksiScreen(
         LazyColumn(
             state = listState,
             contentPadding = PaddingValues(bottom = 60.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = modifier
+                .fillMaxSize()
         ){
             item {
                 Column(
@@ -149,6 +149,7 @@ fun DeteksiScreen(
                             },
                             img = R.drawable.foto_pelanggaran,
                             jenis = artikel.type,
+                            location = artikel.location,
                             nopol = artikel.vehicleNumberPlate,
                             tgl = artikel.timestamp,
                             modifier = Modifier.fillMaxWidth()
@@ -202,6 +203,7 @@ fun DeteksiListItem(
     onClick: () -> Unit,
     img: Int,
     jenis: String,
+    location: String,
     nopol: String,
     tgl: String,
     modifier: Modifier
@@ -236,6 +238,13 @@ fun DeteksiListItem(
                     fontWeight = FontWeight.Bold,
                     color = ColorPalette3,
                     fontSize = 18.sp,
+                )
+
+                CustomText(
+                    text = location,
+                    fontWeight = FontWeight.Medium,
+                    color = ColorPalette4,
+                    fontSize = 11.12.sp
                 )
 
                 CustomText(
