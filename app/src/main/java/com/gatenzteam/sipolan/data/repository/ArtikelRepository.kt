@@ -18,13 +18,13 @@ class ArtikelRepository private constructor(
             if(response.articles.isNotEmpty()){
                 return flow { emit(ResultState.Success(response)) }
             } else {
-                return flow { emit(ResultState.Error("Message : Masih belum tersedia artikel untuk anda")) }
+                return flow { emit(ResultState.Error("Masih belum tersedia artikel untuk anda")) }
             }
         } catch (e: HttpException) {
             //Mendapatkan Pesan Error
             val jsonInString = e.response()?.errorBody()?.string()
             val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-            return flow { emit(ResultState.Error("${e.message.toString()} - Message : ${errorBody.errors}")) }
+            return flow { emit(ResultState.Error(errorBody.errors)) }
         }
     }
     companion object {

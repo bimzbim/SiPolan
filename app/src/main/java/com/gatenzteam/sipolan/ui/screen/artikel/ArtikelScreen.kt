@@ -18,11 +18,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CloudSync
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
@@ -47,6 +49,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -133,8 +136,24 @@ fun ArtikelScreen(
                     }
                 }
                 is ResultState.Error -> {
-                    val errorMessage = (dataArtikel as ResultState.Error).error
-                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                    val errorResponse = (dataArtikel as ResultState.Error).error
+                    item {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = modifier
+                                .fillMaxSize()
+                        ){
+                            Icon(
+                                imageVector = Icons.Filled.CloudSync,
+                                contentDescription = null,
+                                tint = ColorPalette3,
+                                modifier = modifier
+                                    .size(150.dp)
+                            )
+                            CustomText(text = errorResponse, fontSize = 15.sp, color = ColorPalette4, textAlign = TextAlign.Center)
+                        }
+                    }
                 }
             }
 

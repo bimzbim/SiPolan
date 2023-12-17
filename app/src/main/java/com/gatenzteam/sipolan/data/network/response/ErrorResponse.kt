@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class ErrorResponse(
     @field:SerializedName("code")
-    val code: String? = null,
+    val code: String,
 
     @field:SerializedName("status")
-    val status: String? = null,
+    val status: String,
 
     @field:SerializedName("errors")
-    val errors: String? = null,
+    val errors: String,
 )
