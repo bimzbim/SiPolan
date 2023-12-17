@@ -1,6 +1,7 @@
 package com.gatenzteam.sipolan.data.network.retrofit
 
 import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
+import com.gatenzteam.sipolan.data.network.response.DetailPelanggaranResponse
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.GetDeteksiResponse
 import com.gatenzteam.sipolan.data.network.response.GetPelanggaranUserResponse
@@ -54,6 +55,11 @@ interface ApiService {
         @Query("userId") userId: Int,
         @Query("limit") limit: Int
     ): GetPelanggaranUserResponse
+
+    @GET("fbe8d81e-abb6-4edc-b1d9-0372a83afaa9")
+    suspend fun getPelanggaranDetail(
+        @Query("violationId") violationId: Int
+    ): DetailPelanggaranResponse
 
     @GET("97140261-fb36-44f7-8031-d1eb48e69e07")
     suspend fun getPembayaranMethod(
