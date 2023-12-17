@@ -1,6 +1,7 @@
 package com.gatenzteam.sipolan.data.network.retrofit
 
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
+import com.gatenzteam.sipolan.data.network.response.LoginResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -15,14 +16,20 @@ interface ApiService {
         @Query("limit") limit: Int
     ): GetArtikelResponse
 
+    @FormUrlEncoded
     @POST("5acfd00a-bf84-48c3-9a5e-8038117298c2")
-    suspend fun signUp(
-        @Body("fullname") fullname: String,
-        @Body("email") email: String,
-        @Body("vehicle_number_plate") vehicleNumberPlate: String,
-        @Body("password") password: String
+    suspend fun signup(
+        @Field("fullname") fullname: String,
+        @Field("email") email: String,
+        @Field("vehicle_number_plate") vehicleNumberPlate: String,
+        @Field("password") password: String
     ): SignUpResponse
 
-
+    @FormUrlEncoded
+    @POST("login")
+    suspend fun login(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): LoginResponse
 
 }
