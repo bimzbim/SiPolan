@@ -3,6 +3,8 @@ package com.gatenzteam.sipolan.data.network.retrofit
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.LoginResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query

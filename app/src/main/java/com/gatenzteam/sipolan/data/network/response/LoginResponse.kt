@@ -8,7 +8,7 @@ data class LoginResponse(
 	val code: String,
 
 	@field:SerializedName("data")
-	val data: Data,
+	val data: LoginData,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -17,7 +17,7 @@ data class LoginResponse(
 	val status: String
 )
 
-data class Data(
+data class LoginData(
 
 	@field:SerializedName("user")
 	val user: User,

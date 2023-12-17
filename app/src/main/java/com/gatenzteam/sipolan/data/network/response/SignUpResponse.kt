@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class SignUpResponse(
 
 	@field:SerializedName("data")
-	val data: Data
+	val data: SignUpData
 )
 
-data class Data(
+data class SignUpData(
 	@field:SerializedName("vehicle_number_plate")
 	val vehicleNumberPlate: String,
 
