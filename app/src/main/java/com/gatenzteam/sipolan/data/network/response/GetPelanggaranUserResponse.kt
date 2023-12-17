@@ -2,13 +2,13 @@ package com.gatenzteam.sipolan.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class GetDeteksiResponse(
+data class GetPelanggaranUserResponse(
 
 	@field:SerializedName("code")
 	val code: String,
 
 	@field:SerializedName("data")
-	val data: DataDeteksi,
+	val data: PelanggaranUserData,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -17,7 +17,13 @@ data class GetDeteksiResponse(
 	val status: String
 )
 
-data class ViolationsItem(
+data class PelanggaranUserData(
+
+	@field:SerializedName("violations")
+	val violations: List<ViolationsUserItem>
+)
+
+data class ViolationsUserItem(
 
 	@field:SerializedName("vehicle-number-plate")
 	val vehicleNumberPlate: String,
@@ -33,9 +39,4 @@ data class ViolationsItem(
 
 	@field:SerializedName("timestamp")
 	val timestamp: String
-)
-
-data class DataDeteksi(
-	@field:SerializedName("violations")
-	val violations: List<ViolationsItem>
 )
