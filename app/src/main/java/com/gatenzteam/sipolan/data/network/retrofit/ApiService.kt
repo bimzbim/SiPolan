@@ -1,5 +1,6 @@
 package com.gatenzteam.sipolan.data.network.retrofit
 
+import com.gatenzteam.sipolan.data.network.response.BantuanResponse
 import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.DetailPelanggaranResponse
 import com.gatenzteam.sipolan.data.network.response.GetArtikelResponse
@@ -71,5 +72,12 @@ interface ApiService {
         @Query("userId") userId: Int,
         @Query("limit") limit: Int
     ): GetPembayaranResponse
+
+    @POST("0f015c92-4cfc-4d7e-9ada-d9288384d77e")
+    suspend fun bantuan(
+        @Field("userId") userId: Int,
+        @Field("categoryId") categoryId: Int,
+        @Field("message") message: String
+    ): BantuanResponse
 
 }
