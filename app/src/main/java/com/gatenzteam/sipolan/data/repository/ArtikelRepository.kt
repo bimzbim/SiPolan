@@ -12,9 +12,9 @@ import retrofit2.HttpException
 class ArtikelRepository private constructor(
     private val apiService: ApiService
 ){
-    suspend fun getArtikel() : Flow<ResultState<GetArtikelResponse>> {
+    suspend fun getArtikel(page: Int = 1, limit: Int = 10) : Flow<ResultState<GetArtikelResponse>> {
         try {
-            val response = apiService.getArtikel()
+            val response = apiService.getArtikel(page = page, limit = limit)
             if(response.articles.isNotEmpty()){
                 return flow { emit(ResultState.Success(response)) }
             } else {

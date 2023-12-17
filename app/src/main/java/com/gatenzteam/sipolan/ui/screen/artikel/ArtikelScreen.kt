@@ -83,8 +83,7 @@ fun ArtikelScreen(
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
     val dataArtikel by viewModel.artikelState.collectAsState()
-    var searchQuery by rememberSaveable { mutableStateOf("") }
-    val context = LocalContext.current
+    val searchQuery by viewModel.querySearch
 
     Box(
         modifier = modifier
@@ -100,7 +99,7 @@ fun ArtikelScreen(
             item {
                 CustomTextField(
                     value = searchQuery,
-                    onValueChange = { searchQuery = it },
+                    onValueChange = { },
                     placeholder = stringResource(R.string.artikel_cari),
                     leadingIcon = {
                         Icon(Icons.Filled.Search, contentDescription = null, tint = ColorPalette3)
@@ -111,7 +110,7 @@ fun ArtikelScreen(
                 )
             }
 
-            viewModel.getArtikel()
+            viewModel.getArtikel(page = 1, limit = 10)
             when (dataArtikel) {
                 is ResultState.Loading -> {
                     item {

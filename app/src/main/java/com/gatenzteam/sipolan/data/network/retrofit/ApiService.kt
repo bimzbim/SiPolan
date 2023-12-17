@@ -10,7 +10,7 @@ interface ApiService {
     suspend fun getArtikel(
         @Query("category") category: String = "",
         @Query("tags") tags: String = "",
-        @Query("page") page: Int = 1,
-        @Query("limit") limit: Int = 10
+        @Query("page") page: Int,
+        @Query("limit") limit: Int
     ): GetArtikelResponse
 }

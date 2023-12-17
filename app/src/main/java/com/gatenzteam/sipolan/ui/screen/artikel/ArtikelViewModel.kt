@@ -1,5 +1,7 @@
 package com.gatenzteam.sipolan.ui.screen.artikel
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gatenzteam.sipolan.data.ResultState
@@ -15,13 +17,17 @@ class ArtikelViewModel(private val repository: ArtikelRepository) : ViewModel() 
     private val _artikelState = MutableStateFlow<ResultState<GetArtikelResponse>>(ResultState.Loading)
     val artikelState: StateFlow<ResultState<GetArtikelResponse>> get() = _artikelState
 
-    fun getArtikel() {
+    private val _querySearch = mutableStateOf("")
+    val querySearch: State<String> get() = _querySearch
+
+    fun getArtikel(page: Int, limit: Int) {
         viewModelScope.launch {
-            repository.getArtikel()
+            repository.getArtikel(page, limit)
                 .onStart { _artikelState.value = ResultState.Loading }
                 .collect { resultState ->
                     _artikelState.value = resultState
                 }
         }
     }
+
 }
