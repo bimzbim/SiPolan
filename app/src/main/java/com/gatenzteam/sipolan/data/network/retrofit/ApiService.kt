@@ -45,7 +45,7 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("2aeaf614-4caf-429e-94f4-75af13c5d76b")
+    @GET("038baf37-aa47-4148-82fa-b4efae667440")
     suspend fun getDeteksi(
         @Query("limit") limit: Int
     ): GetDeteksiResponse
