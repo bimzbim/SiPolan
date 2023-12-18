@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -49,11 +51,6 @@ fun ArtikelDetailScreen(
         viewModel.getArtikelDetail(articleId)
     }
 
-    val detailArtikel = when (val state = detailArtikelState) {
-        is ResultState.Success -> state.data
-        else -> null
-    }
-
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
@@ -63,45 +60,57 @@ fun ArtikelDetailScreen(
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 25.dp, vertical = 20.dp)
     ) {
-        if (detailArtikel != null) {
-            CustomText(
-                text = detailArtikel.data.title,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                textAlign = TextAlign.Center,
-                color = ColorPalette3,
-                maxLines = 2,
-                modifier = modifier.fillMaxWidth()
-            )
-            CustomText(
-                text = detailArtikel.data.createdAt,
-                fontWeight = FontWeight.Normal,
-                fontSize = 12.5.sp,
-                textAlign = TextAlign.Center,
-                color = ColorPalette4,
-                modifier = modifier.padding(bottom = 10.dp).fillMaxWidth()
-            )
-            Card(
-                shape = RoundedCornerShape(15.dp),
-                border = BorderStroke(3.dp, ColorPalette2),
-                modifier = modifier.padding(bottom = 15.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.foto_artikel),
-                    contentDescription = null,
+        when (val state = detailArtikelState) {
+            is ResultState.Success -> {
+                CustomText(
+                    text = state.data.data.title,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Center,
+                    color = ColorPalette3,
+                    maxLines = 2,
+                    modifier = modifier.fillMaxWidth()
+                )
+                CustomText(
+                    text = state.data.data.createdAt,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 12.5.sp,
+                    textAlign = TextAlign.Center,
+                    color = ColorPalette4,
+                    modifier = modifier.padding(bottom = 10.dp).fillMaxWidth()
+                )
+                Card(
+                    shape = RoundedCornerShape(15.dp),
+                    border = BorderStroke(3.dp, ColorPalette2),
+                    modifier = modifier.padding(bottom = 15.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.foto_artikel),
+                        contentDescription = null,
+                    )
+                }
+                CustomText(
+                    text = state.data.data.content,
+                    textAlign = TextAlign.Justify,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 13.sp,
+                    color = ColorPalette4,
                 )
             }
-            CustomText(
-                text = detailArtikel.data.content,
-                textAlign = TextAlign.Justify,
-                fontWeight = FontWeight.Normal,
-                fontSize = 13.sp,
-                color = ColorPalette4,
-            )
-        } else {
+            is ResultState.Loading -> {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .padding(25.dp)
+                        .size(40.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+            }
+            is ResultState.Error -> {
 
+            }
         }
     }
 }
+
 
 
