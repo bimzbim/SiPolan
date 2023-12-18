@@ -148,7 +148,7 @@ fun SiPolanApp(
             composable("${Screen.ArtikelDetail.route}/{articleId}") { backStackEntry ->
                 val articleId = backStackEntry.arguments?.getString("articleId")?.toIntOrNull()
                 if (articleId != null) {
-                    ArtikelDetailScreen(articleId)
+                    ArtikelDetailScreen(articleId = articleId)
                 }
             }
             composable(Screen.TataCaraBayar.route){

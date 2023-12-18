@@ -8,7 +8,7 @@ data class DetailArtikelResponse(
 	val code: String,
 
 	@field:SerializedName("data")
-	val data: Data,
+	val data: ArtikelData,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -17,7 +17,7 @@ data class DetailArtikelResponse(
 	val status: String
 )
 
-data class Data(
+data class ArtikelData(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String,
