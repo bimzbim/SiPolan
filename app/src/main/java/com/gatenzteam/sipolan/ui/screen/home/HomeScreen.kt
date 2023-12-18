@@ -24,10 +24,13 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.CloudSync
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -37,31 +40,40 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelListItem
-import com.gatenzteam.sipolan.ui.screen.artikel.DataArtikel
+import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelViewModel
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
+import com.gatenzteam.sipolan.utils.ArtikelViewModelFactory
 import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    navController : NavHostController
+    navController : NavHostController,
+    viewModel: ArtikelViewModel = viewModel(
+        factory = ArtikelViewModelFactory(Injection.provideArtikelRepository())
+    ),
 ) {
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
     val showButton: Boolean by remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
+    val dataArtikel by viewModel.artikelState.collectAsState()
 
     Box(
         modifier = modifier
@@ -72,13 +84,13 @@ fun HomeScreen(
             state = listState,
             contentPadding = PaddingValues(bottom = 60.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = modifier
+                .fillMaxSize()
         ){
             item {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top,
-                    modifier = modifier
-                        .fillMaxSize()
+                    verticalArrangement = Arrangement.Top
                 ){
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -179,13 +191,52 @@ fun HomeScreen(
 
                 }
             }
-            items(DataArtikel.dummy, key = { it.id }) { artikel ->
-                ArtikelListItem(
-                    onClick = { navController.navigate(Screen.ArtikelDetail.route) },
-                    judul = artikel.judul,
-                    img = artikel.img,
-                    modifier = modifier
-                )
+            viewModel.getArtikel(page = 1, limit = 10)
+            when (dataArtikel) {
+                is ResultState.Loading -> {
+                    item {
+                        LinearProgressIndicator(
+                            color = ColorPalette3,
+                            trackColor = ColorPalette1,
+                            modifier = modifier
+                                .fillMaxWidth()
+                        )
+                    }
+                }
+                is ResultState.Success -> {
+                    val artikelResponse = (dataArtikel as ResultState.Success).data
+
+                    items(artikelResponse.articles, key = { it.id }) { artikel ->
+                        ArtikelListItem(
+                            onClick = {
+                                navController.navigate("${Screen.ArtikelDetail.route}/${artikel.id}")
+                            },
+                            judul = artikel.title,
+                            img = R.drawable.foto_artikel,
+                            modifier = modifier
+                        )
+                    }
+                }
+                is ResultState.Error -> {
+                    val errorResponse = (dataArtikel as ResultState.Error).error
+                    item {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = modifier
+                                .fillMaxSize()
+                        ){
+                            Icon(
+                                imageVector = Icons.Filled.CloudSync,
+                                contentDescription = null,
+                                tint = ColorPalette3,
+                                modifier = modifier
+                                    .size(150.dp)
+                            )
+                            CustomText(text = errorResponse, fontSize = 15.sp, color = ColorPalette4, textAlign = TextAlign.Center)
+                        }
+                    }
+                }
             }
 
         }
