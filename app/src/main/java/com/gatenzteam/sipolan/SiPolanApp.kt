@@ -4,7 +4,11 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -101,14 +105,21 @@ fun SiPolanApp(
             )
         },
         bottomBar = {
-            BottomBar(navController = navController, bottomBarState = bottomBarState)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(ColorPalette1)
+            ){
+                BottomBar(navController = navController, bottomBarState = bottomBarState)
+            }
         },
         modifier = modifier
     ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = Screen.Home.route,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
                 HomeScreen(navController = navController)
