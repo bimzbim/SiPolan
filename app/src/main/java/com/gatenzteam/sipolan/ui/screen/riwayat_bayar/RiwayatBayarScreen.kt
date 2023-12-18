@@ -13,9 +13,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,11 +26,14 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Payments
+import androidx.compose.material.icons.filled.Traffic
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -39,10 +44,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
@@ -50,18 +59,23 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
+import com.gatenzteam.sipolan.utils.RiwayatBayarViewModelFactory
 import kotlinx.coroutines.launch
 
 @Composable
 fun RiwayatBayarScreen(
-    navController: NavController,
     modifier: Modifier = Modifier,
+    navController: NavController,
+    viewModel: RiwayatBayarViewModel = viewModel(
+        factory = RiwayatBayarViewModelFactory(Injection.provideRiwayatBayarRepository())
+    ),
 ) {
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
     val showButton: Boolean by remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }
+    val dataRiwayatBayar by viewModel.riwayatBayarState.collectAsState()
 
     Box(
         modifier = modifier
@@ -72,20 +86,58 @@ fun RiwayatBayarScreen(
         LazyColumn(
             state = listState,
             contentPadding = PaddingValues(bottom = 60.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = modifier
+                .fillMaxSize()
         ) {
             item { 
                 Spacer(modifier = modifier.height(20.dp))
             }
-            items(DataBayar.dummy, key = { it.id }) { invoice ->
-                BayarListItem(
-                    onClick = { navController.navigate(Screen.DetailPembayaran.route) },
-                    id = invoice.id,
-                    biaya = invoice.biaya,
-                    tanggal = invoice.tanggal,
-                    status = invoice.status,
-                    modifier = Modifier.fillMaxWidth()
-                )
+            viewModel.getRiwayatBayar(userId = 1,limit = 10)
+            when (dataRiwayatBayar) {
+                is ResultState.Loading -> {
+                    item {
+                        LinearProgressIndicator(
+                            color = ColorPalette3,
+                            trackColor = ColorPalette1,
+                            modifier = modifier
+                                .fillMaxWidth()
+                        )
+                    }
+                }
+                is ResultState.Success -> {
+                    val deteksiResponse = (dataRiwayatBayar as ResultState.Success).data
+
+                    items(deteksiResponse.data.payments, key = { it.idPembayaran }) { pembayaran ->
+                        BayarListItem(
+                            onClick = { navController.navigate(Screen.DetailPembayaran.route) },
+                            id = pembayaran.idPembayaran,
+                            biaya = pembayaran.biaya,
+                            tanggal = pembayaran.timestamp,
+                            status = pembayaran.status,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+                is ResultState.Error -> {
+                    val errorResponse = (dataRiwayatBayar as ResultState.Error).error
+                    item {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = modifier
+                                .fillMaxSize()
+                        ){
+                            Icon(
+                                imageVector = Icons.Filled.Traffic,
+                                contentDescription = null,
+                                tint = ColorPalette3,
+                                modifier = modifier
+                                    .size(150.dp)
+                            )
+                            CustomText(text = errorResponse, fontSize = 15.sp, color = ColorPalette4, textAlign = TextAlign.Center)
+                        }
+                    }
+                }
             }
         }
 

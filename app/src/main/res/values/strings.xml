@@ -98,7 +98,7 @@
     <string name="konfirmasi_upload">Upload Image</string>
 
     <!-- Riwayat Bayar Screen -->
-    <string name="riwayat_id">ID Pembayaran: #%1$s</string>
+    <string name="riwayat_id">ID Pembayaran: %1$s</string>
     <string name="riwayat_biaya">Biaya: Rp%1$s</string>
     <string name="riwayat_tanggal">Tanggal: %1$s</string>
     <string name="riwayat_status">Status: %1$s</string>

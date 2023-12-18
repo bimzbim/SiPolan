@@ -68,7 +68,7 @@ interface ApiService {
         @Query("userId") userId: Int,
     ): GetPembayaranMethodResponse
 
-    @GET("3845821b-0975-4729-a6ec-79bdcca36305")
+    @GET("31db2d72-03c1-4a77-8ec8-b536827dfa32")
     suspend fun getPembayaran(
         @Query("userId") userId: Int,
         @Query("limit") limit: Int
