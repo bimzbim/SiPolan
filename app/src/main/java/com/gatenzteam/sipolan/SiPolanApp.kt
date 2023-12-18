@@ -105,13 +105,7 @@ fun SiPolanApp(
             )
         },
         bottomBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(ColorPalette1)
-            ){
-                BottomBar(navController = navController, bottomBarState = bottomBarState)
-            }
+            BottomBar(navController = navController, bottomBarState = bottomBarState)
         },
         modifier = modifier
     ) { innerPadding ->
