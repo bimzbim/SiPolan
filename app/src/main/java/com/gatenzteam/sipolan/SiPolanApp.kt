@@ -1,5 +1,8 @@
 package com.gatenzteam.sipolan
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,6 +29,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -71,6 +77,23 @@ fun SiPolanApp(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
+    var bottomBarState by rememberSaveable { (mutableStateOf(false)) }
+
+    when (currentRoute) {
+        Screen.Home.route -> {
+            bottomBarState = true
+        }
+        Screen.Profile.route -> {
+            bottomBarState = true
+        }
+        Screen.Deteksi.route -> {
+            bottomBarState = true
+        }
+        else -> {
+            bottomBarState = false
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -78,7 +101,7 @@ fun SiPolanApp(
             )
         },
         bottomBar = {
-            BottomBar(navController = navController)
+            BottomBar(navController = navController, bottomBarState = bottomBarState)
         },
         modifier = modifier
     ) { innerPadding ->
@@ -295,69 +318,78 @@ fun TopAppBar(
 @Composable
 fun BottomBar(
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    bottomBarState: Boolean
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    NavigationBar(
-        modifier = modifier
-            .shadow(
-                elevation = 20.dp,
-                ambientColor = ColorPalette4,
-                spotColor = ColorPalette4
-            ),
-        containerColor = ColorPalette1
-    ){
-        val navigationItem = listOf(
-            NavigationItem(
-                title = stringResource(id = R.string.navitem_first),
-                icon = Icons.Outlined.Home,
-                screen = Screen.Home,
-            ),
-            NavigationItem(
-                title = stringResource(id = R.string.navitem_second),
-                icon = Icons.Outlined.Person,
-                screen = Screen.Profile
-            ),
-            NavigationItem(
-                title = stringResource(id = R.string.navitem_third),
-                icon = Icons.Outlined.Warning,
-                screen = Screen.Deteksi
-            )
-        )
-        navigationItem.map { item ->
-            NavigationBarItem(
-                selected = currentRoute == item.screen.route,
-                onClick = {
-                    navController.navigate(item.screen.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
-                        restoreState = true
-                        launchSingleTop = true
-                    }
-                },
-                icon = {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = item.title
+    AnimatedVisibility(
+        visible = bottomBarState,
+        enter = slideInVertically(initialOffsetY = { it }),
+        exit = slideOutVertically(targetOffsetY = { it }),
+        content = {
+            NavigationBar(
+                modifier = modifier
+                    .shadow(
+                        elevation = 20.dp,
+                        ambientColor = ColorPalette4,
+                        spotColor = ColorPalette4
+                    ),
+                containerColor = ColorPalette1
+            ){
+                val navigationItem = listOf(
+                    NavigationItem(
+                        title = stringResource(id = R.string.navitem_first),
+                        icon = Icons.Outlined.Home,
+                        screen = Screen.Home,
+                    ),
+                    NavigationItem(
+                        title = stringResource(id = R.string.navitem_second),
+                        icon = Icons.Outlined.Person,
+                        screen = Screen.Profile
+                    ),
+                    NavigationItem(
+                        title = stringResource(id = R.string.navitem_third),
+                        icon = Icons.Outlined.Warning,
+                        screen = Screen.Deteksi
                     )
-                },
-                label =
-                {
-                    CustomText(
-                        text = item.title
+                )
+                navigationItem.map { item ->
+                    NavigationBarItem(
+                        selected = currentRoute == item.screen.route,
+                        onClick = {
+                            navController.navigate(item.screen.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                                restoreState = true
+                                launchSingleTop = true
+                            }
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = item.icon,
+                                contentDescription = item.title
+                            )
+                        },
+                        label =
+                        {
+                            CustomText(
+                                text = item.title
+                            )
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = ColorPalette3,
+                            selectedTextColor = ColorPalette3,
+                            indicatorColor = ColorPalette2,
+                            unselectedIconColor = ColorPalette4,
+                            unselectedTextColor = ColorPalette4,
+                        ),
                     )
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = ColorPalette3,
-                    selectedTextColor = ColorPalette3,
-                    indicatorColor = ColorPalette2,
-                    unselectedIconColor = ColorPalette4,
-                    unselectedTextColor = ColorPalette4,
-                ),
-            )
+                }
+            }
         }
-    }
+    )
+
 }
