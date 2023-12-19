@@ -101,7 +101,7 @@ fun SiPolanApp(
             )
         },
         bottomBar = {
-            BottomBar(navController = navController, bottomBarState = bottomBarState)
+            BottomBar(navController = navController, bottomBarState = bottomBarState, currentRoute = currentRoute)
         },
         modifier = modifier
     ) { innerPadding ->
@@ -323,11 +323,9 @@ fun TopAppBar(
 fun BottomBar(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    bottomBarState: Boolean
+    bottomBarState: Boolean,
+    currentRoute: String?
 ) {
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
     AnimatedVisibility(
         visible = bottomBarState,
         enter = slideInVertically(initialOffsetY = { it }),
