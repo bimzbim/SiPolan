@@ -2,13 +2,13 @@ package com.gatenzteam.sipolan.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginResponse(
+data class SignInResponse(
 
 	@field:SerializedName("code")
 	val code: String,
 
 	@field:SerializedName("data")
-	val data: LoginData,
+	val data: SignInData,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -17,7 +17,7 @@ data class LoginResponse(
 	val status: String
 )
 
-data class LoginData(
+data class SignInData(
 
 	@field:SerializedName("user")
 	val user: User,

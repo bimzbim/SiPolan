@@ -72,6 +72,8 @@ fun ArtikelDetailScreen(
             }
             is ResultState.Loading -> {
                 CircularProgressIndicator(
+                    color = ColorPalette3,
+                    strokeWidth = 3.dp,
                     modifier = Modifier
                         .padding(25.dp)
                         .size(40.dp)

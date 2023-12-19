@@ -15,18 +15,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gatenzteam.sipolan.ui.font.Poppins
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
+import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 
 @Composable
 fun CustomIconButton(
     onClick: () -> Unit,
+    enabled: Boolean = true,
     icon: ImageVector,
     text: String,
     modifier: Modifier = Modifier,
 ) {
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(ColorPalette3),
+        enabled = enabled,
+        colors = ButtonDefaults.buttonColors(
+            contentColor = ColorPalette1,
+            containerColor = ColorPalette3,
+            disabledContainerColor = ColorPalette2,
+            disabledContentColor = ColorPalette3
+        ),
         shape = RoundedCornerShape(15.dp),
         modifier = modifier
             .fillMaxWidth()
@@ -35,14 +43,12 @@ fun CustomIconButton(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = ColorPalette1,
             modifier = Modifier
                 .padding(end = 10.dp)
         )
         Text(text = text,
             fontSize = 14.83.sp,
             fontFamily = Poppins.poppinsFamily,
-            color = ColorPalette1
         )
     }
 }

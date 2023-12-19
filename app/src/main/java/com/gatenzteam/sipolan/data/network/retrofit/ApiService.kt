@@ -9,7 +9,7 @@ import com.gatenzteam.sipolan.data.network.response.GetPelanggaranUserResponse
 import com.gatenzteam.sipolan.data.network.response.GetPembayaranMethodResponse
 import com.gatenzteam.sipolan.data.network.response.GetPembayaranResponse
 import com.gatenzteam.sipolan.data.network.response.KategoriBantuanResponse
-import com.gatenzteam.sipolan.data.network.response.LoginResponse
+import com.gatenzteam.sipolan.data.network.response.SignInResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -45,7 +45,7 @@ interface ApiService {
     suspend fun signIn(
         @Field("email") email: String,
         @Field("password") password: String
-    ): LoginResponse
+    ): SignInResponse
 
     @GET("038baf37-aa47-4148-82fa-b4efae667440")
     suspend fun getDeteksi(
