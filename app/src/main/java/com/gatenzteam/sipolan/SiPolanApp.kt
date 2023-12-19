@@ -4,11 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -154,8 +150,11 @@ fun SiPolanApp(
             composable(Screen.TataCaraBayar.route){
                 TataCaraBayarScreen(navController = navController)
             }
-            composable(Screen.DetailPelanggaran.route){
-                DetailPelanggaranScreen(navController = navController)
+            composable("${Screen.DetailPelanggaran.route}/{violationId}") { backStackEntry ->
+                val violationId = backStackEntry.arguments?.getString("violationId")?.toIntOrNull()
+                if (violationId != null) {
+                    DetailPelanggaranScreen(violationId = violationId, navController = navController)
+                }
             }
             composable(Screen.KonfirmasiPembayaran.route){
                 KonfirmasiPembayaranScreen()

@@ -24,7 +24,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CloudSync
 import androidx.compose.material.icons.filled.Traffic
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -57,13 +56,10 @@ import com.gatenzteam.sipolan.ui.component.CustomFilterButton
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
-import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelListItem
-import com.gatenzteam.sipolan.ui.screen.artikel.ArtikelViewModel
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
-import com.gatenzteam.sipolan.utils.ArtikelViewModelFactory
 import com.gatenzteam.sipolan.utils.DeteksiViewModelFactory
 import kotlinx.coroutines.launch
 
@@ -142,16 +138,16 @@ fun DeteksiScreen(
                 is ResultState.Success -> {
                     val deteksiResponse = (dataDeteksi as ResultState.Success).data
 
-                    items(deteksiResponse.data.violations, key = { it.id }) { artikel ->
+                    items(deteksiResponse.data.violations, key = { it.id }) { deteksi ->
                         DeteksiListItem(
                             onClick = {
-                                navController.navigate(Screen.DetailPelanggaran.route)
+                                navController.navigate("${Screen.DetailPelanggaran.route}/${deteksi.id}")
                             },
                             img = R.drawable.foto_pelanggaran,
-                            jenis = artikel.type,
-                            location = artikel.location,
-                            nopol = artikel.vehicleNumberPlate,
-                            tgl = artikel.timestamp,
+                            jenis = deteksi.type,
+                            location = deteksi.location,
+                            nopol = deteksi.vehicleNumberPlate,
+                            tgl = deteksi.timestamp,
                             modifier = Modifier.fillMaxWidth()
                         )
                     }

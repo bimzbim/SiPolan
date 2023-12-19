@@ -40,6 +40,7 @@ import com.gatenzteam.sipolan.ui.theme.ColorPalette4
 @Composable
 fun DetailPelanggaranScreen(
     navController: NavHostController,
+    violationId: Int,
     modifier: Modifier = Modifier
 ) {
     Box(
