@@ -1,10 +1,11 @@
 package com.gatenzteam.sipolan.di
 
-import com.gatenzteam.sipolan.data.repository.ArtikelRepository
 import com.gatenzteam.sipolan.data.network.retrofit.ApiConfig
+import com.gatenzteam.sipolan.data.repository.ArtikelRepository
 import com.gatenzteam.sipolan.data.repository.AuthRepository
 import com.gatenzteam.sipolan.data.repository.DeteksiRepository
 import com.gatenzteam.sipolan.data.repository.PelanggaranSayaRepository
+import com.gatenzteam.sipolan.data.repository.PusatBantuanRepository
 import com.gatenzteam.sipolan.data.repository.RiwayatBayarRepository
 
 object Injection {
@@ -21,6 +22,11 @@ object Injection {
     fun providePelanggaranSayaRepository(): PelanggaranSayaRepository {
         val apiService = ApiConfig.getApiService()
         return PelanggaranSayaRepository.getInstance(apiService)
+    }
+
+    fun providePusatBantuanRepository(): PusatBantuanRepository {
+        val apiService = ApiConfig.getApiService()
+        return PusatBantuanRepository.getInstance(apiService)
     }
 
     fun provideRiwayatBayarRepository(): RiwayatBayarRepository {
