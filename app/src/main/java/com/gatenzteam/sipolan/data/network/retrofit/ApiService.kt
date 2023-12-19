@@ -58,7 +58,7 @@ interface ApiService {
         @Query("limit") limit: Int
     ): GetPelanggaranUserResponse
 
-    @GET("fbe8d81e-abb6-4edc-b1d9-0372a83afaa9")
+    @GET("6a8ec01d-1436-4288-93dd-59f20d375784")
     suspend fun getPelanggaranDetail(
         @Query("violationId") violationId: Int
     ): DetailPelanggaranResponse
