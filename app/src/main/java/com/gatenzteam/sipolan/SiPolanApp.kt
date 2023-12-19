@@ -97,7 +97,8 @@ fun SiPolanApp(
     Scaffold(
         topBar = {
             TopAppBar(
-                navController = navController
+                navController = navController,
+                currentRoute = currentRoute
             )
         },
         bottomBar = {
@@ -166,11 +167,9 @@ fun SiPolanApp(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBar(
-    navController: NavHostController
+    navController: NavHostController,
+    currentRoute: String?
 ) {
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = ColorPalette1,
