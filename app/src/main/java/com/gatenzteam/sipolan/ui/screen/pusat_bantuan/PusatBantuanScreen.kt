@@ -18,6 +18,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -28,41 +29,52 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gatenzteam.sipolan.R
+import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
-import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
+import com.gatenzteam.sipolan.utils.PusatBantuanViewModelFactory
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PusatBantuanScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: PusatBantuanViewModel = viewModel(
+        factory = PusatBantuanViewModelFactory(Injection.providePusatBantuanRepository())
+    ),
 ) {
-    val opsi1 = stringResource(R.string.opsi1)
-    val opsi2 = stringResource(R.string.opsi2)
-
+    val kategoriBantuanState by viewModel.kategoriBantuanState.collectAsState()
+    viewModel.getKategoriBantuan()
 
     var isExpanded by rememberSaveable { mutableStateOf(false) }
-    val bantuanList by rememberSaveable { mutableStateOf(listOf(KategoriBantuan(1, opsi1), KategoriBantuan(2, opsi2)))}
     var selectIdKategori by rememberSaveable { mutableStateOf(0) }
     var selectKategori by rememberSaveable { mutableStateOf("") }
     var textMessage by rememberSaveable { mutableStateOf("") }
+
+    val bantuanList = when (kategoriBantuanState) {
+        is ResultState.Success -> {
+            val kategoriBantuanList = (kategoriBantuanState as ResultState.Success).data.data
+            kategoriBantuanList.map { KategoriBantuan(it.categoryId, it.categoryName) }
+        }
+        else -> listOf(KategoriBantuan(1, "Opsi 1"), KategoriBantuan(2, "Opsi 2"))
+    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
-            .background(ColorPalette1)
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 25.dp, vertical = 20.dp)
-    ){
+    ) {
         ExposedDropdownMenuBox(
             expanded = isExpanded,
-            onExpandedChange = {isExpanded = it},
+            onExpandedChange = { isExpanded = it },
             modifier = modifier.padding(bottom = 20.dp),
         ) {
             CustomTextField(
@@ -72,10 +84,8 @@ fun PusatBantuanScreen(
                 placeholder = stringResource(R.string.bantuan_kategori),
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
-                }
-                ,
-                modifier = modifier
-                    .menuAnchor()
+                },
+                modifier = modifier.menuAnchor()
             )
 
             ExposedDropdownMenu(
