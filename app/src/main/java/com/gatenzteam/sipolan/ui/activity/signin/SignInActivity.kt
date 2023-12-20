@@ -296,6 +296,7 @@ class SignInActivity : ComponentActivity() {
 
                         val intent = Intent(this@SignInActivity, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
 
                         signInEnable = true
                     }
