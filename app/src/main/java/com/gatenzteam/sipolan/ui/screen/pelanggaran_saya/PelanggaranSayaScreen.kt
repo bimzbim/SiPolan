@@ -43,11 +43,9 @@ import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.ScrollToTopButton
 import com.gatenzteam.sipolan.ui.navigation.Screen
 import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiListItem
-import com.gatenzteam.sipolan.ui.screen.deteksi.DeteksiViewModel
 import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
-import com.gatenzteam.sipolan.utils.DeteksiViewModelFactory
 import com.gatenzteam.sipolan.utils.PelanggaranSayaViewModelFactory
 import kotlinx.coroutines.launch
 
@@ -95,16 +93,16 @@ fun PelanggaranSayaScreen(
                 is ResultState.Success -> {
                     val deteksiResponse = (dataPelanggaranSaya as ResultState.Success).data
 
-                    items(deteksiResponse.data.violations, key = { it.id }) { artikel ->
+                    items(deteksiResponse.data.violations, key = { it.id }) { pelanggaran ->
                         DeteksiListItem(
                             onClick = {
-                                navController.navigate(Screen.DetailPelanggaran.route)
+                                navController.navigate("${Screen.DetailPelanggaran.route}/${pelanggaran.id}")
                             },
                             img = R.drawable.foto_pelanggaran,
-                            jenis = artikel.type,
-                            location = artikel.location,
-                            nopol = artikel.vehicleNumberPlate,
-                            tgl = artikel.timestamp,
+                            jenis = pelanggaran.type,
+                            location = pelanggaran.location,
+                            nopol = pelanggaran.vehicleNumberPlate,
+                            tgl = pelanggaran.timestamp,
                             modifier = Modifier.fillMaxWidth()
                         )
                     }

@@ -34,3 +34,9 @@ data class BantuanData(
 	@field:SerializedName("timestamp")
 	val timestamp: String
 )
+
+data class BantuanRequest(
+	@SerializedName("userId") val userId: Int,
+	@SerializedName("categoryId") val categoryId: Int,
+	@SerializedName("message") val message: String
+)

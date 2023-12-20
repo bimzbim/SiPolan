@@ -1,6 +1,8 @@
 package com.gatenzteam.sipolan.data.repository
 
 import com.gatenzteam.sipolan.data.ResultState
+import com.gatenzteam.sipolan.data.network.response.BantuanRequest
+import com.gatenzteam.sipolan.data.network.response.BantuanResponse
 import com.gatenzteam.sipolan.data.network.response.ErrorResponse
 import com.gatenzteam.sipolan.data.network.response.KategoriBantuanResponse
 import com.gatenzteam.sipolan.data.network.retrofit.ApiService
@@ -13,17 +15,33 @@ class PusatBantuanRepository private constructor(
     private val apiService: ApiService
 ) {
     suspend fun getKategoriBantuan() : Flow<ResultState<KategoriBantuanResponse>> {
-        try {
+        return try {
             val response = apiService.kategoriBantuan()
             if(response.data.isNotEmpty()){
-                return flow { emit(ResultState.Success(response)) }
+                flow { emit(ResultState.Success(response)) }
             } else {
-                return flow { emit(ResultState.Error("Tidak dapat mendapatkan kategori")) }
+                flow { emit(ResultState.Error("Tidak dapat mendapatkan kategori")) }
             }
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
             val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-            return flow { emit(ResultState.Error(errorBody.errors)) }
+            flow { emit(ResultState.Error(errorBody.errors)) }
+        }
+    }
+
+    fun sendMessage(userId: Int, categoryId: Int, message: String): Flow<ResultState<BantuanResponse>> = flow {
+        try {
+            val request = BantuanRequest(userId, categoryId, message)
+            val response = apiService.bantuan(request)
+            if(response.code == "201"){
+                emit(ResultState.Success(response))
+            } else {
+                emit(ResultState.Error(response.message))
+            }
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+            emit(ResultState.Error(errorBody.errors))
         }
     }
 
@@ -37,3 +55,6 @@ class PusatBantuanRepository private constructor(
             }.also { instance = it }
     }
 }
+
+
+

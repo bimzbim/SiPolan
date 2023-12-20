@@ -1,5 +1,6 @@
 package com.gatenzteam.sipolan.data.network.retrofit
 
+import com.gatenzteam.sipolan.data.network.response.BantuanRequest
 import com.gatenzteam.sipolan.data.network.response.BantuanResponse
 import com.gatenzteam.sipolan.data.network.response.DetailArtikelResponse
 import com.gatenzteam.sipolan.data.network.response.DetailPelanggaranResponse
@@ -11,6 +12,7 @@ import com.gatenzteam.sipolan.data.network.response.GetPembayaranResponse
 import com.gatenzteam.sipolan.data.network.response.KategoriBantuanResponse
 import com.gatenzteam.sipolan.data.network.response.SignInResponse
 import com.gatenzteam.sipolan.data.network.response.SignUpResponse
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -74,14 +76,10 @@ interface ApiService {
         @Query("limit") limit: Int
     ): GetPembayaranResponse
 
-    @POST("0f015c92-4cfc-4d7e-9ada-d9288384d77e")
-    suspend fun bantuan(
-        @Field("userId") userId: Int,
-        @Field("categoryId") categoryId: Int,
-        @Field("message") message: String
-    ): BantuanResponse
+    @POST("67df9426-55eb-4f0d-b58d-d5495873f472")
+    suspend fun bantuan(@Body request: BantuanRequest): BantuanResponse
 
-    @GET("b06f80a6-3b8b-4695-a0c0-6c1c7b27c49e")
+    @GET("9c8ee703-b188-4ea2-b764-cfd9ef363061")
     suspend fun kategoriBantuan(
     ): KategoriBantuanResponse
 
