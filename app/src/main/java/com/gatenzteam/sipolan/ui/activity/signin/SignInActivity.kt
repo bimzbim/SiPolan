@@ -54,6 +54,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.gatenzteam.sipolan.MainActivity
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.data.ResultState
 import com.gatenzteam.sipolan.di.Injection
@@ -292,6 +293,9 @@ class SignInActivity : ComponentActivity() {
                     is ResultState.Success -> {
                         val signInResponse = (signInResult as ResultState.Success).data
                         Toast.makeText(LocalContext.current, signInResponse.message, Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                        startActivity(intent)
 
                         signInEnable = true
                     }
