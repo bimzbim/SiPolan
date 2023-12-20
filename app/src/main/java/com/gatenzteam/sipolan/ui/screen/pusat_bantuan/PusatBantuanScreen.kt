@@ -2,6 +2,7 @@
 
 package com.gatenzteam.sipolan.ui.screen.pusat_bantuan
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,13 +11,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,6 +32,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -49,12 +57,14 @@ fun PusatBantuanScreen(
     ),
 ) {
     val kategoriBantuanState by viewModel.kategoriBantuanState.collectAsState()
+    val messageState by viewModel.messageState.collectAsState()
     viewModel.getKategoriBantuan()
 
     var isExpanded by rememberSaveable { mutableStateOf(false) }
     var selectIdKategori by rememberSaveable { mutableStateOf(0) }
     var selectKategori by rememberSaveable { mutableStateOf("") }
     var textMessage by rememberSaveable { mutableStateOf("") }
+    var alreadySend by rememberSaveable { mutableStateOf(true) }
 
     val bantuanList = when (kategoriBantuanState) {
         is ResultState.Success -> {
@@ -146,5 +156,52 @@ fun PusatBantuanScreen(
                 .height(200.dp)
                 .padding(top = 15.dp)
         )
+
+        IconButton(onClick = {
+            alreadySend = false
+            val message = textMessage
+            viewModel.sendMessage(1, selectIdKategori, message)
+        }) {
+            Icon(
+                imageVector = Icons.Filled.Send,
+                contentDescription = "Send Message",
+                tint = ColorPalette3,
+                modifier = Modifier
+                    .size(25.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+        }
+    }
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier.fillMaxSize()
+    ){
+        when(messageState){
+            is ResultState.Success -> {
+                val messageResponse = (messageState as ResultState.Success).data
+                Toast.makeText(LocalContext.current, messageResponse.message, Toast.LENGTH_SHORT).show()
+
+                alreadySend = true
+            }
+            is ResultState.Error -> {
+                val errorResponse = (messageState as ResultState.Error).error
+                Toast.makeText(LocalContext.current, errorResponse, Toast.LENGTH_SHORT).show()
+
+                alreadySend = true
+            }
+            is ResultState.Loading -> {
+                if (!alreadySend) {
+                    CircularProgressIndicator(
+                        color = ColorPalette3,
+                        strokeWidth = 3.dp,
+                        modifier = Modifier
+                            .padding(25.dp)
+                            .size(40.dp)
+                            .align(Alignment.CenterHorizontally)
+                    )
+                }
+            }
+        }
     }
 }
