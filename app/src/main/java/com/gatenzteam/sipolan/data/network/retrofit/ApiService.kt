@@ -81,7 +81,7 @@ interface ApiService {
         @Field("message") message: String
     ): BantuanResponse
 
-    @GET("b06f80a6-3b8b-4695-a0c0-6c1c7b27c49e")
+    @GET("9c8ee703-b188-4ea2-b764-cfd9ef363061")
     suspend fun kategoriBantuan(
     ): KategoriBantuanResponse
 
