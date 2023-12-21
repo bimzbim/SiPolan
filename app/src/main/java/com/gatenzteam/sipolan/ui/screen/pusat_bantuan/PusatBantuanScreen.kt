@@ -7,6 +7,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,13 +20,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Send
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -43,6 +47,8 @@ import com.gatenzteam.sipolan.data.ResultState
 import com.gatenzteam.sipolan.di.Injection
 import com.gatenzteam.sipolan.ui.component.CustomText
 import com.gatenzteam.sipolan.ui.component.CustomTextField
+import com.gatenzteam.sipolan.ui.font.Poppins
+import com.gatenzteam.sipolan.ui.theme.ColorPalette1
 import com.gatenzteam.sipolan.ui.theme.ColorPalette2
 import com.gatenzteam.sipolan.ui.theme.ColorPalette3
 import com.gatenzteam.sipolan.ui.theme.ColorPalette4
@@ -157,19 +163,44 @@ fun PusatBantuanScreen(
                 .padding(top = 15.dp)
         )
 
-        IconButton(onClick = {
-            alreadySend = false
-            val message = textMessage
-            viewModel.sendMessage(1, selectIdKategori, message)
-        }) {
-            Icon(
-                imageVector = Icons.Filled.Send,
-                contentDescription = "Send Message",
-                tint = ColorPalette3,
+        Spacer(modifier = Modifier.weight(1f))
+
+        Button(
+            colors = ButtonDefaults.buttonColors(
+                ColorPalette3
+            ),
+            onClick = {
+                alreadySend = false
+                val message = textMessage
+                viewModel.sendMessage(1, selectIdKategori, message)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
+            Row(
                 modifier = Modifier
-                    .size(25.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
+            ){
+                Icon(
+                    imageVector = Icons.Filled.Send,
+                    contentDescription = "Icon",
+                    tint = ColorPalette1,
+                    modifier = Modifier
+                        .fillMaxHeight()
+                )
+
+                CustomText(
+                    text = "Kirim",
+                    fontSize = 15.sp,
+                    fontFamily = Poppins.poppinsFamily,
+                    fontWeight = FontWeight.Bold,
+                    color = ColorPalette1,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .padding(horizontal = 10.dp)
+                )
+            }
+
         }
     }
     Column(
