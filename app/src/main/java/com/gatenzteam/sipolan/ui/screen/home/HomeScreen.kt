@@ -105,7 +105,9 @@ fun HomeScreen(
                                 .weight(1f)
                         )
                         IconButton(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                navController.navigate(Screen.Deteksi.route)
+                            },
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = ColorPalette3,
                                 contentColor = ColorPalette1
