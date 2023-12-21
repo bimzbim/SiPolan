@@ -57,6 +57,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gatenzteam.sipolan.R
 import com.gatenzteam.sipolan.data.ResultState
 import com.gatenzteam.sipolan.di.Injection
+import com.gatenzteam.sipolan.ui.activity.signin.SignInActivity
 import com.gatenzteam.sipolan.ui.activity.verification.VerificationActivity
 import com.gatenzteam.sipolan.ui.component.CustomCheckbox
 import com.gatenzteam.sipolan.ui.component.CustomIconButton
@@ -208,7 +209,7 @@ class SignUpActivity : ComponentActivity() {
                     onClick = {
                         signUpEnable = false
                         viewModel.signUp(fullName, email, vehicleNumber, password)
-                        startActivity(Intent(this@SignUpActivity, VerificationActivity::class.java))
+                        startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
                         finish()
                     },
                     icon = Icons.Filled.PersonAdd,
