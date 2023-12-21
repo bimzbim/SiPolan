@@ -20,7 +20,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("f662b3ef-9212-42cb-82d6-027e18c812f5")
+    @GET("efc920dc-1182-4225-ae88-9e30d49a5a8e")
     suspend fun getArtikel(
         @Query("category") category: String = "",
         @Query("tags") tags: String = "",
