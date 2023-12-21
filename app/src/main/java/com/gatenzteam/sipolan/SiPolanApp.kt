@@ -281,18 +281,6 @@ fun TopAppBar(
                         )
                     }
                 }
-                Screen.PusatBantuan.route -> {
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Send,
-                            contentDescription = "Pelanggaran Saya",
-                            tint = ColorPalette3,
-                            modifier = Modifier
-                                .size(25.dp)
-                                .align(Alignment.CenterVertically)
-                        )
-                    }
-                }
                 else ->
                     IconButton(onClick = {
                         navController.navigate(Screen.Profile.route){
